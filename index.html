@@ -286,8 +286,10 @@
     .tile.wide { grid-column: span 8; aspect-ratio: 16 / 10; }
     .tile.tall { grid-column: span 4; aspect-ratio: 3 / 5; }
     .tile.full { grid-column: span 12; aspect-ratio: 21 / 9; }
+    .tile.brand-feature { grid-column: span 8; aspect-ratio: 4 / 5; }
+    .tile.brand-product { grid-column: span 4; aspect-ratio: 3 / 5; }
     @media (max-width: 900px) {
-      .tile, .tile.wide, .tile.tall, .tile.full { grid-column: span 12; aspect-ratio: 4 / 5; }
+      .tile, .tile.wide, .tile.tall, .tile.full, .tile.brand-feature, .tile.brand-product { grid-column: span 12; aspect-ratio: 4 / 5; }
     }
 
     .tile-art {
@@ -311,6 +313,8 @@
     .art-6 { object-position: 50% 48%; }
     .art-7 { object-position: 50% 40%; }
     .art-8 { object-position: 50% 46%; }
+    .art-brand-video { object-position: 50% 46%; }
+    .art-brand-product { object-position: 50% 50%; }
 
     .tile::before {
       content: '';
@@ -590,7 +594,7 @@
         Photography and video.<br/><span class="accent">Costa Rica.</span>
       </h1>
       <p class="hero-sub reveal d2">
-        I'm Santiago. Photographer based in Costa Rica. I also shoot video for events, artists, and local projects.
+        I'm Santiago. Photographer based in Costa Rica. I also shoot video for brands, events, artists, and local projects.
       </p>
       <div class="hero-actions reveal d3">
         <a href="#work" class="btn btn-primary">
@@ -625,12 +629,39 @@
       <div class="filters reveal d1">
         <button class="filter active" type="button" data-filter="all" aria-pressed="true">All</button>
         <button class="filter" type="button" data-filter="portraits" aria-pressed="false">Portraits</button>
+        <button class="filter" type="button" data-filter="brands" aria-pressed="false">Brands</button>
         <button class="filter" type="button" data-filter="video" aria-pressed="false">Video</button>
         <button class="filter" type="button" data-filter="events" aria-pressed="false">Events</button>
         <button class="filter" type="button" data-filter="places" aria-pressed="false">Places</button>
       </div>
 
       <div class="work-grid">
+        <a class="tile brand-feature reveal" href="#contact" data-cat="brands video">
+          <video class="tile-art tile-video art-brand-video" autoplay muted loop playsinline preload="metadata" poster="assets/brands/lankester-brand-work-poster.jpg" aria-label="Brand video work for Lankester">
+            <source src="assets/brands/lankester-brand-work.mp4" type="video/mp4" />
+          </video>
+          <div class="tile-overlay"></div>
+          <div class="tile-content">
+            <div>
+              <div class="tile-meta">Brands · Video</div>
+              <h3 class="tile-title">Lankester brand film</h3>
+            </div>
+            <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="tile brand-product reveal d1" href="https://www.instagram.com/p/DWzxpPDEc0K/" target="_blank" rel="noopener" data-cat="brands">
+          <img class="tile-art art-brand-product" src="assets/brands/techy-cr-product.jpg" alt="iPhone product photograph for Techy CR" loading="lazy" />
+          <div class="tile-overlay"></div>
+          <div class="tile-content">
+            <div>
+              <div class="tile-meta">Brands · Product</div>
+              <h3 class="tile-title">Techy CR product visuals</h3>
+            </div>
+            <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
         <a class="tile wide reveal" href="https://www.instagram.com/p/DYQJl0lT-IQ/" target="_blank" rel="noopener" data-cat="video events">
           <video class="tile-art tile-video art-1" autoplay muted loop playsinline preload="metadata" poster="assets/instagram/01-dyqjl0lt-iq-cover.jpg" aria-label="DJ event video from Pop & Run Beats at Aleste">
             <source src="assets/instagram/reel-pop-run-beats.mp4" type="video/mp4" />
@@ -772,9 +803,9 @@
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
           </div>
-          <div class="service-tag">Documentary</div>
-          <h3>Local stories</h3>
-          <p>Portraits and documentary work on communities, trades, and places across Costa Rica. For brands, NGOs, and personal projects.</p>
+          <div class="service-tag">Brands</div>
+          <h3>Brands & products</h3>
+          <p>Product photography, brand films, and social visuals for local projects that need clean, human-focused content.</p>
         </article>
       </div>
     </div>
@@ -824,7 +855,7 @@
       <div class="section-eyebrow reveal" style="justify-content:center;">Get in touch</div>
       <h2 class="reveal d1">Let's work <em>together.</em></h2>
       <p class="reveal d2">
-        Available for portraits, events, artist sessions, and documentary video in Costa Rica. Reach out by email or WhatsApp.
+        Available for brand work, portraits, events, artist sessions, and documentary video in Costa Rica. Reach out by email or WhatsApp.
       </p>
       <div class="contact-pills reveal d3">
         <a href="mailto:santiagomadrizc@gmail.com" class="contact-email">
