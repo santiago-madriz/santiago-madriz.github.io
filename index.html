@@ -1043,6 +1043,8 @@
         <input type="hidden" name="_subject" value="New portfolio inquiry - Santiago Madriz" data-i18n-value="contact.formSubject" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_replyto" id="contactReplyTo" />
+        <input type="hidden" name="source" id="contactSource" />
         <input class="contact-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="contact-form-row">
           <input class="contact-field" name="name" type="text" autocomplete="name" required placeholder="Name" aria-label="Name" data-i18n-placeholder="contact.formNamePlaceholder" data-i18n-aria-label="contact.formNameLabel" />
@@ -1143,6 +1145,7 @@
         'contact.formSubmit': 'Send project details',
         'contact.formSending': 'Sending...',
         'contact.formSuccess': 'Thanks. Your message was sent and I will reply by email.',
+        'contact.formFallback': 'Opening the secure form to finish sending...',
         'contact.formError': 'Something went wrong. Please try again or copy the email above.',
         'contact.emailCopied': 'Email copied.',
         'contact.emailCopyError': 'Could not copy the email. You can select it manually.',
@@ -1216,6 +1219,7 @@
         'contact.formSubmit': 'Enviar detalles',
         'contact.formSending': 'Enviando...',
         'contact.formSuccess': 'Gracias. Tu mensaje fue enviado y te voy a responder por correo.',
+        'contact.formFallback': 'Abriendo el envío seguro para terminar...',
         'contact.formError': 'Algo falló. Intentá de nuevo o copiá el correo de arriba.',
         'contact.emailCopied': 'Correo copiado.',
         'contact.emailCopyError': 'No pude copiar el correo. Podés seleccionarlo manualmente.',
@@ -1295,6 +1299,8 @@
     const contactForm = document.getElementById('contactForm');
     const contactStatus = document.getElementById('contactStatus');
     const copyEmailButton = document.getElementById('copyEmailButton');
+    const contactReplyTo = document.getElementById('contactReplyTo');
+    const contactSource = document.getElementById('contactSource');
     const contactEmailAddress = 'santiagomadrizc@gmail.com';
     const getActiveDictionary = () => translations[document.documentElement.lang] || translations.en;
     const setContactStatus = (messageKey, state = '') => {
@@ -1312,6 +1318,15 @@
       submitLabel.textContent = dictionary[isLoading ? 'contact.formSending' : 'contact.formSubmit'];
     };
     const getContactEndpoint = () => contactForm?.action.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/');
+    const prepareContactForm = () => {
+      if (!contactForm) return;
+      const email = String(contactForm.elements.email?.value || '').trim();
+      const subject = getActiveDictionary()['contact.formSubject'];
+      const source = window.location.href;
+      contactForm.elements._subject.value = subject;
+      if (contactReplyTo) contactReplyTo.value = email;
+      if (contactSource) contactSource.value = source;
+    };
 
     copyEmailButton?.addEventListener('click', async () => {
       try {
@@ -1325,10 +1340,8 @@
     const submitContactForm = async () => {
       const endpoint = getContactEndpoint();
       if (!contactForm || !endpoint) return;
+      prepareContactForm();
       const formData = new FormData(contactForm);
-      formData.set('_subject', getActiveDictionary()['contact.formSubject']);
-      formData.set('_replyto', String(formData.get('email') || '').trim());
-      formData.set('source', window.location.href);
       setSubmitLoading(true);
       setContactStatus('', '');
 
@@ -1343,10 +1356,10 @@
         setContactStatus('contact.formSuccess', 'success');
       } catch (error) {
         console.error('Contact form submission failed', error);
-        setContactStatus('contact.formError', 'error');
-      } finally {
-        setSubmitLoading(false);
+        setContactStatus('contact.formFallback', 'success');
+        contactForm.submit();
       }
+      setSubmitLoading(false);
     };
     contactForm?.addEventListener('submit', (event) => {
       event.preventDefault();
