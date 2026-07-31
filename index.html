@@ -4,12 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#000000" />
-  <title>Santi Madriz · Photography & Video · Costa Rica</title>
-  <meta name="description" content="Portraits, places, events, and documentary video from Costa Rica. Selected work from @santimadriz by Santiago Madriz." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+  <title>Santiago Madriz · Photo and Film · Costa Rica</title>
+  <meta name="description" content="Photo and film work from Costa Rica: portraits, places, events, brands, and documentary projects by Santiago Madriz." />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'none'; img-src 'self' data:; media-src 'self'; font-src 'self' data:; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://cloudflareinsights.com https://*.cloudflareinsights.com;"
+  />
 
   <style>
     :root {
@@ -24,6 +25,7 @@
       --radius: 18px;
       --radius-lg: 28px;
       --max: 1280px;
+      --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
       --ease: cubic-bezier(.22, 1, .36, 1);
     }
 
@@ -32,7 +34,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-apple);
       font-weight: 400;
       line-height: 1.5;
       overflow-x: hidden;
@@ -73,6 +75,40 @@
       transition: color .2s var(--ease);
     }
     .nav-links a:hover { color: var(--text); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .lang-toggle {
+      min-width: 48px;
+      height: 34px;
+      padding: 0 10px;
+      border-radius: 980px;
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      transition: transform .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease);
+    }
+    .lang-toggle:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+    }
+    .lang-toggle svg {
+      width: 15px;
+      height: 15px;
+    }
+    .lang-toggle span {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+    }
     .nav-cta {
       font-size: 13px;
       padding: 7px 14px;
@@ -85,6 +121,8 @@
     .nav-cta:hover { transform: translateY(-1px); background: #fff; }
     @media (max-width: 720px) {
       .nav-links { display: none; }
+      .nav-inner { gap: 12px; }
+      .nav-cta { padding-inline: 12px; }
     }
 
     /* ============ HERO ============ */
@@ -131,29 +169,16 @@
       pointer-events: none;
     }
     .hero-inner { position: relative; z-index: 3; max-width: 1120px; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-dim);
-      padding: 6px 14px;
-      border: 1px solid var(--line);
-      border-radius: 980px;
-      margin-bottom: 28px;
-    }
-    .eyebrow-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: #34c759; box-shadow: 0 0 12px rgba(52, 199, 89, 0.7);
-    }
     h1.display {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 500;
+      font-family: var(--font-apple);
+      font-weight: 700;
       font-size: clamp(44px, 8vw, 104px);
       line-height: 1;
       letter-spacing: 0;
       margin-bottom: 24px;
     }
     h1.display .accent {
-      font-style: italic;
+      font-style: normal;
       background: linear-gradient(180deg, #fff 30%, #888 100%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -211,9 +236,8 @@
       display: flex; gap: 64px;
       white-space: nowrap;
       animation: scroll 38s linear infinite;
-      font-family: 'Playfair Display', serif;
       font-size: 22px;
-      font-style: italic;
+      font-weight: 600;
       color: var(--text-mute);
     }
     .strip-track span { display: inline-flex; align-items: center; gap: 64px; }
@@ -237,14 +261,14 @@
       content: ''; width: 28px; height: 1px; background: var(--text-mute);
     }
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
+      font-family: var(--font-apple);
+      font-weight: 700;
       font-size: clamp(36px, 5.5vw, 72px);
       line-height: 1.02;
       letter-spacing: 0;
     }
     .section-title em {
-      font-style: italic;
+      font-style: normal;
       color: var(--text-dim);
     }
 
@@ -273,7 +297,7 @@
       position: relative;
       grid-column: span 6;
       aspect-ratio: 4 / 5;
-      border-radius: var(--radius-lg);
+      border-radius: 0;
       overflow: hidden;
       cursor: pointer;
       isolation: isolate;
@@ -288,8 +312,12 @@
     .tile.full { grid-column: span 12; aspect-ratio: 21 / 9; }
     .tile.brand-feature { grid-column: span 8; aspect-ratio: 4 / 5; }
     .tile.brand-product { grid-column: span 4; aspect-ratio: 3 / 5; }
+    .tile.video-card { grid-column: span 3; aspect-ratio: 4 / 5; }
+    @media (max-width: 1180px) {
+      .tile.video-card { grid-column: span 6; }
+    }
     @media (max-width: 900px) {
-      .tile, .tile.wide, .tile.tall, .tile.full, .tile.brand-feature, .tile.brand-product { grid-column: span 12; aspect-ratio: 4 / 5; }
+      .tile, .tile.wide, .tile.tall, .tile.full, .tile.brand-feature, .tile.brand-product, .tile.video-card { grid-column: span 12; aspect-ratio: 4 / 5; }
     }
 
     .tile-art {
@@ -338,9 +366,9 @@
     }
     .tile-meta { color: var(--text-mute); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 8px; }
     .tile-title {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-apple);
       font-size: clamp(20px, 2.4vw, 30px);
-      font-weight: 500;
+      font-weight: 700;
       letter-spacing: 0;
       line-height: 1.05;
     }
@@ -356,6 +384,124 @@
     }
     .tile:hover .tile-arrow { background: var(--text); color: #000; transform: rotate(-45deg); }
     .tile-arrow svg { width: 16px; height: 16px; }
+
+    .moto-carousel {
+      grid-column: span 12;
+      position: relative;
+      min-width: 0;
+      overflow: visible;
+    }
+    .moto-carousel.is-hidden { display: none; }
+    .moto-viewport {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      touch-action: pan-x;
+    }
+    .moto-viewport::-webkit-scrollbar { display: none; }
+    .moto-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: clamp(290px, 24vw, 360px);
+      gap: 16px;
+    }
+    .moto-slide {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 0;
+      overflow: hidden;
+      scroll-snap-align: start;
+      background: var(--surface);
+    }
+    .moto-slide::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.45), transparent 58%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .moto-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .8s var(--ease);
+    }
+    .moto-slide:hover img { transform: scale(1.035); }
+    .moto-footer,
+    .portrait-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 18px;
+      padding: 22px 0 0;
+    }
+    .moto-footer-copy,
+    .portrait-footer-copy {
+      max-width: 620px;
+    }
+    .moto-collab-line,
+    .portrait-description {
+      color: var(--text-dim);
+      font-size: 13px;
+      line-height: 1.55;
+      margin-top: 10px;
+    }
+    .moto-collab-line a {
+      color: var(--text);
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+      transition: color .25s var(--ease), border-color .25s var(--ease);
+    }
+    .moto-collab-line a:hover {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    .portrait-carousel {
+      grid-column: span 12;
+      min-width: 0;
+      overflow: visible;
+    }
+    .portrait-carousel.is-hidden { display: none; }
+    .portrait-viewport {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      touch-action: pan-x;
+    }
+    .portrait-viewport::-webkit-scrollbar { display: none; }
+    .portrait-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: clamp(290px, 24vw, 360px);
+      gap: 16px;
+    }
+    .portrait-slide {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 0;
+      overflow: hidden;
+      scroll-snap-align: start;
+      background: var(--surface);
+    }
+    .portrait-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .8s var(--ease);
+    }
+    .portrait-slide:hover img { transform: scale(1.04); }
+    @media (max-width: 760px) {
+      .moto-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
+      .moto-footer,
+      .portrait-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .portrait-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
+    }
 
     /* ============ ABOUT ============ */
     .about-grid {
@@ -388,40 +534,20 @@
     }
 
     .about-copy h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
+      font-family: var(--font-apple);
+      font-weight: 700;
       font-size: clamp(32px, 4vw, 52px);
       line-height: 1.05;
       letter-spacing: 0;
       margin-bottom: 24px;
     }
-    .about-copy h2 em { font-style: italic; color: var(--text-dim); }
+    .about-copy h2 em { font-style: normal; color: var(--text-dim); }
     .about-copy p {
       color: var(--text-dim);
       font-size: 17px;
       line-height: 1.65;
       margin-bottom: 16px;
     }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
-      padding-top: 32px;
-      border-top: 1px solid var(--line);
-    }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3.2vw, 40px);
-      font-weight: 500;
-      letter-spacing: 0;
-    }
-    .stat-label {
-      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-mute);
-      margin-top: 4px;
-    }
-
     /* ============ CONTACT ============ */
     .contact {
       background: linear-gradient(180deg, #000 0%, #0a0a0f 100%);
@@ -430,14 +556,14 @@
     }
     .contact-inner { max-width: 880px; margin: 0 auto; }
     .contact h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
+      font-family: var(--font-apple);
+      font-weight: 700;
       font-size: clamp(40px, 6.5vw, 84px);
       line-height: 1.02;
       letter-spacing: 0;
       margin-bottom: 28px;
     }
-    .contact h2 em { font-style: italic; color: var(--text-dim); }
+    .contact h2 em { font-style: normal; color: var(--text-dim); }
     .contact p {
       color: var(--text-dim);
       font-size: 18px;
@@ -447,12 +573,11 @@
     }
     .contact-email {
       display: inline-flex; align-items: center; gap: 12px;
-      font-family: 'Playfair Display', serif;
       font-size: clamp(20px, 2.4vw, 28px);
-      font-style: italic;
+      font-weight: 600;
       padding: 16px 32px;
       border: 1px solid var(--line);
-      border-radius: 980px;
+      border-radius: 0;
       transition: all .3s var(--ease);
     }
     .contact-email:hover {
@@ -462,20 +587,68 @@
     .contact-pills {
       display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
     }
-    .socials {
-      display: flex; gap: 12px; justify-content: center;
-      margin-top: 40px; flex-wrap: wrap;
+    .contact-form {
+      display: grid;
+      gap: 12px;
+      max-width: 640px;
+      margin: 34px auto 0;
+      text-align: left;
     }
-    .social {
-      width: 48px; height: 48px;
+    .contact-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .contact-field {
+      width: 100%;
+      min-width: 0;
       border: 1px solid var(--line);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      transition: all .25s var(--ease);
+      border-radius: 0;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font: inherit;
+      font-size: 15px;
+      padding: 15px 16px;
+      outline: none;
+      transition: border-color .25s var(--ease), background .25s var(--ease);
     }
-    .social:hover { background: var(--text); color: #000; border-color: var(--text); transform: translateY(-2px); }
-    .social svg { width: 18px; height: 18px; }
-
+    .contact-field:focus {
+      border-color: rgba(255,255,255,0.56);
+      background: rgba(255,255,255,0.07);
+    }
+    .contact-field::placeholder { color: var(--text-mute); }
+    textarea.contact-field {
+      min-height: 132px;
+      resize: vertical;
+    }
+    .contact-submit {
+      justify-self: start;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--text);
+      border-radius: 0;
+      background: var(--text);
+      color: #000;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 650;
+      padding: 14px 20px;
+      transition: transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+    }
+    .contact-submit:hover {
+      transform: translateY(-2px);
+      background: #fff;
+      border-color: #fff;
+    }
+    .contact-submit svg {
+      width: 18px;
+      height: 18px;
+    }
+    @media (max-width: 720px) {
+      .contact-form-row { grid-template-columns: 1fr; }
+      .contact-submit { width: 100%; justify-content: center; }
+    }
     /* ============ FOOTER ============ */
     footer {
       padding: 40px 24px;
@@ -504,58 +677,6 @@
     .reveal.d3 { transition-delay: .24s; }
     .reveal.d4 { transition-delay: .32s; }
 
-    /* ============ SERVICES ============ */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-    @media (max-width: 760px) { .services-grid { grid-template-columns: 1fr; } }
-    .service {
-      position: relative;
-      padding: 36px 32px 32px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      overflow: hidden;
-      transition: border-color .3s var(--ease), transform .3s var(--ease);
-    }
-    .service:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-3px); }
-    .service::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-      opacity: 0; transition: opacity .3s var(--ease);
-    }
-    .service:hover::before { opacity: 1; }
-    .service-icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-      border: 1px solid var(--line);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 28px;
-    }
-    .service-icon svg { width: 20px; height: 20px; color: var(--text); }
-    .service-tag {
-      display: inline-block;
-      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-mute);
-      padding: 4px 10px;
-      border: 1px solid var(--line);
-      border-radius: 980px;
-      margin-bottom: 14px;
-    }
-    .service-tag.new { color: #34c759; border-color: rgba(52,199,89,0.4); }
-    .service h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
-      font-size: clamp(22px, 2.4vw, 28px);
-      letter-spacing: 0;
-      margin-bottom: 12px;
-    }
-    .service p { color: var(--text-dim); font-size: 15px; line-height: 1.6; }
-
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
@@ -567,14 +688,22 @@
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#top" class="brand"><span class="brand-dot"></span> Santi Madriz</a>
+      <a href="#top" class="brand"><span class="brand-dot"></span> Santiago Madriz</a>
       <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#work" data-i18n="nav.work">Work</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
-      <a href="https://instagram.com/santimadriz" target="_blank" rel="noopener" class="nav-cta">Instagram</a>
+      <div class="nav-actions">
+        <button class="lang-toggle" type="button" id="langToggle" data-i18n-aria-label="language.toggleAria" data-i18n-title="language.toggleTitle" aria-label="Ver en español" title="Ver en español">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+          </svg>
+          <span id="langLabel">EN</span>
+        </button>
+        <a href="https://instagram.com/santimadriz" target="_blank" rel="noopener" class="nav-cta">Instagram</a>
+      </div>
     </div>
   </nav>
 
@@ -589,23 +718,22 @@
       data-cover-index="0"
     />
     <div class="hero-inner">
-      <div class="eyebrow reveal"><span class="eyebrow-dot"></span> Available for new projects</div>
-      <h1 class="display reveal d1">
-        Photography and video.<br/><span class="accent">Costa Rica.</span>
+      <h1 class="display reveal">
+        <span data-i18n="hero.title">Photo and Film.</span><br/><span class="accent" data-i18n="hero.accent">Costa Rica.</span>
       </h1>
-      <p class="hero-sub reveal d2">
-        I'm Santiago. Photographer based in Costa Rica. I also shoot video for brands, events, artists, and local projects.
+      <p class="hero-sub reveal d1" data-i18n="hero.subtitle">
+        I'm Santiago, a photographer based in Costa Rica. Audiovisual production for brands, events, artists, and local projects.
       </p>
-      <div class="hero-actions reveal d3">
+      <div class="hero-actions reveal d2">
         <a href="#work" class="btn btn-primary">
-          View the work
+          <span data-i18n="hero.primaryCta">View the work</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        <a href="#contact" class="btn btn-ghost" data-i18n="hero.secondaryCta">Get in touch</a>
       </div>
     </div>
     <div class="scroll-cue">
-      <span>Scroll</span>
+      <span data-i18n="hero.scroll">Scroll</span>
       <span class="line"></span>
     </div>
   </header>
@@ -613,8 +741,8 @@
   <!-- MARQUEE -->
   <div class="strip">
     <div class="strip-track">
-      <span>Portraits <span class="sep">·</span> Video <span class="sep">·</span> Events <span class="sep">·</span> Artists <span class="sep">·</span> Weddings <span class="sep">·</span> Documentary <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span></span>
-      <span>Portraits <span class="sep">·</span> Video <span class="sep">·</span> Events <span class="sep">·</span> Artists <span class="sep">·</span> Weddings <span class="sep">·</span> Documentary <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span></span>
+      <span data-i18n-html="strip.items">Portraits <span class="sep">·</span> Video <span class="sep">·</span> Events <span class="sep">·</span> Artists <span class="sep">·</span> Weddings <span class="sep">·</span> Documentary <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span></span>
+      <span data-i18n-html="strip.items">Portraits <span class="sep">·</span> Video <span class="sep">·</span> Events <span class="sep">·</span> Artists <span class="sep">·</span> Weddings <span class="sep">·</span> Documentary <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span></span>
     </div>
   </div>
 
@@ -622,179 +750,162 @@
   <section id="work">
     <div class="container">
       <div class="section-head reveal">
-        <div class="section-eyebrow">Selected Work</div>
-        <h2 class="section-title">Selected work.<em> Photo and video.</em></h2>
+        <div class="section-eyebrow" data-i18n="work.eyebrow">Selected Work</div>
+        <h2 class="section-title"><span data-i18n="work.title">Selected work.</span><em data-i18n="work.accent"> Photo and film.</em></h2>
       </div>
 
       <div class="filters reveal d1">
-        <button class="filter active" type="button" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter" type="button" data-filter="portraits" aria-pressed="false">Portraits</button>
-        <button class="filter" type="button" data-filter="brands" aria-pressed="false">Brands</button>
-        <button class="filter" type="button" data-filter="video" aria-pressed="false">Video</button>
-        <button class="filter" type="button" data-filter="events" aria-pressed="false">Events</button>
+        <button class="filter active" type="button" data-filter="all" aria-pressed="true" data-i18n="filters.all">All</button>
+        <button class="filter" type="button" data-filter="portraits" aria-pressed="false" data-i18n="filters.portraits">Portraits</button>
+        <button class="filter" type="button" data-filter="brands" aria-pressed="false" data-i18n="filters.brands">Brands</button>
+        <button class="filter" type="button" data-filter="video" aria-pressed="false" data-i18n="filters.video">Video</button>
+        <button class="filter" type="button" data-filter="events" aria-pressed="false" data-i18n="filters.events">Events</button>
       </div>
 
       <div class="work-grid">
-        <a class="tile brand-feature reveal" href="#contact" data-cat="brands video">
-          <video class="tile-art tile-video art-brand-video" autoplay muted loop playsinline preload="metadata" poster="assets/brands/brand-work-poster.jpg" aria-label="Brand video work">
+        <a class="tile video-card reveal" href="#contact" data-cat="brands video">
+          <video class="tile-art tile-video art-brand-video" autoplay muted loop playsinline preload="metadata" poster="assets/brands/brand-work-poster.jpg" aria-label="Brand video work" data-i18n-aria-label="tiles.brandVideoAria">
             <source src="assets/brands/brand-work.mp4" type="video/mp4" />
           </video>
           <div class="tile-overlay"></div>
           <div class="tile-content">
             <div>
-              <div class="tile-meta">Brands · Video</div>
-              <h3 class="tile-title">Brand films & social visuals</h3>
+              <div class="tile-meta" data-i18n="tiles.brandVideoMeta">Brands · Video</div>
+              <h3 class="tile-title" data-i18n="tiles.brandVideoTitle">Brand videos & social media</h3>
             </div>
             <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-        <a class="tile wide reveal" href="https://www.instagram.com/p/DYQJl0lT-IQ/" target="_blank" rel="noopener" data-cat="video events">
-          <video class="tile-art tile-video art-1" autoplay muted loop playsinline preload="metadata" poster="assets/instagram/01-dyqjl0lt-iq-cover.jpg" aria-label="DJ event video from Pop & Run Beats at Aleste">
+        <a class="tile video-card reveal d1" href="https://www.youtube.com/watch?v=kF7NgZH4uwc" target="_blank" rel="noopener" data-cat="video">
+          <video class="tile-art tile-video" autoplay muted loop playsinline preload="metadata" poster="assets/video/dias-de-lluvia-poster.jpg" aria-label="Días de Lluvia music video preview" data-i18n-aria-label="tiles.diasAria">
+            <source src="assets/video/dias-de-lluvia-preview.mp4" type="video/mp4" />
+          </video>
+          <div class="tile-overlay"></div>
+          <div class="tile-content">
+            <div>
+              <div class="tile-meta" data-i18n="tiles.diasMeta">Video · Music</div>
+              <h3 class="tile-title" data-i18n="tiles.diasTitle">Días de Lluvia music video</h3>
+            </div>
+            <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="tile video-card reveal" href="https://www.instagram.com/p/DYQJl0lT-IQ/" target="_blank" rel="noopener" data-cat="video events">
+          <video class="tile-art tile-video art-1" autoplay muted loop playsinline preload="metadata" poster="assets/instagram/01-dyqjl0lt-iq-cover.jpg" aria-label="DJ event video from Pop & Run Beats at Aleste" data-i18n-aria-label="tiles.popRunAria">
             <source src="assets/instagram/reel-pop-run-beats.mp4" type="video/mp4" />
           </video>
           <div class="tile-overlay"></div>
           <div class="tile-content">
             <div>
-              <div class="tile-meta">Video · Events</div>
+              <div class="tile-meta" data-i18n="tiles.popRunMeta">Video · Events</div>
               <h3 class="tile-title">Pop & Run Beats at Aleste</h3>
             </div>
             <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-        <a class="tile wide reveal" href="https://www.instagram.com/p/B25dsaBpCkc/?img_index=1" target="_blank" rel="noopener" data-cat="portraits">
-          <img class="tile-art art-8" src="assets/instagram/11-b25dsabpckc-cover.jpg" alt="Portrait in sunglasses with misty mountains behind" loading="lazy" />
+        <a class="tile video-card reveal d1" href="assets/events/baby-shower-highlight.mp4" target="_blank" rel="noopener" data-cat="video events">
+          <video class="tile-art tile-video" autoplay muted loop playsinline preload="metadata" poster="assets/events/baby-shower-highlight-poster.jpg" aria-label="Baby shower highlight video" data-i18n-aria-label="tiles.babyShowerAria">
+            <source src="assets/events/baby-shower-preview.mp4" type="video/mp4" />
+          </video>
           <div class="tile-overlay"></div>
           <div class="tile-content">
             <div>
-              <div class="tile-meta">Portraits · Landscape</div>
-              <h3 class="tile-title">Landscape portrait</h3>
+              <div class="tile-meta" data-i18n="tiles.babyShowerMeta">Video · Events</div>
+              <h3 class="tile-title" data-i18n="tiles.babyShowerTitle">Baby shower highlight</h3>
             </div>
             <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-        <a class="tile reveal d1" href="https://www.instagram.com/p/BobGGzvlELe/" target="_blank" rel="noopener" data-cat="portraits">
-          <img class="tile-art art-7" src="assets/instagram/10-bobggzvlele-cover.jpg" alt="Urban portrait beside a painted wall" loading="lazy" />
-          <div class="tile-overlay"></div>
-          <div class="tile-content">
-            <div>
-              <div class="tile-meta">Portraits · Urban</div>
-              <h3 class="tile-title">Urban portrait</h3>
+        <article class="moto-carousel reveal d1" data-cat="brands events">
+          <div class="moto-viewport" tabindex="0" aria-label="Motorcycle photography carousel" data-i18n-aria-label="moto.carouselAria">
+            <div class="moto-track">
+              <figure class="moto-slide">
+                <img src="assets/motos/kinsee-media-moto-01.webp" alt="Motorcyclist riding past a red course marker during an off-road event" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="moto-slide">
+                <img src="assets/motos/kinsee-media-moto-02.webp" alt="Motorcyclist in a white helmet riding through a dirt course" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="moto-slide">
+                <img src="assets/motos/kinsee-media-moto-03.webp" alt="Rider in a red helmet moving across the off-road track" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="moto-slide">
+                <img src="assets/motos/kinsee-media-moto-04.webp" alt="Motorcyclist leaning forward on a dirt trail with course cones" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="moto-slide">
+                <img src="assets/motos/kinsee-media-moto-05.webp" alt="Rider standing on a black adventure motorcycle under trees" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="moto-slide">
+                <img src="assets/motos/kinsee-media-moto-06.webp" alt="Motorcyclist lifting the front wheel on a dirt track" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="moto-slide">
+                <img src="assets/motos/kinsee-media-moto-07.webp" alt="Black motorcycle parked in dry grass with helmets resting on it" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="moto-slide">
+                <img src="assets/motos/kinsee-media-moto-08.webp" alt="Instructor looking back from a motorcycle before an off-road ride" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="moto-slide">
+                <img src="assets/motos/kinsee-media-moto-09.webp" alt="Group of motorcycles and riders gathered under trees at an event" loading="lazy" decoding="async" />
+              </figure>
             </div>
-            <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
-        </a>
+          <div class="moto-footer">
+            <div class="moto-footer-copy">
+              <div class="tile-meta" data-i18n="moto.meta">Brands · Events · Motorsport</div>
+              <h3 class="tile-title" data-i18n="moto.title">Off-road test ride series</h3>
+              <p class="moto-collab-line">
+                <span data-i18n="moto.collab">In collaboration with</span> <a href="https://www.instagram.com/kinsee.media/" target="_blank" rel="noopener">kinsee.media</a>
+              </p>
+            </div>
+          </div>
+        </article>
 
-        <a class="tile reveal" href="https://www.instagram.com/p/CBUWKGrjxX8/" target="_blank" rel="noopener" data-cat="portraits">
-          <img class="tile-art art-6" src="assets/instagram/09-cbuwkgrjxx8-cover.jpg" alt="Outdoor couple photoshoot by the coast" loading="lazy" />
-          <div class="tile-overlay"></div>
-          <div class="tile-content">
-            <div>
-              <div class="tile-meta">Couples · Photoshoot</div>
-              <h3 class="tile-title">Couple photoshoot</h3>
+        <article class="portrait-carousel reveal d1" data-cat="portraits places">
+          <div class="portrait-viewport" tabindex="0" aria-label="Portrait photography carousel" data-i18n-aria-label="portraits.carouselAria">
+            <div class="portrait-track">
+              <figure class="portrait-slide">
+                <img class="art-8" src="assets/instagram/11-b25dsabpckc-cover.jpg" alt="Portrait in sunglasses with misty mountains behind" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="portrait-slide">
+                <img class="art-7" src="assets/instagram/10-bobggzvlele-cover.jpg" alt="Urban portrait beside a painted wall" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="portrait-slide">
+                <img class="art-6" src="assets/instagram/09-cbuwkgrjxx8-cover.jpg" alt="Outdoor couple photoshoot by the coast" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="portrait-slide">
+                <img class="art-3" src="assets/instagram/04-cnbmre1joii-cover.jpg" alt="Outdoor portrait in a hidden desert in Costa Rica" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="portrait-slide">
+                <img class="art-2" src="assets/instagram/03-cndtuzadys8-02.jpg" alt="Portrait in mountain light in Cartago" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="portrait-slide">
+                <img class="art-5" src="assets/instagram/06-ceveg1gjuvt-cover.jpg" alt="Portrait against misty Costa Rican mountains" loading="lazy" decoding="async" />
+              </figure>
             </div>
-            <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
-        </a>
-
-        <a class="tile reveal" href="https://www.instagram.com/p/CNbMRe1joiI/" target="_blank" rel="noopener" data-cat="places portraits">
-          <img class="tile-art art-3" src="assets/instagram/04-cnbmre1joii-cover.jpg" alt="Outdoor portrait in a hidden desert in Costa Rica" loading="lazy" />
-          <div class="tile-overlay"></div>
-          <div class="tile-content">
-            <div>
-              <div class="tile-meta">Places · Costa Rica</div>
-              <h3 class="tile-title">Desierto escondido</h3>
+          <div class="portrait-footer">
+            <div class="portrait-footer-copy">
+              <div class="tile-meta" data-i18n="portraits.meta">Portraits · People · Places</div>
+              <h3 class="tile-title" data-i18n="portraits.title">Portrait studies</h3>
+              <p class="portrait-description" data-i18n="portraits.description">Selected portrait work from quiet sessions, open landscapes, and everyday moments across Costa Rica.</p>
             </div>
-            <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
-        </a>
-
-        <a class="tile tall reveal d1" href="https://www.instagram.com/p/CNdtUZaDys8/" target="_blank" rel="noopener" data-cat="portraits places">
-          <img class="tile-art art-2" src="assets/instagram/03-cndtuzadys8-02.jpg" alt="Portrait in mountain light in Cartago" loading="lazy" />
-          <div class="tile-overlay"></div>
-          <div class="tile-content">
-            <div>
-              <div class="tile-meta">Portraits · Cartago</div>
-              <h3 class="tile-title">Mountain light</h3>
-            </div>
-            <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="tile full reveal" href="https://www.instagram.com/p/CEVeG1gjUvt/" target="_blank" rel="noopener" data-cat="places portraits">
-          <img class="tile-art art-5" src="assets/instagram/06-ceveg1gjuvt-cover.jpg" alt="Portrait against misty Costa Rican mountains" loading="lazy" />
-          <div class="tile-overlay"></div>
-          <div class="tile-content">
-            <div>
-              <div class="tile-meta">Places · Costa Rica</div>
-              <h3 class="tile-title">Misty hills, open air</h3>
-            </div>
-            <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
+        </article>
 
         <a class="tile brand-product reveal d1" href="https://www.instagram.com/p/DWzxpPDEc0K/" target="_blank" rel="noopener" data-cat="brands">
           <img class="tile-art art-brand-product" src="assets/brands/techy-cr-product.jpg" alt="iPhone product photograph for Techy CR" loading="lazy" />
           <div class="tile-overlay"></div>
           <div class="tile-content">
             <div>
-              <div class="tile-meta">Brands · Product</div>
-              <h3 class="tile-title">Techy CR product visuals</h3>
+              <div class="tile-meta" data-i18n="tiles.productMeta">Brands · Product</div>
+              <h3 class="tile-title" data-i18n="tiles.productTitle">Techy CR product visuals</h3>
             </div>
             <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="section-eyebrow">Services</div>
-        <h2 class="section-title">What I do.<em> Photo and video.</em></h2>
-      </div>
-
-      <div class="services-grid">
-        <article class="service reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h3l2-3h8l2 3h3v12H3z"/><circle cx="12" cy="13" r="4"/></svg>
-          </div>
-          <div class="service-tag">Photography</div>
-          <h3>Portraits & sessions</h3>
-          <p>Individual, family, and couple sessions. Natural light, gentle direction, high-resolution edited delivery.</p>
-        </article>
-
-        <article class="service reveal d1">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>
-          </div>
-          <div class="service-tag">Video</div>
-          <h3>Video for events</h3>
-          <p>Weddings, birthdays, festivals, and anniversaries. Documentary video with direct sound and clean editing.</p>
-        </article>
-
-        <article class="service reveal">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-          </div>
-          <div class="service-tag">Video</div>
-          <h3>Artists & music</h3>
-          <p>Sessions for musicians, bands, and creative projects. Press kits, music videos, social content, and covers.</p>
-        </article>
-
-        <article class="service reveal d1">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
-          </div>
-          <div class="service-tag">Brands</div>
-          <h3>Brands & products</h3>
-          <p>Product photography, brand films, and social visuals for local projects that need clean, human-focused content.</p>
-        </article>
       </div>
     </div>
   </section>
@@ -804,34 +915,20 @@
     <div class="container">
       <div class="about-grid">
         <div class="portrait reveal">
-          <img src="assets/about-cover.jpg" alt="Santiago Madriz in front of mountains" loading="lazy" />
+          <img src="assets/about-cover.jpg" alt="Santiago Madriz in front of mountains" loading="lazy" data-i18n-alt="about.imageAlt" />
         </div>
         <div class="about-copy reveal d1">
-          <div class="section-eyebrow">About</div>
-          <h2>Hi, I'm <em>Santiago.</em></h2>
-          <p>
-            I shoot digital and pick the lens for the story: 35mm, 50mm, 16mm, or whatever the scene needs. I prefer natural light and honest portraits, without much posing.
+          <div class="section-eyebrow" data-i18n="about.eyebrow">About</div>
+          <h2><span data-i18n="about.titlePrefix">Hi, I'm</span> <em>Santiago.</em></h2>
+          <p data-i18n="about.p1">
+            I'm passionate about photography, but also about collaborating with brands, local businesses, and people across Costa Rica.
           </p>
-          <p>
-            Based in San José, Costa Rica. I work with artists, couples, brands, and local projects across the country.
+          <p data-i18n="about.p2">
+            My goal is to make professional photography and audiovisual production approachable for anyone looking for a high-quality result, crafted with care down to the last detail.
           </p>
-          <p style="color: var(--text-mute); font-size: 15px; margin-top: 8px;">
-            I also take on video work: events, artists, and documentary pieces. If you're interested, send me a message.
+          <p style="color: var(--text-mute); font-size: 15px; margin-top: 8px;" data-i18n="about.p3">
+            Excited to keep collaborating with people who care about their story, their brand, or the moment they want to preserve.
           </p>
-          <div class="stats">
-            <div>
-              <div class="stat-num">+50</div>
-              <div class="stat-label">Sessions</div>
-            </div>
-            <div>
-              <div class="stat-num">7</div>
-              <div class="stat-label">Provinces</div>
-            </div>
-            <div>
-              <div class="stat-num">35/50/16</div>
-              <div class="stat-label">Glass</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -840,29 +937,29 @@
   <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="container contact-inner">
-      <div class="section-eyebrow reveal" style="justify-content:center;">Get in touch</div>
-      <h2 class="reveal d1">Let's work <em>together.</em></h2>
-      <p class="reveal d2">
-        Available for brand work, portraits, events, artist sessions, and documentary video in Costa Rica. Reach out by email or WhatsApp.
+      <div class="section-eyebrow reveal" style="justify-content:center;" data-i18n="contact.eyebrow">Get in touch</div>
+      <h2 class="reveal d1"><span data-i18n="contact.title">Let's work</span> <em data-i18n="contact.accent">together.</em></h2>
+      <p class="reveal d2" data-i18n="contact.body">
+        For brand work, portraits, events, artist sessions, and audiovisual production in Costa Rica, send the details by email.
       </p>
       <div class="contact-pills reveal d3">
         <a href="mailto:santiagomadrizc@gmail.com" class="contact-email">
           santiagomadrizc@gmail.com
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://wa.me/50684574355" target="_blank" rel="noopener" class="contact-email">
-          +506 8457 4355
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.4 8.4 0 0 1-1.2 4.3 8.5 8.5 0 0 1-11.5 3.2L3 21l2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg>
-        </a>
       </div>
-      <div class="socials reveal d4">
-        <a class="social" href="https://instagram.com/santimadriz" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-        </a>
-        <a class="social" href="https://cr.linkedin.com/in/santiagomadriz" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7 0h3.8v2.2h.06c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.77 2.66 4.77 6.12V24h-4v-7.1c0-1.69-.03-3.87-2.36-3.87-2.37 0-2.73 1.85-2.73 3.75V24h-4V8z"/></svg>
-        </a>
-      </div>
+      <form class="contact-form reveal d4" id="contactForm">
+        <div class="contact-form-row">
+          <input class="contact-field" name="name" type="text" autocomplete="name" required placeholder="Name" aria-label="Name" data-i18n-placeholder="contact.formNamePlaceholder" data-i18n-aria-label="contact.formNameLabel" />
+          <input class="contact-field" name="email" type="email" autocomplete="email" required placeholder="Email" aria-label="Email" data-i18n-placeholder="contact.formEmailPlaceholder" data-i18n-aria-label="contact.formEmailLabel" />
+        </div>
+        <input class="contact-field" name="project" type="text" placeholder="Project / date" aria-label="Project or date" data-i18n-placeholder="contact.formProjectPlaceholder" data-i18n-aria-label="contact.formProjectLabel" />
+        <textarea class="contact-field" name="message" required placeholder="Tell me what you have in mind" aria-label="Tell me what you have in mind" data-i18n-placeholder="contact.formMessagePlaceholder" data-i18n-aria-label="contact.formMessageLabel"></textarea>
+        <button class="contact-submit" type="submit">
+          <span data-i18n="contact.formSubmit">Send project details</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </form>
     </div>
   </section>
 
@@ -870,11 +967,254 @@
   <footer>
     <div class="footer-inner">
       <div>© Santiago Madriz · Costa Rica</div>
-      <div><a href="#top">Back to top ↑</a></div>
+      <div><a href="#top" data-i18n="footer.backTop">Back to top ↑</a></div>
     </div>
   </footer>
 
+  <!--
+    Free analytics: Cloudflare Web Analytics.
+    Create a site token in Cloudflare, replace CLOUDFLARE_WEB_ANALYTICS_TOKEN, then uncomment this script.
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"CLOUDFLARE_WEB_ANALYTICS_TOKEN"}'></script>
+  -->
+
   <script>
+    const translations = {
+      en: {
+        metaTitle: 'Santiago Madriz · Photo and Film · Costa Rica',
+        metaDescription: 'Photo and film work from Costa Rica: portraits, places, events, brands, and documentary projects by Santiago Madriz.',
+        'language.toggleAria': 'Ver en español',
+        'language.toggleTitle': 'Ver en español',
+        'language.label': 'EN',
+        'nav.work': 'Work',
+        'nav.about': 'About',
+        'nav.contact': 'Contact',
+        'hero.title': 'Photo and Film.',
+        'hero.accent': 'Costa Rica.',
+        'hero.subtitle': "I'm Santiago, a photographer based in Costa Rica. Audiovisual production for brands, events, artists, and local projects.",
+        'hero.primaryCta': 'View the work',
+        'hero.secondaryCta': 'Get in touch',
+        'hero.scroll': 'Scroll',
+        'strip.items': 'Portraits <span class="sep">·</span> Video <span class="sep">·</span> Events <span class="sep">·</span> Artists <span class="sep">·</span> Weddings <span class="sep">·</span> Documentary <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span>',
+        'work.eyebrow': 'Selected Work',
+        'work.title': 'Selected work.',
+        'work.accent': ' Photo and film.',
+        'filters.all': 'All',
+        'filters.portraits': 'Portraits',
+        'filters.brands': 'Brands',
+        'filters.video': 'Video',
+        'filters.events': 'Events',
+        'tiles.brandVideoAria': 'Brand video and social media work',
+        'tiles.brandVideoMeta': 'Brands · Video',
+        'tiles.brandVideoTitle': 'Brand videos & social media',
+        'tiles.diasAria': 'Días de Lluvia music video preview',
+        'tiles.diasAlt': 'Días de Lluvia music video title frame',
+        'tiles.diasMeta': 'Video · Music',
+        'tiles.diasTitle': 'Días de Lluvia music video',
+        'tiles.popRunAria': 'DJ event video from Pop & Run Beats at Aleste',
+        'tiles.popRunMeta': 'Video · Events',
+        'tiles.babyShowerAria': 'Baby shower highlight video',
+        'tiles.babyShowerMeta': 'Video · Events',
+        'tiles.babyShowerTitle': 'Baby shower highlight',
+        'tiles.productMeta': 'Brands · Product',
+        'tiles.productTitle': 'Product photography for Techy CR',
+        'moto.carouselAria': 'Motorcycle photography carousel',
+        'moto.meta': 'Brands · Events · Motorsport',
+        'moto.title': 'Off-road test ride series',
+        'moto.collab': 'In collaboration with',
+        'portraits.carouselAria': 'Portrait photography carousel',
+        'portraits.meta': 'Portraits · People · Places',
+        'portraits.title': 'Portrait studies',
+        'portraits.description': 'Selected portrait work from quiet sessions, open landscapes, and everyday moments across Costa Rica.',
+        'about.imageAlt': 'Santiago Madriz in front of mountains',
+        'about.eyebrow': 'About',
+        'about.titlePrefix': "Hi, I'm",
+        'about.p1': "I'm passionate about photography, but also about collaborating with brands, local businesses, and people across Costa Rica.",
+        'about.p2': 'My goal is to make professional photography and audiovisual production approachable for anyone looking for a high-quality result, crafted with care down to the last detail.',
+        'about.p3': 'Excited to keep collaborating with people who care about their story, their brand, or the moment they want to preserve.',
+        'contact.eyebrow': 'Get in touch',
+        'contact.title': "Let's work",
+        'contact.accent': 'together.',
+        'contact.body': 'I work on brand projects, portraits, events, artist sessions, and audiovisual production across Costa Rica. Send the details by email.',
+        'contact.formNamePlaceholder': 'Name',
+        'contact.formNameLabel': 'Name',
+        'contact.formEmailPlaceholder': 'Email',
+        'contact.formEmailLabel': 'Email',
+        'contact.formProjectPlaceholder': 'Project / date',
+        'contact.formProjectLabel': 'Project or date',
+        'contact.formMessagePlaceholder': 'Tell me what you have in mind',
+        'contact.formMessageLabel': 'Tell me what you have in mind',
+        'contact.formSubmit': 'Send project details',
+        'footer.backTop': 'Back to top ↑'
+      },
+      es: {
+        metaTitle: 'Santiago Madriz · Foto y Producción · Costa Rica',
+        metaDescription: 'Fotografía y producción audiovisual desde Costa Rica: retratos, lugares, eventos, marcas y proyectos documentales por Santiago Madriz.',
+        'language.toggleAria': 'View in English',
+        'language.toggleTitle': 'View in English',
+        'language.label': 'ES',
+        'nav.work': 'Portafolio',
+        'nav.about': 'Sobre mí',
+        'nav.contact': 'Contacto',
+        'hero.title': 'Foto y Producción.',
+        'hero.accent': 'Costa Rica.',
+        'hero.subtitle': 'Soy Santiago, fotógrafo en Costa Rica. Producción audiovisual para marcas, eventos, artistas y proyectos locales.',
+        'hero.primaryCta': 'Ver el trabajo',
+        'hero.secondaryCta': 'Contacto',
+        'hero.scroll': 'Desliza',
+        'strip.items': 'Retratos <span class="sep">·</span> Video <span class="sep">·</span> Eventos <span class="sep">·</span> Artistas <span class="sep">·</span> Bodas <span class="sep">·</span> Documental <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span>',
+        'work.eyebrow': 'Trabajo seleccionado',
+        'work.title': 'Trabajo seleccionado.',
+        'work.accent': ' Foto y producción.',
+        'filters.all': 'Todo',
+        'filters.portraits': 'Retratos',
+        'filters.brands': 'Marcas',
+        'filters.video': 'Video',
+        'filters.events': 'Eventos',
+        'tiles.brandVideoAria': 'Trabajo de video para marcas y redes sociales',
+        'tiles.brandVideoMeta': 'Marcas · Video',
+        'tiles.brandVideoTitle': 'Videos de marca y redes sociales',
+        'tiles.diasAria': 'Preview del video musical Días de Lluvia',
+        'tiles.diasAlt': 'Fotograma de título del video musical Días de Lluvia',
+        'tiles.diasMeta': 'Video · Música',
+        'tiles.diasTitle': 'Días de Lluvia - video musical',
+        'tiles.popRunAria': 'Video de evento DJ de Pop & Run Beats en Aleste',
+        'tiles.popRunMeta': 'Video · Eventos',
+        'tiles.babyShowerAria': 'Video highlight de baby shower',
+        'tiles.babyShowerMeta': 'Video · Eventos',
+        'tiles.babyShowerTitle': 'Baby shower highlight',
+        'tiles.productMeta': 'Marcas · Producto',
+        'tiles.productTitle': 'Fotografía de producto para Techy CR',
+        'moto.carouselAria': 'Carrusel de fotografía de motocicletas',
+        'moto.meta': 'Marcas · Eventos · Motorsport',
+        'moto.title': 'Serie off-road test ride',
+        'moto.collab': 'En colaboración con',
+        'portraits.carouselAria': 'Carrusel de retratos',
+        'portraits.meta': 'Retratos · Personas · Lugares',
+        'portraits.title': 'Estudios de retrato',
+        'portraits.description': 'Selección de retratos en sesiones tranquilas, paisajes abiertos y momentos cotidianos en Costa Rica.',
+        'about.imageAlt': 'Santiago Madriz frente a montañas',
+        'about.eyebrow': 'Sobre mí',
+        'about.titlePrefix': 'Hola, soy',
+        'about.p1': 'Me apasiona la fotografía y también colaborar con marcas, negocios locales y personas en Costa Rica.',
+        'about.p2': 'Mi objetivo es facilitar fotografía y producción audiovisual profesional a quien busca un resultado de calidad, hecho con perfeccionismo hasta el último detalle.',
+        'about.p3': 'Emocionado de seguir colaborando con personas que cuidan su historia, su marca o el momento que quieren preservar.',
+        'contact.eyebrow': 'Contacto',
+        'contact.title': 'Trabajemos',
+        'contact.accent': 'juntos.',
+        'contact.body': 'Trabajo en proyectos de marca, retratos, eventos, sesiones para artistas y producción audiovisual en Costa Rica. Enviame los detalles por correo.',
+        'contact.formNamePlaceholder': 'Nombre',
+        'contact.formNameLabel': 'Nombre',
+        'contact.formEmailPlaceholder': 'Correo electrónico',
+        'contact.formEmailLabel': 'Correo electrónico',
+        'contact.formProjectPlaceholder': 'Proyecto / fecha',
+        'contact.formProjectLabel': 'Proyecto o fecha',
+        'contact.formMessagePlaceholder': 'Contame qué tenés en mente',
+        'contact.formMessageLabel': 'Contame qué tenés en mente',
+        'contact.formSubmit': 'Enviar detalles',
+        'footer.backTop': 'Volver arriba ↑'
+      }
+    };
+
+    const languageStorageKey = 'santiagoMadrizLanguage';
+    const langToggle = document.getElementById('langToggle');
+    const langLabel = document.getElementById('langLabel');
+    const getSavedLanguage = () => {
+      try {
+        return window.localStorage.getItem(languageStorageKey);
+      } catch {
+        return null;
+      }
+    };
+    const getInitialLanguage = () => {
+      const savedLanguage = getSavedLanguage();
+      if (savedLanguage === 'en' || savedLanguage === 'es') return savedLanguage;
+      const browserLanguage = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      return browserLanguage.startsWith('es') ? 'es' : 'en';
+    };
+    const applyTranslation = (language) => {
+      const dictionary = translations[language] || translations.en;
+      document.documentElement.lang = language;
+      document.title = dictionary.metaTitle;
+      document.querySelector('meta[name="description"]')?.setAttribute('content', dictionary.metaDescription);
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const text = dictionary[element.dataset.i18n];
+        if (text) element.textContent = text;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+        const html = dictionary[element.dataset.i18nHtml];
+        if (html) element.innerHTML = html;
+      });
+      document.querySelectorAll('[data-i18n-aria-label]').forEach((element) => {
+        const label = dictionary[element.dataset.i18nAriaLabel];
+        if (label) element.setAttribute('aria-label', label);
+      });
+      document.querySelectorAll('[data-i18n-title]').forEach((element) => {
+        const title = dictionary[element.dataset.i18nTitle];
+        if (title) element.setAttribute('title', title);
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach((element) => {
+        const alt = dictionary[element.dataset.i18nAlt];
+        if (alt) element.setAttribute('alt', alt);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+        const placeholder = dictionary[element.dataset.i18nPlaceholder];
+        if (placeholder) element.setAttribute('placeholder', placeholder);
+      });
+
+      if (langLabel) langLabel.textContent = dictionary['language.label'];
+      if (langToggle) langToggle.dataset.language = language;
+    };
+    const setLanguage = (language, persist = true) => {
+      const nextLanguage = translations[language] ? language : 'en';
+      applyTranslation(nextLanguage);
+      if (persist) {
+        try {
+          window.localStorage.setItem(languageStorageKey, nextLanguage);
+        } catch {}
+      }
+    };
+    setLanguage(getInitialLanguage(), false);
+    langToggle?.addEventListener('click', () => {
+      const currentLanguage = langToggle.dataset.language === 'es' ? 'es' : 'en';
+      setLanguage(currentLanguage === 'es' ? 'en' : 'es');
+    });
+
+    const contactForm = document.getElementById('contactForm');
+    const contactEmailAddress = 'santiagomadrizc@gmail.com';
+    const buildContactMailto = (form, language) => {
+      const formData = new FormData(form);
+      const value = (key) => String(formData.get(key) || '').trim();
+      const name = value('name');
+      const email = value('email');
+      const project = value('project');
+      const message = value('message');
+      const isSpanish = language === 'es';
+      const subject = `${isSpanish ? 'Solicitud de informacion' : 'Project inquiry'}${name ? ` - ${name}` : ''}`;
+      const labels = isSpanish
+        ? { name: 'Nombre', email: 'Correo', project: 'Proyecto / fecha', message: 'Mensaje', source: 'Pagina' }
+        : { name: 'Name', email: 'Email', project: 'Project / date', message: 'Message', source: 'Page' };
+      const bodyLines = [
+        `${labels.name}: ${name}`,
+        `${labels.email}: ${email}`,
+        project ? `${labels.project}: ${project}` : '',
+        '',
+        `${labels.message}:`,
+        message,
+        '',
+        `${labels.source}: ${window.location.href}`
+      ].filter((line, index, lines) => line || lines[index - 1]);
+
+      return `mailto:${contactEmailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+    };
+    window.buildContactMailto = buildContactMailto;
+    contactForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!contactForm.reportValidity()) return;
+      const language = document.documentElement.lang === 'es' ? 'es' : 'en';
+      window.location.href = buildContactMailto(contactForm, language);
+    });
+
     // sticky nav border on scroll
     const nav = document.getElementById('nav');
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
@@ -931,17 +1271,17 @@
 
     // work filters
     const filters = document.querySelectorAll('.filter');
-    const tiles = document.querySelectorAll('.tile');
+    const workItems = document.querySelectorAll('.work-grid [data-cat]');
     const setFilter = (filter) => {
       filters.forEach((button) => {
         const active = button.dataset.filter === filter;
         button.classList.toggle('active', active);
         button.setAttribute('aria-pressed', String(active));
       });
-      tiles.forEach((tile) => {
-        const categories = (tile.dataset.cat || '').split(' ');
+      workItems.forEach((item) => {
+        const categories = (item.dataset.cat || '').split(' ');
         const show = filter === 'all' || categories.includes(filter);
-        tile.classList.toggle('is-hidden', !show);
+        item.classList.toggle('is-hidden', !show);
       });
     };
     filters.forEach((btn) => {

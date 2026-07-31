@@ -1,0 +1,4 @@
+Contact: mailto:santiagomadrizc@gmail.com
+Expires: 2027-07-31T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://santiagomadriz.com/.well-known/security.txt
