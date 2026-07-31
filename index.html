@@ -311,13 +311,12 @@
     .tile.tall { grid-column: span 4; aspect-ratio: 3 / 5; }
     .tile.full { grid-column: span 12; aspect-ratio: 21 / 9; }
     .tile.brand-feature { grid-column: span 8; aspect-ratio: 4 / 5; }
-    .tile.brand-product { grid-column: span 4; aspect-ratio: 3 / 5; }
     .tile.video-card { grid-column: span 3; aspect-ratio: 4 / 5; }
     @media (max-width: 1180px) {
       .tile.video-card { grid-column: span 6; }
     }
     @media (max-width: 900px) {
-      .tile, .tile.wide, .tile.tall, .tile.full, .tile.brand-feature, .tile.brand-product, .tile.video-card { grid-column: span 12; aspect-ratio: 4 / 5; }
+      .tile, .tile.wide, .tile.tall, .tile.full, .tile.brand-feature, .tile.video-card { grid-column: span 12; aspect-ratio: 4 / 5; }
     }
 
     .tile-art {
@@ -342,7 +341,6 @@
     .art-7 { object-position: 50% 40%; }
     .art-8 { object-position: 50% 54%; }
     .art-brand-video { object-position: 50% 46%; }
-    .art-brand-product { object-position: 50% 50%; }
 
     .tile::before {
       content: '';
@@ -431,7 +429,8 @@
     }
     .moto-slide:hover img { transform: scale(1.035); }
     .moto-footer,
-    .portrait-footer {
+    .portrait-footer,
+    .product-footer {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -439,11 +438,13 @@
       padding: 22px 0 0;
     }
     .moto-footer-copy,
-    .portrait-footer-copy {
+    .portrait-footer-copy,
+    .product-footer-copy {
       max-width: 620px;
     }
     .moto-collab-line,
-    .portrait-description {
+    .portrait-description,
+    .product-description {
       color: var(--text-dim);
       font-size: 13px;
       line-height: 1.55;
@@ -460,13 +461,16 @@
       border-bottom-color: #fff;
     }
 
-    .portrait-carousel {
+    .portrait-carousel,
+    .product-carousel {
       grid-column: span 12;
       min-width: 0;
       overflow: visible;
     }
-    .portrait-carousel.is-hidden { display: none; }
-    .portrait-viewport {
+    .portrait-carousel.is-hidden,
+    .product-carousel.is-hidden { display: none; }
+    .portrait-viewport,
+    .product-viewport {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
@@ -474,14 +478,17 @@
       overscroll-behavior-x: contain;
       -webkit-overflow-scrolling: touch;
     }
-    .portrait-viewport::-webkit-scrollbar { display: none; }
-    .portrait-track {
+    .portrait-viewport::-webkit-scrollbar,
+    .product-viewport::-webkit-scrollbar { display: none; }
+    .portrait-track,
+    .product-track {
       display: grid;
       grid-auto-flow: column;
       grid-auto-columns: clamp(290px, 24vw, 360px);
       gap: 16px;
     }
-    .portrait-slide {
+    .portrait-slide,
+    .product-slide {
       position: relative;
       aspect-ratio: 4 / 5;
       border-radius: 0;
@@ -489,18 +496,22 @@
       scroll-snap-align: start;
       background: var(--surface);
     }
-    .portrait-slide img {
+    .portrait-slide img,
+    .product-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
       transition: transform .8s var(--ease);
     }
-    .portrait-slide:hover img { transform: scale(1.04); }
+    .portrait-slide:hover img,
+    .product-slide:hover img { transform: scale(1.04); }
     @media (max-width: 760px) {
-      .moto-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
+      .moto-track,
+      .product-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
       .moto-footer,
-      .portrait-footer {
+      .portrait-footer,
+      .product-footer {
         flex-direction: column;
         align-items: flex-start;
       }
@@ -725,6 +736,8 @@
       .moto-slide img,
       .portrait-slide,
       .portrait-slide img,
+      .product-slide,
+      .product-slide img,
       .portrait img {
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
@@ -732,14 +745,16 @@
       .hero-bg { transform: translateZ(0) scale(1.02); }
       .tile,
       .moto-slide,
-      .portrait-slide {
+      .portrait-slide,
+      .product-slide {
         contain: paint;
         transform: translateZ(0);
       }
       .tile-art,
       .tile-video,
       .moto-slide img,
-      .portrait-slide img {
+      .portrait-slide img,
+      .product-slide img {
         transform: translateZ(0);
       }
       .portrait img { transform: translateZ(0) scale(1.01); }
@@ -758,7 +773,8 @@
       }
       .tile:hover .tile-art,
       .moto-slide:hover img,
-      .portrait-slide:hover img {
+      .portrait-slide:hover img,
+      .product-slide:hover img {
         transform: translateZ(0);
       }
       .tile:hover .tile-arrow {
@@ -985,17 +1001,43 @@
           </div>
         </article>
 
-        <a class="tile brand-product reveal d1" href="https://www.instagram.com/p/DWzxpPDEc0K/" target="_blank" rel="noopener" data-cat="brands">
-          <img class="tile-art art-brand-product" src="assets/brands/techy-cr-product.jpg" alt="iPhone product photograph for Techy CR" loading="lazy" />
-          <div class="tile-overlay"></div>
-          <div class="tile-content">
-            <div>
-              <div class="tile-meta" data-i18n="tiles.productMeta">Brands · Product</div>
-              <h3 class="tile-title" data-i18n="tiles.productTitle">Techy CR product visuals</h3>
+        <article class="product-carousel reveal d1" data-cat="brands">
+          <div class="product-viewport" tabindex="0" aria-label="Techy CR product photography carousel" data-i18n-aria-label="product.carouselAria">
+            <div class="product-track">
+              <figure class="product-slide">
+                <img src="assets/brands/techy-products/techy-product-01.jpg" alt="White iPhone photographed beside its box for Techy CR" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="product-slide">
+                <img src="assets/brands/techy-products/techy-product-02.jpg" alt="Close product photograph of a white iPhone on a light background" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="product-slide">
+                <img src="assets/brands/techy-products/techy-product-03.jpg" alt="Detail photograph of iPhone cameras and box on a white surface" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="product-slide">
+                <img src="assets/brands/techy-products/techy-product-04.jpg" alt="iPhone screen product photograph on a white fabric background" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="product-slide">
+                <img src="assets/brands/techy-products/techy-product-05.jpg" alt="Minimal product photograph of a white iPhone against soft white fabric" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="product-slide">
+                <img src="assets/brands/techy-products/techy-product-06.jpg" alt="White iPhone product close-up with soft shadows" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="product-slide">
+                <img src="assets/brands/techy-products/techy-product-07.jpg" alt="Vertical close-up of a white iPhone camera module" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="product-slide">
+                <img src="assets/brands/techy-products/techy-product-08.jpg" alt="Low angle product detail of a white iPhone on a white surface" loading="lazy" decoding="async" />
+              </figure>
             </div>
-            <span class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
-        </a>
+          <div class="product-footer">
+            <div class="product-footer-copy">
+              <div class="tile-meta" data-i18n="product.meta">Brands · Product</div>
+              <h3 class="tile-title" data-i18n="product.title">Techy CR product visuals</h3>
+              <p class="product-description" data-i18n="product.description">A clean white-background product series for Techy CR, focused on detail, texture, and premium presentation.</p>
+            </div>
+          </div>
+        </article>
 
       </div>
     </div>
@@ -1113,8 +1155,6 @@
         'tiles.babyShowerAria': 'Baby shower highlight video',
         'tiles.babyShowerMeta': 'Video · Events',
         'tiles.babyShowerTitle': 'Baby shower highlight',
-        'tiles.productMeta': 'Brands · Product',
-        'tiles.productTitle': 'Product photography for Techy CR',
         'moto.carouselAria': 'Motorcycle photography carousel',
         'moto.meta': 'Brands · Events · Motorsport',
         'moto.title': 'Off-road test ride series',
@@ -1123,6 +1163,10 @@
         'portraits.meta': 'Portraits · People · Places',
         'portraits.title': 'Portrait studies',
         'portraits.description': 'Selected portrait work from quiet sessions, open landscapes, and everyday moments across Costa Rica.',
+        'product.carouselAria': 'Techy CR product photography carousel',
+        'product.meta': 'Brands · Product',
+        'product.title': 'Techy CR product visuals',
+        'product.description': 'Recent clean-background product work for Techy CR, focused on detail, texture, and premium presentation.',
         'about.imageAlt': 'Santiago Madriz in front of mountains',
         'about.eyebrow': 'About',
         'about.titlePrefix': "Hi, I'm",
@@ -1187,8 +1231,6 @@
         'tiles.babyShowerAria': 'Video highlight de baby shower',
         'tiles.babyShowerMeta': 'Video · Eventos',
         'tiles.babyShowerTitle': 'Baby shower highlight',
-        'tiles.productMeta': 'Marcas · Producto',
-        'tiles.productTitle': 'Fotografía de producto para Techy CR',
         'moto.carouselAria': 'Carrusel de fotografía de motocicletas',
         'moto.meta': 'Marcas · Eventos · Motorsport',
         'moto.title': 'Serie off-road test ride',
@@ -1197,6 +1239,10 @@
         'portraits.meta': 'Retratos · Personas · Lugares',
         'portraits.title': 'Estudios de retrato',
         'portraits.description': 'Selección de retratos en sesiones tranquilas, paisajes abiertos y momentos cotidianos en Costa Rica.',
+        'product.carouselAria': 'Carrusel de fotografía de producto para Techy CR',
+        'product.meta': 'Marcas · Producto',
+        'product.title': 'Fotografía de producto para Techy CR',
+        'product.description': 'Trabajo reciente de producto sobre fondo limpio para Techy CR, enfocado en detalle, textura y presentación premium.',
         'about.imageAlt': 'Santiago Madriz frente a montañas',
         'about.eyebrow': 'Sobre mí',
         'about.titlePrefix': 'Hola, soy',
