@@ -9,7 +9,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta
     http-equiv="Content-Security-Policy"
-    content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'none'; img-src 'self' data:; media-src 'self'; font-src 'self' data:; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://cloudflareinsights.com https://*.cloudflareinsights.com;"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://formsubmit.co; frame-src 'none'; img-src 'self' data:; media-src 'self'; font-src 'self' data:; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://formsubmit.co https://cloudflareinsights.com https://*.cloudflareinsights.com;"
   />
 
   <style>
@@ -573,11 +573,16 @@
     }
     .contact-email {
       display: inline-flex; align-items: center; gap: 12px;
+      appearance: none;
+      background: transparent;
+      font: inherit;
       font-size: clamp(20px, 2.4vw, 28px);
       font-weight: 600;
       padding: 16px 32px;
       border: 1px solid var(--line);
       border-radius: 0;
+      color: var(--text);
+      cursor: pointer;
       transition: all .3s var(--ease);
     }
     .contact-email:hover {
@@ -617,6 +622,7 @@
       background: rgba(255,255,255,0.07);
     }
     .contact-field::placeholder { color: var(--text-mute); }
+    .contact-honey { display: none; }
     textarea.contact-field {
       min-height: 132px;
       resize: vertical;
@@ -641,13 +647,30 @@
       background: #fff;
       border-color: #fff;
     }
+    .contact-submit:disabled {
+      cursor: progress;
+      opacity: 0.72;
+      transform: none;
+    }
     .contact-submit svg {
       width: 18px;
       height: 18px;
     }
+    .contact-status {
+      min-height: 22px;
+      max-width: 640px;
+      margin: 16px auto 0;
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1.55;
+      text-align: left;
+    }
+    .contact-status[data-state="success"] { color: #a8f0b6; }
+    .contact-status[data-state="error"] { color: #ffb4a8; }
     @media (max-width: 720px) {
       .contact-form-row { grid-template-columns: 1fr; }
       .contact-submit { width: 100%; justify-content: center; }
+      .contact-status { text-align: center; }
     }
     /* ============ FOOTER ============ */
     footer {
@@ -943,12 +966,16 @@
         For brand work, portraits, events, artist sessions, and audiovisual production in Costa Rica, send the details by email.
       </p>
       <div class="contact-pills reveal d3">
-        <a href="mailto:santiagomadrizc@gmail.com" class="contact-email">
+        <button class="contact-email" type="button" id="copyEmailButton">
           santiagomadrizc@gmail.com
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
+        </button>
       </div>
-      <form class="contact-form reveal d4" id="contactForm">
+      <form class="contact-form reveal d4" id="contactForm" action="https://formsubmit.co/santiagomadrizc@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New portfolio inquiry - Santiago Madriz" data-i18n-value="contact.formSubject" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input class="contact-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="contact-form-row">
           <input class="contact-field" name="name" type="text" autocomplete="name" required placeholder="Name" aria-label="Name" data-i18n-placeholder="contact.formNamePlaceholder" data-i18n-aria-label="contact.formNameLabel" />
           <input class="contact-field" name="email" type="email" autocomplete="email" required placeholder="Email" aria-label="Email" data-i18n-placeholder="contact.formEmailPlaceholder" data-i18n-aria-label="contact.formEmailLabel" />
@@ -960,6 +987,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
       </form>
+      <p class="contact-status" id="contactStatus" role="status" aria-live="polite"></p>
     </div>
   </section>
 
@@ -1043,7 +1071,13 @@
         'contact.formProjectLabel': 'Project or date',
         'contact.formMessagePlaceholder': 'Tell me what you have in mind',
         'contact.formMessageLabel': 'Tell me what you have in mind',
+        'contact.formSubject': 'New portfolio inquiry - Santiago Madriz',
         'contact.formSubmit': 'Send project details',
+        'contact.formSending': 'Sending...',
+        'contact.formSuccess': 'Thanks. Your message was sent and I will reply by email.',
+        'contact.formError': 'Something went wrong. Please try again or copy the email above.',
+        'contact.emailCopied': 'Email copied.',
+        'contact.emailCopyError': 'Could not copy the email. You can select it manually.',
         'footer.backTop': 'Back to top ↑'
       },
       es: {
@@ -1110,7 +1144,13 @@
         'contact.formProjectLabel': 'Proyecto o fecha',
         'contact.formMessagePlaceholder': 'Contame qué tenés en mente',
         'contact.formMessageLabel': 'Contame qué tenés en mente',
+        'contact.formSubject': 'Nueva solicitud desde el portafolio - Santiago Madriz',
         'contact.formSubmit': 'Enviar detalles',
+        'contact.formSending': 'Enviando...',
+        'contact.formSuccess': 'Gracias. Tu mensaje fue enviado y te voy a responder por correo.',
+        'contact.formError': 'Algo falló. Intentá de nuevo o copiá el correo de arriba.',
+        'contact.emailCopied': 'Correo copiado.',
+        'contact.emailCopyError': 'No pude copiar el correo. Podés seleccionarlo manualmente.',
         'footer.backTop': 'Volver arriba ↑'
       }
     };
@@ -1161,6 +1201,10 @@
         const placeholder = dictionary[element.dataset.i18nPlaceholder];
         if (placeholder) element.setAttribute('placeholder', placeholder);
       });
+      document.querySelectorAll('[data-i18n-value]').forEach((element) => {
+        const value = dictionary[element.dataset.i18nValue];
+        if (value) element.setAttribute('value', value);
+      });
 
       if (langLabel) langLabel.textContent = dictionary['language.label'];
       if (langToggle) langToggle.dataset.language = language;
@@ -1181,38 +1225,65 @@
     });
 
     const contactForm = document.getElementById('contactForm');
+    const contactStatus = document.getElementById('contactStatus');
+    const copyEmailButton = document.getElementById('copyEmailButton');
     const contactEmailAddress = 'santiagomadrizc@gmail.com';
-    const buildContactMailto = (form, language) => {
-      const formData = new FormData(form);
-      const value = (key) => String(formData.get(key) || '').trim();
-      const name = value('name');
-      const email = value('email');
-      const project = value('project');
-      const message = value('message');
-      const isSpanish = language === 'es';
-      const subject = `${isSpanish ? 'Solicitud de informacion' : 'Project inquiry'}${name ? ` - ${name}` : ''}`;
-      const labels = isSpanish
-        ? { name: 'Nombre', email: 'Correo', project: 'Proyecto / fecha', message: 'Mensaje', source: 'Pagina' }
-        : { name: 'Name', email: 'Email', project: 'Project / date', message: 'Message', source: 'Page' };
-      const bodyLines = [
-        `${labels.name}: ${name}`,
-        `${labels.email}: ${email}`,
-        project ? `${labels.project}: ${project}` : '',
-        '',
-        `${labels.message}:`,
-        message,
-        '',
-        `${labels.source}: ${window.location.href}`
-      ].filter((line, index, lines) => line || lines[index - 1]);
-
-      return `mailto:${contactEmailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+    const getActiveDictionary = () => translations[document.documentElement.lang] || translations.en;
+    const setContactStatus = (messageKey, state = '') => {
+      if (!contactStatus) return;
+      const dictionary = getActiveDictionary();
+      contactStatus.textContent = dictionary[messageKey] || '';
+      contactStatus.dataset.state = state;
     };
-    window.buildContactMailto = buildContactMailto;
+    const setSubmitLoading = (isLoading) => {
+      const submitButton = contactForm?.querySelector('.contact-submit');
+      const submitLabel = submitButton?.querySelector('[data-i18n]');
+      if (!submitButton || !submitLabel) return;
+      const dictionary = getActiveDictionary();
+      submitButton.disabled = isLoading;
+      submitLabel.textContent = dictionary[isLoading ? 'contact.formSending' : 'contact.formSubmit'];
+    };
+    const getContactEndpoint = () => contactForm?.action.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/');
+
+    copyEmailButton?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(contactEmailAddress);
+        setContactStatus('contact.emailCopied', 'success');
+      } catch {
+        setContactStatus('contact.emailCopyError', 'error');
+      }
+    });
+
+    const submitContactForm = async () => {
+      const endpoint = getContactEndpoint();
+      if (!contactForm || !endpoint) return;
+      const formData = new FormData(contactForm);
+      formData.set('_subject', getActiveDictionary()['contact.formSubject']);
+      formData.set('_replyto', String(formData.get('email') || '').trim());
+      formData.set('source', window.location.href);
+      setSubmitLoading(true);
+      setContactStatus('', '');
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body: formData,
+          headers: { Accept: 'application/json' }
+        });
+        if (!response.ok) throw new Error(`Form request failed with ${response.status}`);
+        contactForm.reset();
+        setContactStatus('contact.formSuccess', 'success');
+      } catch (error) {
+        console.error('Contact form submission failed', error);
+        setContactStatus('contact.formError', 'error');
+      } finally {
+        setSubmitLoading(false);
+      }
+    };
     contactForm?.addEventListener('submit', (event) => {
       event.preventDefault();
       if (!contactForm.reportValidity()) return;
-      const language = document.documentElement.lang === 'es' ? 'es' : 'en';
-      window.location.href = buildContactMailto(contactForm, language);
+      submitContactForm();
     });
 
     // sticky nav border on scroll
