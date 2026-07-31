@@ -396,7 +396,9 @@
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
-      touch-action: pan-x;
+      touch-action: auto;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
     }
     .moto-viewport::-webkit-scrollbar { display: none; }
     .moto-track {
@@ -468,7 +470,9 @@
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
-      touch-action: pan-x;
+      touch-action: auto;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
     }
     .portrait-viewport::-webkit-scrollbar { display: none; }
     .portrait-track {
