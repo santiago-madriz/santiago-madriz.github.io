@@ -273,6 +273,8 @@
     }
 
     /* ============ WORK GRID ============ */
+    #work { border-bottom: 1px solid var(--line); }
+
     .filters {
       display: flex; gap: 8px; flex-wrap: wrap;
       margin-bottom: 48px;
@@ -293,6 +295,28 @@
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
     }
+    .work-group-heading {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 34px 0 10px;
+      color: var(--text);
+      font-family: var(--font-apple);
+      font-size: clamp(22px, 2.8vw, 34px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .work-group-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+    .work-group-heading[data-work-group="film"] { margin-top: 0; }
+    .work-group-heading[data-work-group="photo"] { margin-top: 74px; }
+    .work-group-heading.is-hidden { display: none; }
     .tile {
       position: relative;
       grid-column: span 6;
@@ -507,6 +531,8 @@
     .portrait-slide:hover img,
     .product-slide:hover img { transform: scale(1.04); }
     @media (max-width: 760px) {
+      .work-group-heading { margin-bottom: 6px; }
+      .work-group-heading[data-work-group="photo"] { margin-top: 58px; }
       .moto-track,
       .product-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
       .moto-footer,
@@ -858,7 +884,7 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="section-eyebrow" data-i18n="work.eyebrow">Selected Work</div>
-        <h2 class="section-title"><span data-i18n="work.title">Selected work.</span><em data-i18n="work.accent"> Photo and film.</em></h2>
+        <h2 class="section-title"><span data-i18n="work.title">Selected work.</span></h2>
       </div>
 
       <div class="filters reveal d1">
@@ -870,7 +896,11 @@
       </div>
 
       <div class="work-grid">
-        <a class="tile video-card reveal" href="#contact" data-cat="brands video">
+        <div class="work-group-heading reveal d1" data-work-group="film">
+          <span data-i18n="work.film">Film</span>
+        </div>
+
+        <a class="tile video-card reveal" href="#contact" data-cat="brands video" data-group="film">
           <video class="tile-art tile-video art-brand-video" autoplay muted loop playsinline preload="metadata" poster="assets/brands/brand-work-poster.jpg" aria-label="Brand video work" data-i18n-aria-label="tiles.brandVideoAria">
             <source src="assets/brands/brand-work.mp4" type="video/mp4" />
           </video>
@@ -884,7 +914,7 @@
           </div>
         </a>
 
-        <a class="tile video-card reveal d1" href="https://www.youtube.com/watch?v=kF7NgZH4uwc" target="_blank" rel="noopener" data-cat="video">
+        <a class="tile video-card reveal d1" href="https://www.youtube.com/watch?v=kF7NgZH4uwc" target="_blank" rel="noopener" data-cat="video" data-group="film">
           <video class="tile-art tile-video" autoplay muted loop playsinline preload="metadata" poster="assets/video/dias-de-lluvia-poster.jpg" aria-label="Días de Lluvia music video preview" data-i18n-aria-label="tiles.diasAria">
             <source src="assets/video/dias-de-lluvia-preview.mp4" type="video/mp4" />
           </video>
@@ -898,7 +928,7 @@
           </div>
         </a>
 
-        <a class="tile video-card reveal" href="https://www.instagram.com/p/DYQJl0lT-IQ/" target="_blank" rel="noopener" data-cat="video events">
+        <a class="tile video-card reveal" href="https://www.instagram.com/p/DYQJl0lT-IQ/" target="_blank" rel="noopener" data-cat="video events" data-group="film">
           <video class="tile-art tile-video art-1" autoplay muted loop playsinline preload="metadata" poster="assets/instagram/01-dyqjl0lt-iq-cover.jpg" aria-label="DJ event video from Pop & Run Beats at Aleste" data-i18n-aria-label="tiles.popRunAria">
             <source src="assets/instagram/reel-pop-run-beats.mp4" type="video/mp4" />
           </video>
@@ -912,7 +942,7 @@
           </div>
         </a>
 
-        <a class="tile video-card reveal d1" href="assets/events/baby-shower-highlight.mp4" target="_blank" rel="noopener" data-cat="video events">
+        <a class="tile video-card reveal d1" href="assets/events/baby-shower-highlight.mp4" target="_blank" rel="noopener" data-cat="video events" data-group="film">
           <video class="tile-art tile-video" autoplay muted loop playsinline preload="metadata" poster="assets/events/baby-shower-highlight-poster.jpg" aria-label="Baby shower highlight video" data-i18n-aria-label="tiles.babyShowerAria">
             <source src="assets/events/baby-shower-preview.mp4" type="video/mp4" />
           </video>
@@ -926,7 +956,11 @@
           </div>
         </a>
 
-        <article class="moto-carousel reveal d1" data-cat="brands events">
+        <div class="work-group-heading reveal d1" data-work-group="photo">
+          <span data-i18n="work.photo">Photo</span>
+        </div>
+
+        <article class="moto-carousel reveal d1" data-cat="brands events" data-group="photo">
           <div class="moto-viewport" tabindex="0" aria-label="Motorcycle photography carousel" data-i18n-aria-label="moto.carouselAria">
             <div class="moto-track">
               <figure class="moto-slide">
@@ -969,7 +1003,7 @@
           </div>
         </article>
 
-        <article class="portrait-carousel reveal d1" data-cat="portraits places">
+        <article class="portrait-carousel reveal d1" data-cat="portraits places" data-group="photo">
           <div class="portrait-viewport" tabindex="0" aria-label="Portrait photography carousel" data-i18n-aria-label="portraits.carouselAria">
             <div class="portrait-track">
               <figure class="portrait-slide">
@@ -1001,32 +1035,20 @@
           </div>
         </article>
 
-        <article class="product-carousel reveal d1" data-cat="brands">
+        <article class="product-carousel reveal d1" data-cat="brands" data-group="photo">
           <div class="product-viewport" tabindex="0" aria-label="Techy CR product photography carousel" data-i18n-aria-label="product.carouselAria">
             <div class="product-track">
               <figure class="product-slide">
-                <img src="assets/brands/techy-products/techy-product-01.jpg" alt="White iPhone photographed beside its box for Techy CR" loading="lazy" decoding="async" />
+                <img src="assets/brands/techy-products/techy-product-01.jpg" alt="Close-up of a white iPhone camera module on a soft white background" loading="lazy" decoding="async" />
               </figure>
               <figure class="product-slide">
-                <img src="assets/brands/techy-products/techy-product-02.jpg" alt="Close product photograph of a white iPhone on a light background" loading="lazy" decoding="async" />
+                <img src="assets/brands/techy-products/techy-product-02.jpg" alt="Blue iPhone box photographed on a white background" loading="lazy" decoding="async" />
               </figure>
               <figure class="product-slide">
-                <img src="assets/brands/techy-products/techy-product-03.jpg" alt="Detail photograph of iPhone cameras and box on a white surface" loading="lazy" decoding="async" />
+                <img src="assets/brands/techy-products/techy-product-03.jpg" alt="Open MacBook photographed on white fabric" loading="lazy" decoding="async" />
               </figure>
               <figure class="product-slide">
-                <img src="assets/brands/techy-products/techy-product-04.jpg" alt="iPhone screen product photograph on a white fabric background" loading="lazy" decoding="async" />
-              </figure>
-              <figure class="product-slide">
-                <img src="assets/brands/techy-products/techy-product-05.jpg" alt="Minimal product photograph of a white iPhone against soft white fabric" loading="lazy" decoding="async" />
-              </figure>
-              <figure class="product-slide">
-                <img src="assets/brands/techy-products/techy-product-06.jpg" alt="White iPhone product close-up with soft shadows" loading="lazy" decoding="async" />
-              </figure>
-              <figure class="product-slide">
-                <img src="assets/brands/techy-products/techy-product-07.jpg" alt="Vertical close-up of a white iPhone camera module" loading="lazy" decoding="async" />
-              </figure>
-              <figure class="product-slide">
-                <img src="assets/brands/techy-products/techy-product-08.jpg" alt="Low angle product detail of a white iPhone on a white surface" loading="lazy" decoding="async" />
+                <img src="assets/brands/techy-products/techy-product-04.jpg" alt="Two iPhone boxes with blue and black iPhones on a white background" loading="lazy" decoding="async" />
               </figure>
             </div>
           </div>
@@ -1137,7 +1159,8 @@
         'strip.items': 'Portraits <span class="sep">·</span> Video <span class="sep">·</span> Events <span class="sep">·</span> Artists <span class="sep">·</span> Weddings <span class="sep">·</span> Documentary <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span>',
         'work.eyebrow': 'Selected Work',
         'work.title': 'Selected work.',
-        'work.accent': ' Photo and film.',
+        'work.film': 'Film',
+        'work.photo': 'Photo',
         'filters.all': 'All',
         'filters.portraits': 'Portraits',
         'filters.brands': 'Brands',
@@ -1166,7 +1189,7 @@
         'product.carouselAria': 'Techy CR product photography carousel',
         'product.meta': 'Brands · Product',
         'product.title': 'Techy CR product visuals',
-        'product.description': 'Recent clean-background product work for Techy CR, focused on detail, texture, and premium presentation.',
+        'product.description': 'A clean white-background product selection for Techy CR, focused on devices, packaging, and premium presentation.',
         'about.imageAlt': 'Santiago Madriz in front of mountains',
         'about.eyebrow': 'About',
         'about.titlePrefix': "Hi, I'm",
@@ -1213,7 +1236,8 @@
         'strip.items': 'Retratos <span class="sep">·</span> Video <span class="sep">·</span> Eventos <span class="sep">·</span> Artistas <span class="sep">·</span> Bodas <span class="sep">·</span> Documental <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span>',
         'work.eyebrow': 'Trabajo seleccionado',
         'work.title': 'Trabajo seleccionado.',
-        'work.accent': ' Foto y producción.',
+        'work.film': 'Film',
+        'work.photo': 'Photo',
         'filters.all': 'Todo',
         'filters.portraits': 'Retratos',
         'filters.brands': 'Marcas',
@@ -1242,7 +1266,7 @@
         'product.carouselAria': 'Carrusel de fotografía de producto para Techy CR',
         'product.meta': 'Marcas · Producto',
         'product.title': 'Fotografía de producto para Techy CR',
-        'product.description': 'Trabajo reciente de producto sobre fondo limpio para Techy CR, enfocado en detalle, textura y presentación premium.',
+        'product.description': 'Selección de producto para Techy CR sobre fondo blanco, enfocada en dispositivos, empaque y presentación premium.',
         'about.imageAlt': 'Santiago Madriz frente a montañas',
         'about.eyebrow': 'Sobre mí',
         'about.titlePrefix': 'Hola, soy',
@@ -1530,6 +1554,15 @@
     // work filters
     const filters = document.querySelectorAll('.filter');
     const workItems = document.querySelectorAll('.work-grid [data-cat]');
+    const workGroups = document.querySelectorAll('.work-grid [data-work-group]');
+    const updateWorkGroupVisibility = () => {
+      workGroups.forEach((group) => {
+        const hasVisibleItems = Array.from(workItems).some((item) => {
+          return item.dataset.group === group.dataset.workGroup && !item.classList.contains('is-hidden');
+        });
+        group.classList.toggle('is-hidden', !hasVisibleItems);
+      });
+    };
     const setFilter = (filter) => {
       filters.forEach((button) => {
         const active = button.dataset.filter === filter;
@@ -1545,12 +1578,14 @@
           else setPreviewVideoState(video);
         });
       });
+      updateWorkGroupVisibility();
     };
     filters.forEach((btn) => {
       btn.addEventListener('click', () => {
         setFilter(btn.dataset.filter);
       });
     });
+    updateWorkGroupVisibility();
   </script>
 </body>
 </html>
