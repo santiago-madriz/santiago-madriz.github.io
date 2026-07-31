@@ -700,6 +700,70 @@
     .reveal.d3 { transition-delay: .24s; }
     .reveal.d4 { transition-delay: .32s; }
 
+    @media (max-width: 760px), (hover: none), (pointer: coarse) {
+      .nav {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: rgba(0, 0, 0, 0.92);
+        transform: translateZ(0);
+        transition: border-color .2s var(--ease);
+      }
+      .nav.scrolled { background: rgba(0, 0, 0, 0.92); }
+      .hero::after,
+      .tile::before {
+        display: none;
+      }
+      .hero-bg,
+      .tile,
+      .tile-art,
+      .tile-video,
+      .moto-slide,
+      .moto-slide img,
+      .portrait-slide,
+      .portrait-slide img,
+      .portrait img {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      .hero-bg { transform: translateZ(0) scale(1.02); }
+      .tile,
+      .moto-slide,
+      .portrait-slide {
+        contain: paint;
+        transform: translateZ(0);
+      }
+      .tile-art,
+      .tile-video,
+      .moto-slide img,
+      .portrait-slide img {
+        transform: translateZ(0);
+      }
+      .portrait img { transform: translateZ(0) scale(1.01); }
+      .tile-arrow {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+      .tile:hover,
+      .lang-toggle:hover,
+      .nav-cta:hover,
+      .btn-primary:hover,
+      .btn-ghost:hover,
+      .contact-email:hover,
+      .contact-submit:hover {
+        transform: none;
+      }
+      .tile:hover .tile-art,
+      .moto-slide:hover img,
+      .portrait-slide:hover img {
+        transform: translateZ(0);
+      }
+      .tile:hover .tile-arrow {
+        background: rgba(255,255,255,0.08);
+        color: var(--text);
+        transform: none;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
@@ -1322,11 +1386,71 @@
       }, 5200);
     }
 
-    // autoplay muted reel tiles when the browser allows it
-    document.querySelectorAll('video[autoplay]').forEach((video) => {
+    // Keep mobile Safari from decoding every reel while the user scrolls.
+    const autoplayVideos = Array.from(document.querySelectorAll('video[autoplay]'));
+    const getPreviewVisibility = (video) => {
+      const card = video.closest('.tile') || video;
+      const rect = card.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      if (!rect.height || rect.bottom <= 0 || rect.top >= viewportHeight) return 0;
+      const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+      return Math.max(0, visibleHeight) / rect.height;
+    };
+    const playPreviewVideo = (video) => {
+      if (!motionOK || video.closest('.is-hidden')) return;
+      video.play().catch(() => {});
+    };
+    const pausePreviewVideo = (video) => {
+      video.pause();
+    };
+    const setPreviewVideoState = (video) => {
+      const isVisibleEnough = getPreviewVisibility(video) >= 0.28 && !video.closest('.is-hidden');
+      video.dataset.videoVisible = String(isVisibleEnough);
+      if (isVisibleEnough) playPreviewVideo(video);
+      else pausePreviewVideo(video);
+    };
+    let previewVideoFrame = 0;
+    const syncPreviewVideos = () => {
+      if (document.hidden) {
+        autoplayVideos.forEach(pausePreviewVideo);
+        return;
+      }
+      autoplayVideos.forEach(setPreviewVideoState);
+    };
+    const requestPreviewVideoSync = () => {
+      if (previewVideoFrame) return;
+      previewVideoFrame = window.requestAnimationFrame(() => {
+        previewVideoFrame = 0;
+        syncPreviewVideos();
+      });
+    };
+    autoplayVideos.forEach((video) => {
       video.muted = true;
-      if (motionOK) video.play().catch(() => {});
-      else video.removeAttribute('autoplay');
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      if (!motionOK) {
+        pausePreviewVideo(video);
+        video.removeAttribute('autoplay');
+      }
+    });
+    if (motionOK && 'IntersectionObserver' in window) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          setPreviewVideoState(entry.target);
+        });
+      }, { threshold: 0.28, rootMargin: '0px 0px' });
+      autoplayVideos.forEach((video) => videoObserver.observe(video));
+    } else if (motionOK) {
+      autoplayVideos.forEach(setPreviewVideoState);
+    }
+    window.addEventListener('scroll', requestPreviewVideoSync, { passive: true });
+    window.addEventListener('resize', requestPreviewVideoSync);
+    window.setInterval(syncPreviewVideos, 700);
+    requestPreviewVideoSync();
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) autoplayVideos.forEach(pausePreviewVideo);
+      else requestPreviewVideoSync();
     });
 
     // reveal-on-scroll
@@ -1353,6 +1477,10 @@
         const categories = (item.dataset.cat || '').split(' ');
         const show = filter === 'all' || categories.includes(filter);
         item.classList.toggle('is-hidden', !show);
+        item.querySelectorAll('video').forEach((video) => {
+          if (!show) pausePreviewVideo(video);
+          else setPreviewVideoState(video);
+        });
       });
     };
     filters.forEach((btn) => {
