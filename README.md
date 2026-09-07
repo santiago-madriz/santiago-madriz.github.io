@@ -34,6 +34,10 @@ The co-located checks protect semantic landmarks, filtering, localization, and s
 
 See [Quality approach](docs/QUALITY.md) for scope and limitations.
 
+## Engineering portfolio deployment
+
+The `/dev/` directory is a generated production build from the separate [engineering-portfolio](https://github.com/santiago-madriz/engineering-portfolio) repository. Update experience, credentials, CV documents, or project previews in that source repository and rebuild before publishing; do not edit generated files here directly.
+
 ## Security and privacy
 
 - There are no server-side secrets in this static repository.
