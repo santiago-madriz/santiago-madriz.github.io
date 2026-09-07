@@ -2,7 +2,7 @@
 
 [![Site quality](https://github.com/santiago-madriz/santiago-madriz.github.io/actions/workflows/quality.yml/badge.svg)](https://github.com/santiago-madriz/santiago-madriz.github.io/actions/workflows/quality.yml)
 
-Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photography and audiovisual portfolio based in Costa Rica.
+Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photography and audiovisual portfolio based in Costa Rica. The same GitHub Pages deployment publishes my [engineering portfolio](https://santiagomadriz.com/dev/) under `/dev/`.
 
 ## Product highlights
 
@@ -12,6 +12,7 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 - Reduced-motion behavior
 - Secure contact flow with client-side validation and a honeypot field
 - Content Security Policy and restrictive referrer policy
+- Engineering portfolio deployment at `/dev/`
 
 ## Local development
 
@@ -43,4 +44,3 @@ See [Quality approach](docs/QUALITY.md) for scope and limitations.
 ## Content rights
 
 Site code may be studied and adapted with attribution. Photographs, video, branding, and other media remain copyright Santiago Madriz and their respective collaborators unless stated otherwise. See [CONTENT_LICENSE.md](CONTENT_LICENSE.md).
-
