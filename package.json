@@ -1,0 +1,20 @@
+{
+  "name": "santiago-madriz-photo-film",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bilingual photography and film portfolio with automated quality checks",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "typecheck": "tsc --noEmit"
+  },
+  "author": "Santiago Madriz",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
+
