@@ -124,6 +124,14 @@ test('uses the Miami portrait as the portrait cover and fourth carousel image', 
 });
 
 test('keeps the requested off-road image sequence', async ({ page }) => {
+  expect(await page.locator('#work [data-group="photo"]').evaluateAll((sections) => sections.slice(0, 4).map((section) => {
+    if (section.classList.contains('moto-carousel')) return 'off-road';
+    if (section.hasAttribute('data-mova-sports')) return 'mova';
+    if (section.hasAttribute('data-samurai-series')) return 'samurai';
+    if (section.classList.contains('portrait-carousel')) return 'portraits';
+    return 'other';
+  }))).toEqual(['off-road', 'mova', 'samurai', 'portraits']);
+
   const images = page.locator('.moto-track .moto-slide img');
   await expect(images).toHaveCount(8);
   await expect(images.nth(0)).toHaveAttribute('src', 'assets/motos/kinsee-media-moto-01.webp');
