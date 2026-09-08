@@ -453,6 +453,7 @@
     }
     .moto-slide:hover img { transform: scale(1.035); }
     .moto-footer,
+    .sports-footer,
     .portrait-footer,
     .product-footer {
       display: flex;
@@ -462,11 +463,13 @@
       padding: 22px 0 0;
     }
     .moto-footer-copy,
+    .sports-footer-copy,
     .portrait-footer-copy,
     .product-footer-copy {
       max-width: 620px;
     }
     .moto-collab-line,
+    .sports-description,
     .portrait-description,
     .product-description {
       color: var(--text-dim);
@@ -485,14 +488,17 @@
       border-bottom-color: #fff;
     }
 
+    .sports-carousel,
     .portrait-carousel,
     .product-carousel {
       grid-column: span 12;
       min-width: 0;
       overflow: visible;
     }
+    .sports-carousel.is-hidden,
     .portrait-carousel.is-hidden,
     .product-carousel.is-hidden { display: none; }
+    .sports-viewport,
     .portrait-viewport,
     .product-viewport {
       overflow-x: auto;
@@ -502,8 +508,10 @@
       overscroll-behavior-x: contain;
       -webkit-overflow-scrolling: touch;
     }
+    .sports-viewport::-webkit-scrollbar,
     .portrait-viewport::-webkit-scrollbar,
     .product-viewport::-webkit-scrollbar { display: none; }
+    .sports-track,
     .portrait-track,
     .product-track {
       display: grid;
@@ -511,6 +519,7 @@
       grid-auto-columns: clamp(290px, 24vw, 360px);
       gap: 16px;
     }
+    .sports-slide,
     .portrait-slide,
     .product-slide {
       position: relative;
@@ -520,6 +529,7 @@
       scroll-snap-align: start;
       background: var(--surface);
     }
+    .sports-slide img,
     .portrait-slide img,
     .product-slide img {
       width: 100%;
@@ -528,14 +538,17 @@
       object-position: center;
       transition: transform .8s var(--ease);
     }
+    .sports-slide:hover img,
     .portrait-slide:hover img,
     .product-slide:hover img { transform: scale(1.04); }
     @media (max-width: 760px) {
       .work-group-heading { margin-bottom: 6px; }
       .work-group-heading[data-work-group="photo"] { margin-top: 58px; }
       .moto-track,
+      .sports-track,
       .product-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
       .moto-footer,
+      .sports-footer,
       .portrait-footer,
       .product-footer {
         flex-direction: column;
@@ -975,6 +988,26 @@
           <span data-i18n="work.photo">Photo</span>
         </div>
 
+        <article class="sports-carousel reveal d1" data-cat="brands" data-group="photo" data-mova-sports>
+          <div class="sports-viewport" tabindex="0" aria-label="MOVA sportswear campaign photography carousel" data-i18n-aria-label="sports.carouselAria">
+            <div class="sports-track">
+              <figure class="sports-slide"><img src="assets/brands/mova-sports/mova-sports-01.webp" alt="Runner wearing a red MOVA shirt on an outdoor track" loading="lazy" decoding="async" /></figure>
+              <figure class="sports-slide"><img src="assets/brands/mova-sports/mova-sports-02.webp" alt="Black-and-white motion photograph of a runner wearing MOVA sportswear" loading="lazy" decoding="async" /></figure>
+              <figure class="sports-slide"><img src="assets/brands/mova-sports/mova-sports-03.webp" alt="Athlete checking her watch in a gray MOVA shirt on a running track" loading="lazy" decoding="async" /></figure>
+              <figure class="sports-slide"><img src="assets/brands/mova-sports/mova-sports-04.webp" alt="Athlete in a gray MOVA shirt surrounded by a motion-blurred landscape" loading="lazy" decoding="async" /></figure>
+              <figure class="sports-slide"><img src="assets/brands/mova-sports/mova-sports-05.webp" alt="Runner wearing a pink MOVA shirt outdoors" loading="lazy" decoding="async" /></figure>
+              <figure class="sports-slide"><img src="assets/brands/mova-sports/mova-sports-06.webp" alt="Two athletes in MOVA sportswear preparing beside an outdoor track" loading="lazy" decoding="async" /></figure>
+            </div>
+          </div>
+          <div class="sports-footer">
+            <div class="sports-footer-copy">
+              <div class="tile-meta" data-i18n="sports.meta">Brands · Sportswear · Campaign</div>
+              <h3 class="tile-title" data-i18n="sports.title">MOVA — Sportswear campaign</h3>
+              <p class="sports-description" data-i18n="sports.description">An outdoor campaign balancing product detail, movement, and the everyday energy behind an activewear brand.</p>
+            </div>
+          </div>
+        </article>
+
         <article class="moto-carousel reveal d1" data-cat="brands events" data-group="photo">
           <div class="moto-viewport" tabindex="0" aria-label="Motorcycle photography carousel" data-i18n-aria-label="moto.carouselAria">
             <div class="moto-track">
@@ -1195,6 +1228,10 @@
         'tiles.babyShowerAria': 'Baby shower highlight video',
         'tiles.babyShowerMeta': 'Video · Events',
         'tiles.babyShowerTitle': 'Baby shower highlight',
+        'sports.carouselAria': 'MOVA sportswear campaign photography carousel',
+        'sports.meta': 'Brands · Sportswear · Campaign',
+        'sports.title': 'MOVA — Sportswear campaign',
+        'sports.description': 'An outdoor campaign balancing product detail, movement, and the everyday energy behind an activewear brand.',
         'moto.carouselAria': 'Motorcycle photography carousel',
         'moto.meta': 'Brands · Events · Motorsport',
         'moto.title': 'Off-road test ride series',
@@ -1275,6 +1312,10 @@
         'tiles.babyShowerAria': 'Video highlight de baby shower',
         'tiles.babyShowerMeta': 'Video · Eventos',
         'tiles.babyShowerTitle': 'Baby shower highlight',
+        'sports.carouselAria': 'Carrusel fotográfico de la campaña deportiva de MOVA',
+        'sports.meta': 'Marcas · Ropa deportiva · Campaña',
+        'sports.title': 'MOVA — Campaña deportiva',
+        'sports.description': 'Una campaña al aire libre que combina detalle de producto, movimiento y la energía cotidiana de una marca deportiva.',
         'moto.carouselAria': 'Carrusel de fotografía de motocicletas',
         'moto.meta': 'Marcas · Eventos · Motorsport',
         'moto.title': 'Serie off-road test ride',

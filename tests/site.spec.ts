@@ -20,6 +20,13 @@ test('includes the MOVA brand reel and its local preview', async ({ page }) => {
   await expect(card.locator('source')).toHaveAttribute('src', 'assets/instagram/reel-mova-made-to-move.mp4');
 });
 
+test('presents the MOVA sportswear campaign as a six-image brand carousel', async ({ page }) => {
+  const campaign = page.locator('[data-mova-sports]');
+  await expect(campaign).toHaveAttribute('data-cat', 'brands');
+  await expect(campaign.locator('.sports-slide')).toHaveCount(6);
+  await expect(campaign.getByRole('heading')).toContainText('MOVA');
+});
+
 test('filters work and translates the interface', async ({ page }) => {
   await page.getByRole('button', { name: 'Portraits' }).click();
   await expect(page.getByRole('button', { name: 'Portraits' })).toHaveAttribute('aria-pressed', 'true');
