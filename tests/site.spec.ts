@@ -187,6 +187,13 @@ test('links to focused commercial service pages without adding a homepage servic
   await expect(page.locator('a[href="#services"]')).toHaveCount(0);
 });
 
+test('keeps the social content gallery focused on MOVA work', async ({ page }) => {
+  await page.goto('/services/social-media-content-costa-rica/');
+  const gallery = page.locator('.gallery');
+  await expect(gallery.locator('.shot')).toHaveCount(2);
+  await expect(gallery.locator('img[src="/assets/brands/techy-cr-product.jpg"]')).toHaveCount(0);
+});
+
 for (const service of [
   ['product-photography-costa-rica', 'Fotografía de producto'],
   ['event-photographer-costa-rica', 'Fotógrafo para eventos'],
