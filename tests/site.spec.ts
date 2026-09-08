@@ -45,6 +45,13 @@ test('links subtly to the development portfolio from the footer', async ({ page 
   await expect(developmentLink).toBeVisible();
 });
 
+test('offers a direct WhatsApp quote action', async ({ page }) => {
+  const whatsapp = page.locator('.contact-whatsapp');
+  await expect(whatsapp).toHaveAttribute('href', 'https://wa.me/50684574355');
+  await expect(whatsapp).toHaveAttribute('target', '_blank');
+  await expect(whatsapp).toBeVisible();
+});
+
 test('has no automatically detectable serious accessibility violations', async ({ page }) => {
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])

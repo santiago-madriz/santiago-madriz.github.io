@@ -13,7 +13,7 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 - Subtle bilingual footer path to the companion engineering portfolio
 - Keyboard-accessible work filters and media carousels
 - Reduced-motion behavior
-- Secure contact flow with client-side validation and a honeypot field
+- Secure contact flow with client-side validation, a honeypot field, and direct WhatsApp quotes
 - Content Security Policy and restrictive referrer policy
 - Engineering portfolio deployment at `/dev/`
 
