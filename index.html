@@ -498,6 +498,7 @@
     .moto-slide:hover img { transform: scale(1.035); }
     .moto-footer,
     .sports-footer,
+    .samurai-footer,
     .portrait-footer,
     .product-footer {
       display: flex;
@@ -508,12 +509,14 @@
     }
     .moto-footer-copy,
     .sports-footer-copy,
+    .samurai-footer-copy,
     .portrait-footer-copy,
     .product-footer-copy {
       max-width: 620px;
     }
     .moto-collab-line,
     .sports-description,
+    .samurai-description,
     .portrait-description,
     .product-description {
       color: var(--text-dim);
@@ -533,6 +536,7 @@
     }
 
     .sports-carousel,
+    .samurai-carousel,
     .portrait-carousel,
     .product-carousel {
       grid-column: span 12;
@@ -540,9 +544,11 @@
       overflow: visible;
     }
     .sports-carousel.is-hidden,
+    .samurai-carousel.is-hidden,
     .portrait-carousel.is-hidden,
     .product-carousel.is-hidden { display: none; }
     .sports-viewport,
+    .samurai-viewport,
     .portrait-viewport,
     .product-viewport {
       overflow-x: auto;
@@ -553,9 +559,11 @@
       -webkit-overflow-scrolling: touch;
     }
     .sports-viewport::-webkit-scrollbar,
+    .samurai-viewport::-webkit-scrollbar,
     .portrait-viewport::-webkit-scrollbar,
     .product-viewport::-webkit-scrollbar { display: none; }
     .sports-track,
+    .samurai-track,
     .portrait-track,
     .product-track {
       display: grid;
@@ -564,6 +572,7 @@
       gap: 16px;
     }
     .sports-slide,
+    .samurai-slide,
     .portrait-slide,
     .product-slide {
       position: relative;
@@ -574,6 +583,7 @@
       background: var(--surface);
     }
     .sports-slide img,
+    .samurai-slide img,
     .portrait-slide img,
     .product-slide img {
       width: 100%;
@@ -587,6 +597,7 @@
       object-position: 50% 32%;
     }
     .sports-slide:hover img,
+    .samurai-slide:hover img,
     .portrait-slide:hover img,
     .product-slide:hover img { transform: scale(1.04); }
     @media (max-width: 760px) {
@@ -594,9 +605,11 @@
       .work-group-heading[data-work-group="photo"] { margin-top: 58px; }
       .moto-track,
       .sports-track,
+      .samurai-track,
       .product-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
       .moto-footer,
       .sports-footer,
+      .samurai-footer,
       .portrait-footer,
       .product-footer {
         flex-direction: column;
@@ -883,6 +896,8 @@
       .tile-video,
       .moto-slide,
       .moto-slide img,
+      .samurai-slide,
+      .samurai-slide img,
       .portrait-slide,
       .portrait-slide img,
       .product-slide,
@@ -894,6 +909,7 @@
       .hero-bg { transform: translateZ(0) scale(1.02); }
       .tile,
       .moto-slide,
+      .samurai-slide,
       .portrait-slide,
       .product-slide {
         contain: paint;
@@ -902,6 +918,7 @@
       .tile-art,
       .tile-video,
       .moto-slide img,
+      .samurai-slide img,
       .portrait-slide img,
       .product-slide img {
         transform: translateZ(0);
@@ -922,6 +939,7 @@
       }
       .tile:hover .tile-art,
       .moto-slide:hover img,
+      .samurai-slide:hover img,
       .portrait-slide:hover img,
       .product-slide:hover img {
         transform: translateZ(0);
@@ -1080,6 +1098,7 @@
         <button class="filter" type="button" data-filter="brands" aria-pressed="false" data-i18n="filters.brands">Brands</button>
         <button class="filter" type="button" data-filter="video" aria-pressed="false" data-i18n="filters.video">Video</button>
         <button class="filter" type="button" data-filter="events" aria-pressed="false" data-i18n="filters.events">Events</button>
+        <button class="filter" type="button" data-filter="automotive" aria-pressed="false" data-i18n="filters.automotive">Automotive</button>
       </div>
 
       <div class="work-grid">
@@ -1212,6 +1231,35 @@
               <p class="moto-collab-line">
                 <span data-i18n="moto.collab">In collaboration with</span> <a href="https://www.instagram.com/kinsee.media/" target="_blank" rel="noopener">kinsee.media</a>
               </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="samurai-carousel reveal d1" data-cat="automotive brands" data-group="photo" data-samurai-series>
+          <div class="samurai-viewport" tabindex="0" aria-label="Suzuki Samurai off-road photography carousel" data-i18n-aria-label="samurai.carouselAria">
+            <div class="samurai-track">
+              <figure class="samurai-slide">
+                <img src="assets/automotive/samurai/suzuki-samurai-trail-front-01.webp" width="1365" height="2048" alt="White Suzuki Samurai photographed from the front on a forest trail in Costa Rica" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="samurai-slide">
+                <img src="assets/automotive/samurai/suzuki-samurai-forest-distance-02.webp" width="1365" height="2048" alt="Suzuki Samurai approaching through a dense Costa Rican forest trail" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="samurai-slide">
+                <img src="assets/automotive/samurai/suzuki-samurai-rock-crawl-03.webp" width="1365" height="2048" alt="White Suzuki Samurai navigating a rocky off-road trail in the forest" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="samurai-slide">
+                <img src="assets/automotive/samurai/suzuki-samurai-low-angle-04.webp" width="1365" height="2048" alt="Beige Suzuki Samurai photographed from a low angle on an off-road trail" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="samurai-slide">
+                <img src="assets/automotive/samurai/suzuki-samurai-trail-rear-05.webp" width="1365" height="2048" alt="Suzuki Samurai driving away along a sunlit forest road in Costa Rica" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+          </div>
+          <div class="samurai-footer">
+            <div class="samurai-footer-copy">
+              <div class="tile-meta" data-i18n="samurai.meta">Automotive · Off-road · Costa Rica</div>
+              <h3 class="tile-title" data-i18n="samurai.title">Suzuki Samurai trail series</h3>
+              <p class="samurai-description" data-i18n="samurai.description">Classic off-road vehicles framed by the scale, texture, and changing light of the Costa Rican forest.</p>
             </div>
           </div>
         </article>
@@ -1447,6 +1495,7 @@
         'filters.brands': 'Brands',
         'filters.video': 'Video',
         'filters.events': 'Events',
+        'filters.automotive': 'Automotive',
         'tiles.brandVideoAria': 'Brand video and social media work',
         'tiles.brandVideoMeta': 'Brands · Video',
         'tiles.brandVideoTitle': 'Brand videos & social media',
@@ -1470,6 +1519,10 @@
         'moto.meta': 'Brands · Events · Motorsport',
         'moto.title': 'Off-road test ride series',
         'moto.collab': 'In collaboration with',
+        'samurai.carouselAria': 'Suzuki Samurai off-road photography carousel',
+        'samurai.meta': 'Automotive · Off-road · Costa Rica',
+        'samurai.title': 'Suzuki Samurai trail series',
+        'samurai.description': 'Classic off-road vehicles framed by the scale, texture, and changing light of the Costa Rican forest.',
         'portraits.carouselAria': 'Portrait photography carousel',
         'portraits.meta': 'Portraits · People · Places',
         'portraits.title': 'Portrait studies',
@@ -1567,6 +1620,7 @@
         'filters.brands': 'Marcas',
         'filters.video': 'Video',
         'filters.events': 'Eventos',
+        'filters.automotive': 'Automotriz',
         'tiles.brandVideoAria': 'Trabajo de video para marcas y redes sociales',
         'tiles.brandVideoMeta': 'Marcas · Video',
         'tiles.brandVideoTitle': 'Videos de marca y redes sociales',
@@ -1590,6 +1644,10 @@
         'moto.meta': 'Marcas · Eventos · Motorsport',
         'moto.title': 'Serie off-road test ride',
         'moto.collab': 'En colaboración con',
+        'samurai.carouselAria': 'Carrusel de fotografía off-road de Suzuki Samurai',
+        'samurai.meta': 'Automotriz · 4x4 · Costa Rica',
+        'samurai.title': 'Serie Suzuki Samurai en montaña',
+        'samurai.description': 'Vehículos 4x4 clásicos enmarcados por la escala, la textura y la luz cambiante del bosque costarricense.',
         'portraits.carouselAria': 'Carrusel de retratos',
         'portraits.meta': 'Retratos · Personas · Lugares',
         'portraits.title': 'Estudios de retrato',

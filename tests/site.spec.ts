@@ -74,6 +74,24 @@ test('keeps the requested off-road image sequence', async ({ page }) => {
   await expect(images.nth(2)).toHaveAttribute('src', 'assets/motos/kinsee-media-moto-06.webp');
 });
 
+test('presents the Suzuki Samurai series as a five-image automotive carousel', async ({ page }) => {
+  const series = page.locator('[data-samurai-series]');
+  await expect(series).toHaveAttribute('data-cat', 'automotive brands');
+  await expect(series.getByRole('heading')).toContainText('Suzuki Samurai');
+
+  const images = series.locator('.samurai-slide img');
+  await expect(images).toHaveCount(5);
+  await expect(images.nth(0)).toHaveAttribute('src', 'assets/automotive/samurai/suzuki-samurai-trail-front-01.webp');
+  await expect(images.nth(1)).toHaveAttribute('src', 'assets/automotive/samurai/suzuki-samurai-forest-distance-02.webp');
+  await expect(images.nth(2)).toHaveAttribute('src', 'assets/automotive/samurai/suzuki-samurai-rock-crawl-03.webp');
+  await expect(images.nth(3)).toHaveAttribute('src', 'assets/automotive/samurai/suzuki-samurai-low-angle-04.webp');
+  await expect(images.nth(4)).toHaveAttribute('src', 'assets/automotive/samurai/suzuki-samurai-trail-rear-05.webp');
+
+  await page.getByRole('button', { name: 'Automotive' }).click();
+  await expect(series).toBeVisible();
+  await expect(page.locator('#work [data-cat]:not(.is-hidden)')).toHaveCount(1);
+});
+
 test('filters work and translates the interface', async ({ page }) => {
   await page.getByRole('button', { name: 'Portraits' }).click();
   await expect(page.getByRole('button', { name: 'Portraits' })).toHaveAttribute('aria-pressed', 'true');
