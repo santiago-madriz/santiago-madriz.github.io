@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://santiagomadriz.com/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <image:image><image:loc>https://santiagomadriz.com/assets/instagram/02-cnliarvjh44-cover.jpg</image:loc><image:title>Portrait photography in Costa Rica by Santiago Madriz</image:title></image:image>
+    <image:image><image:loc>https://santiagomadriz.com/assets/brands/mova-sports/mova-sports-01.webp</image:loc><image:title>MOVA sportswear campaign photography in Costa Rica</image:title></image:image>
+    <image:image><image:loc>https://santiagomadriz.com/assets/brands/mova-sports/mova-sports-02.webp</image:loc><image:title>Running brand campaign photographed in Costa Rica</image:title></image:image>
+    <image:image><image:loc>https://santiagomadriz.com/assets/brands/mova-sports/mova-sports-03.webp</image:loc><image:title>Activewear product and lifestyle photography</image:title></image:image>
+    <image:image><image:loc>https://santiagomadriz.com/assets/brands/mova-sports/mova-sports-05.webp</image:loc><image:title>MOVA lifestyle portrait for a Costa Rica campaign</image:title></image:image>
+    <image:image><image:loc>https://santiagomadriz.com/assets/motos/kinsee-media-moto-01.webp</image:loc><image:title>Motorcycle event photography in Costa Rica</image:title></image:image>
+    <image:image><image:loc>https://santiagomadriz.com/assets/brands/techy-products/techy-product-01.jpg</image:loc><image:title>Commercial product photography for Techy CR</image:title></image:image>
+    <image:image><image:loc>https://santiagomadriz.com/assets/instagram/11-b25dsabpckc-cover.jpg</image:loc><image:title>Outdoor portrait photography in Costa Rica</image:title></image:image>
+    <video:video>
+      <video:thumbnail_loc>https://santiagomadriz.com/assets/instagram/mova-made-to-move-poster.jpg</video:thumbnail_loc>
+      <video:title>MOVA Made to Move — Costa Rica brand production</video:title>
+      <video:description>Sportswear campaign reel filmed and produced for MOVA in Costa Rica.</video:description>
+      <video:content_loc>https://santiagomadriz.com/assets/instagram/reel-mova-made-to-move.mp4</video:content_loc>
+      <video:duration>35</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url><loc>https://santiagomadriz.com/dev/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://santiagomadriz.com/dev/projects/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://santiagomadriz.com/dev/experience/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://santiagomadriz.com/dev/credentials/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://santiagomadriz.com/dev/projects/techy/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://santiagomadriz.com/dev/projects/spanish-sentiment-lab/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://santiagomadriz.com/dev/projects/playwright-quality-engineering/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://santiagomadriz.com/dev/projects/galeria-mexicana/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://santiagomadriz.com/dev/projects/photography-platform/</loc><lastmod>2026-09-08</lastmod></url>
+</urlset>

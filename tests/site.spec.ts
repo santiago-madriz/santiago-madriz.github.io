@@ -6,11 +6,12 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('renders the primary portfolio landmarks', async ({ page }) => {
-  await expect(page).toHaveTitle(/Santiago Madriz.*Costa Rica/i);
+  await expect(page).toHaveTitle(/Costa Rica Photographer.*Santiago Madriz/i);
   await expect(page.locator('main')).toBeVisible();
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Photo and Film');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Photography and Film Production');
   await expect(page.locator('#work')).toBeVisible();
   await expect(page.locator('#about')).toBeVisible();
+  await expect(page.locator('#services')).toBeVisible();
   await expect(page.locator('#contactForm')).toBeVisible();
 });
 
@@ -36,7 +37,7 @@ test('filters work and translates the interface', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Ver en español' }).click();
   await expect(page.locator('html')).toHaveAttribute('lang', 'es');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Foto y Producción');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Fotografía y Producción Audiovisual');
 });
 
 test('links subtly to the development portfolio from the footer', async ({ page }) => {
@@ -50,6 +51,18 @@ test('offers a direct WhatsApp quote action', async ({ page }) => {
   await expect(whatsapp).toHaveAttribute('href', 'https://wa.me/50684574355');
   await expect(whatsapp).toHaveAttribute('target', '_blank');
   await expect(whatsapp).toBeVisible();
+});
+
+test('exposes local-search metadata and structured services', async ({ page, request }) => {
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /max-image-preview:large/);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://santiagomadriz.com/');
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/favicon.svg');
+  const graph = await page.locator('script[type="application/ld+json"]').evaluate((element) => JSON.parse(element.textContent || '{}')) as { '@graph': Array<Record<string, unknown>> };
+  expect(graph['@graph'].some((entry) => entry['@type'] === 'ProfessionalService' && entry.telephone === '+50684574355')).toBeTruthy();
+  const sitemap = await request.get('/sitemap.xml');
+  const sitemapBody = await sitemap.text();
+  expect(sitemapBody).toContain('xmlns:image=');
+  expect(sitemapBody).toContain('xmlns:video=');
 });
 
 test('has no automatically detectable serious accessibility violations', async ({ page }) => {

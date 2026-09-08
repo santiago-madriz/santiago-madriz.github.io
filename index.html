@@ -4,9 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#000000" />
-  <title>Santiago Madriz · Photo and Film · Costa Rica</title>
-  <meta name="description" content="Photo and film work from Costa Rica: portraits, places, events, brands, and documentary projects by Santiago Madriz." />
+  <title>Costa Rica Photographer &amp; Video Production | Santiago Madriz</title>
+  <meta name="description" content="Photography and video production in Costa Rica for brands, products, events, portraits, campaigns, and social media. Request a quote with Santiago Madriz." />
+  <meta name="author" content="Santiago Madriz" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="canonical" href="https://santiagomadriz.com/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+  <link rel="preload" as="image" href="assets/instagram/02-cnliarvjh44-cover.jpg" fetchpriority="high" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_CR" />
+  <meta property="og:site_name" content="Santiago Madriz Photo &amp; Film" />
+  <meta property="og:title" content="Costa Rica Photographer &amp; Video Production | Santiago Madriz" />
+  <meta property="og:description" content="Photography and audiovisual production for brands, products, events, portraits, campaigns, and social media throughout Costa Rica." />
+  <meta property="og:url" content="https://santiagomadriz.com/" />
+  <meta property="og:image" content="https://santiagomadriz.com/assets/instagram/02-cnliarvjh44-cover.jpg" />
+  <meta property="og:image:width" content="1080" />
+  <meta property="og:image:height" content="1350" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="Portrait photography by Santiago Madriz in Costa Rica" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Costa Rica Photographer &amp; Video Production | Santiago Madriz" />
+  <meta name="twitter:description" content="Photography and audiovisual production for brands, products, events, portraits, and campaigns throughout Costa Rica." />
+  <meta name="twitter:image" content="https://santiagomadriz.com/assets/instagram/02-cnliarvjh44-cover.jpg" />
+  <meta name="twitter:image:alt" content="Portrait photography by Santiago Madriz in Costa Rica" />
   <meta
     http-equiv="Content-Security-Policy"
     content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://formsubmit.co; frame-src 'none'; img-src 'self' data:; media-src 'self'; font-src 'self' data:; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://formsubmit.co https://cloudflareinsights.com https://*.cloudflareinsights.com;"
@@ -606,6 +628,50 @@
       line-height: 1.65;
       margin-bottom: 16px;
     }
+    /* ============ SERVICES ============ */
+    .services {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--bg-elev);
+    }
+    .services .section-head { margin-bottom: 54px; }
+    .services-intro {
+      max-width: 720px;
+      margin-top: 26px;
+      color: var(--text-dim);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.6;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .service-card {
+      min-height: 230px;
+      padding: 30px 26px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .service-number {
+      display: block;
+      margin-bottom: 54px;
+      color: var(--text-mute);
+      font-size: 11px;
+      letter-spacing: .16em;
+    }
+    .service-card h3 { margin-bottom: 12px; font-size: 20px; line-height: 1.2; }
+    .service-card p { color: var(--text-mute); font-size: 14px; line-height: 1.55; }
+    .services-coverage { margin-top: 28px; color: var(--text-dim); font-size: 14px; }
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 0; }
+      .service-number { margin-bottom: 34px; }
+    }
     /* ============ CONTACT ============ */
     .contact {
       background: linear-gradient(180deg, #000 0%, #0a0a0f 100%);
@@ -852,6 +918,69 @@
 </head>
 <body>
 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://santiagomadriz.com/#website",
+          "url": "https://santiagomadriz.com/",
+          "name": "Santiago Madriz Photo & Film",
+          "description": "Photography and audiovisual production portfolio serving clients throughout Costa Rica.",
+          "inLanguage": ["en", "es"],
+          "publisher": { "@id": "https://santiagomadriz.com/#business" }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://santiagomadriz.com/#business",
+          "name": "Santiago Madriz Photo & Film",
+          "alternateName": "Fotografía y Producción Audiovisual Santiago Madriz",
+          "url": "https://santiagomadriz.com/",
+          "image": "https://santiagomadriz.com/assets/instagram/02-cnliarvjh44-cover.jpg",
+          "logo": "https://santiagomadriz.com/favicon.svg",
+          "description": "Photography and video production for brands, products, events, portraits, campaigns, artists, and social media throughout Costa Rica.",
+          "telephone": "+50684574355",
+          "email": "santiagomadrizc@gmail.com",
+          "areaServed": { "@type": "Country", "name": "Costa Rica" },
+          "founder": { "@id": "https://santiagomadriz.com/#santiago" },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+50684574355",
+            "email": "santiagomadrizc@gmail.com",
+            "contactType": "sales",
+            "availableLanguage": ["English", "Spanish"]
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Photography and audiovisual services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand and product photography", "alternateName": "Fotografía de marcas y productos" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event photography and video", "alternateName": "Fotografía y video de eventos" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Portrait and editorial photography", "alternateName": "Retratos y fotografía editorial" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Campaign and social media production", "alternateName": "Producción para campañas y redes sociales" } }
+            ]
+          },
+          "sameAs": ["https://instagram.com/santimadriz"]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://santiagomadriz.com/#santiago",
+          "name": "Santiago Madriz",
+          "url": "https://santiagomadriz.com/",
+          "image": "https://santiagomadriz.com/assets/about-cover.jpg",
+          "jobTitle": "Photographer and audiovisual producer",
+          "worksFor": { "@id": "https://santiagomadriz.com/#business" },
+          "sameAs": [
+            "https://instagram.com/santimadriz",
+            "https://www.linkedin.com/in/santiago-madriz/",
+            "https://github.com/santiago-madriz"
+          ]
+        }
+      ]
+    }
+  </script>
+
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
@@ -859,6 +988,7 @@
       <div class="nav-links">
         <a href="#work" data-i18n="nav.work">Work</a>
         <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
       <div class="nav-actions">
@@ -887,10 +1017,10 @@
     />
     <div class="hero-inner">
       <h1 class="display reveal">
-        <span data-i18n="hero.title">Photo and Film.</span><br/><span class="accent" data-i18n="hero.accent">Costa Rica.</span>
+        <span data-i18n="hero.title">Photography and Film Production.</span><br/><span class="accent" data-i18n="hero.accent">Costa Rica.</span>
       </h1>
       <p class="hero-sub reveal d1" data-i18n="hero.subtitle">
-        I'm Santiago, a photographer based in Costa Rica. Audiovisual production for brands, events, artists, and local projects.
+        I'm Santiago, a Costa Rica photographer creating photo and video for brands, products, events, portraits, artists, and campaigns.
       </p>
       <div class="hero-actions reveal d2">
         <a href="#work" class="btn btn-primary">
@@ -1155,6 +1285,24 @@
     </div>
   </section>
 
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow" data-i18n="services.eyebrow">Photography services in Costa Rica</div>
+        <h2 class="section-title" data-i18n="services.title">Photo and video production for every kind of story.</h2>
+        <p class="services-intro" data-i18n="services.intro">From a single portrait to a full commercial campaign, I create photography and audiovisual content for people, businesses, artists, and events throughout Costa Rica.</p>
+      </div>
+      <div class="services-grid" role="list">
+        <article class="service-card reveal" role="listitem"><span class="service-number">01</span><h3 data-i18n="services.brandsTitle">Brands & products</h3><p data-i18n="services.brandsBody">Commercial photography, product imagery, launches, catalogs, and visual content for local businesses.</p></article>
+        <article class="service-card reveal d1" role="listitem"><span class="service-number">02</span><h3 data-i18n="services.eventsTitle">Events & people</h3><p data-i18n="services.eventsBody">Photography and video for corporate events, celebrations, artists, teams, and meaningful moments.</p></article>
+        <article class="service-card reveal d2" role="listitem"><span class="service-number">03</span><h3 data-i18n="services.campaignsTitle">Campaigns & social</h3><p data-i18n="services.campaignsBody">Creative production for advertising campaigns, reels, social media, and ongoing brand storytelling.</p></article>
+        <article class="service-card reveal d3" role="listitem"><span class="service-number">04</span><h3 data-i18n="services.portraitsTitle">Portraits & editorial</h3><p data-i18n="services.portraitsBody">Personal, professional, lifestyle, fashion, and editorial portraits on location or by arrangement.</p></article>
+      </div>
+      <p class="services-coverage reveal" data-i18n="services.coverage">Available for productions and assignments throughout Costa Rica.</p>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="container contact-inner">
@@ -1220,17 +1368,18 @@
   <script>
     const translations = {
       en: {
-        metaTitle: 'Santiago Madriz · Photo and Film · Costa Rica',
-        metaDescription: 'Photo and film work from Costa Rica: portraits, places, events, brands, and documentary projects by Santiago Madriz.',
+        metaTitle: 'Costa Rica Photographer & Video Production | Santiago Madriz',
+        metaDescription: 'Photography and video production in Costa Rica for brands, products, events, portraits, campaigns, and social media. Request a quote with Santiago Madriz.',
         'language.toggleAria': 'Ver en español',
         'language.toggleTitle': 'Ver en español',
         'language.label': 'EN',
         'nav.work': 'Work',
         'nav.about': 'About',
+        'nav.services': 'Services',
         'nav.contact': 'Contact',
-        'hero.title': 'Photo and Film.',
+        'hero.title': 'Photography and Film Production.',
         'hero.accent': 'Costa Rica.',
-        'hero.subtitle': "I'm Santiago, a photographer based in Costa Rica. Audiovisual production for brands, events, artists, and local projects.",
+        'hero.subtitle': "I'm Santiago, a Costa Rica photographer creating photo and video for brands, products, events, portraits, artists, and campaigns.",
         'hero.primaryCta': 'View the work',
         'hero.secondaryCta': 'Get in touch',
         'hero.scroll': 'Scroll',
@@ -1281,6 +1430,18 @@
         'about.p1': "I'm passionate about photography, but also about collaborating with brands, local businesses, and people across Costa Rica.",
         'about.p2': 'My goal is to make professional photography and audiovisual production approachable for anyone looking for a high-quality result, crafted with care down to the last detail.',
         'about.p3': 'Excited to keep collaborating with people who care about their story, their brand, or the moment they want to preserve.',
+        'services.eyebrow': 'Photography services in Costa Rica',
+        'services.title': 'Photo and video production for every kind of story.',
+        'services.intro': 'From a single portrait to a full commercial campaign, I create photography and audiovisual content for people, businesses, artists, and events throughout Costa Rica.',
+        'services.brandsTitle': 'Brands & products',
+        'services.brandsBody': 'Commercial photography, product imagery, launches, catalogs, and visual content for local businesses.',
+        'services.eventsTitle': 'Events & people',
+        'services.eventsBody': 'Photography and video for corporate events, celebrations, artists, teams, and meaningful moments.',
+        'services.campaignsTitle': 'Campaigns & social',
+        'services.campaignsBody': 'Creative production for advertising campaigns, reels, social media, and ongoing brand storytelling.',
+        'services.portraitsTitle': 'Portraits & editorial',
+        'services.portraitsBody': 'Personal, professional, lifestyle, fashion, and editorial portraits on location or by arrangement.',
+        'services.coverage': 'Available for productions and assignments throughout Costa Rica.',
         'contact.eyebrow': 'Get in touch',
         'contact.title': "Let's work",
         'contact.accent': 'together.',
@@ -1308,17 +1469,18 @@
         'footer.backTop': 'Back to top ↑'
       },
       es: {
-        metaTitle: 'Santiago Madriz · Foto y Producción · Costa Rica',
-        metaDescription: 'Fotografía y producción audiovisual desde Costa Rica: retratos, lugares, eventos, marcas y proyectos documentales por Santiago Madriz.',
+        metaTitle: 'Fotógrafo en Costa Rica | Foto y Video | Santiago Madriz',
+        metaDescription: 'Fotografía y producción audiovisual en Costa Rica para marcas, productos, eventos, retratos, campañas y redes sociales. Cotizá con Santiago Madriz.',
         'language.toggleAria': 'View in English',
         'language.toggleTitle': 'View in English',
         'language.label': 'ES',
         'nav.work': 'Portafolio',
         'nav.about': 'Sobre mí',
+        'nav.services': 'Servicios',
         'nav.contact': 'Contacto',
-        'hero.title': 'Foto y Producción.',
+        'hero.title': 'Fotografía y Producción Audiovisual.',
         'hero.accent': 'Costa Rica.',
-        'hero.subtitle': 'Soy Santiago, fotógrafo en Costa Rica. Producción audiovisual para marcas, eventos, artistas y proyectos locales.',
+        'hero.subtitle': 'Soy Santiago, fotógrafo en Costa Rica. Creo fotografía y video para marcas, productos, eventos, retratos, artistas y campañas.',
         'hero.primaryCta': 'Ver el trabajo',
         'hero.secondaryCta': 'Contacto',
         'hero.scroll': 'Desliza',
@@ -1369,6 +1531,18 @@
         'about.p1': 'Me apasiona la fotografía y también colaborar con marcas, negocios locales y personas en Costa Rica.',
         'about.p2': 'Mi objetivo es facilitar fotografía y producción audiovisual profesional a quien busca un resultado de calidad, hecho con perfeccionismo hasta el último detalle.',
         'about.p3': 'Emocionado de seguir colaborando con personas que cuidan su historia, su marca o el momento que quieren preservar.',
+        'services.eyebrow': 'Servicios de fotografía en Costa Rica',
+        'services.title': 'Producción de foto y video para cualquier tipo de historia.',
+        'services.intro': 'Desde un retrato individual hasta una campaña comercial completa, creo fotografía y contenido audiovisual para personas, negocios, artistas y eventos en toda Costa Rica.',
+        'services.brandsTitle': 'Marcas y productos',
+        'services.brandsBody': 'Fotografía comercial, producto, lanzamientos, catálogos y contenido visual para negocios locales.',
+        'services.eventsTitle': 'Eventos y personas',
+        'services.eventsBody': 'Fotografía y video para eventos corporativos, celebraciones, artistas, equipos y momentos importantes.',
+        'services.campaignsTitle': 'Campañas y redes',
+        'services.campaignsBody': 'Producción creativa para campañas publicitarias, reels, redes sociales y comunicación continua de marca.',
+        'services.portraitsTitle': 'Retratos y editorial',
+        'services.portraitsBody': 'Retratos personales, profesionales, lifestyle, moda y editorial en locación o según el proyecto.',
+        'services.coverage': 'Disponible para producciones y proyectos en toda Costa Rica.',
         'contact.eyebrow': 'Contacto',
         'contact.title': 'Trabajemos',
         'contact.accent': 'juntos.',

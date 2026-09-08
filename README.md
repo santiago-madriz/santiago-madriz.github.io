@@ -16,6 +16,7 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 - Secure contact flow with client-side validation, a honeypot field, and direct WhatsApp quotes
 - Content Security Policy and restrictive referrer policy
 - Engineering portfolio deployment at `/dev/`
+- Local-service SEO for Costa Rica with crawlable service content, ProfessionalService structured data, image/video discovery, and a stable search favicon
 
 ## Local development
 
