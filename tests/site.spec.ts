@@ -18,6 +18,9 @@ test('renders the primary portfolio landmarks', async ({ page }) => {
   await expect(page.locator('#services')).toHaveCount(0);
   await expect(page.getByText('Photography services in Costa Rica')).toHaveCount(0);
   await expect(page.locator('#contactForm')).toBeVisible();
+  await expect(page.locator('.strip-track')).not.toContainText('35mm');
+  await expect(page.locator('.strip-track')).not.toContainText('50mm');
+  await expect(page.locator('.strip-track')).not.toContainText('16mm');
 });
 
 test('presents the MOVA film as a static preview that links to its watch page', async ({ page }) => {
