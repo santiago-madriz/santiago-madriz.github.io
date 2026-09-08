@@ -38,6 +38,12 @@ test('filters work and translates the interface', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Foto y Producción');
 });
 
+test('links subtly to the development portfolio from the footer', async ({ page }) => {
+  const developmentLink = page.locator('.footer-dev-note a');
+  await expect(developmentLink).toHaveAttribute('href', '/dev/');
+  await expect(developmentLink).toBeVisible();
+});
+
 test('has no automatically detectable serious accessibility violations', async ({ page }) => {
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])

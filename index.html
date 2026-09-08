@@ -741,6 +741,19 @@
       max-width: var(--max); margin: 0 auto;
       display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
     }
+    .footer-identity { display: grid; gap: 8px; }
+    .footer-dev-note { margin: 0; color: var(--text-mute); line-height: 1.5; }
+    .footer-dev-note a {
+      color: var(--text-dim);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,0.25);
+      text-underline-offset: 3px;
+      transition: color .25s var(--ease), text-decoration-color .25s var(--ease);
+    }
+    .footer-dev-note a:hover {
+      color: var(--text);
+      text-decoration-color: currentColor;
+    }
     .footer-inner a:hover { color: var(--text); }
 
     /* ============ REVEAL ============ */
@@ -1179,7 +1192,13 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div>© Santiago Madriz · Costa Rica</div>
+      <div class="footer-identity">
+        <div>© Santiago Madriz · Costa Rica</div>
+        <p class="footer-dev-note">
+          <span data-i18n="footer.devNote">Interested in my software work?</span>
+          <a href="/dev/" data-i18n="footer.devLink">View my development portfolio ↗</a>
+        </p>
+      </div>
       <div><a href="#top" data-i18n="footer.backTop">Back to top ↑</a></div>
     </div>
   </footer>
@@ -1274,6 +1293,8 @@
         'contact.formError': 'Something went wrong. Please try again or copy the email above.',
         'contact.emailCopied': 'Email copied.',
         'contact.emailCopyError': 'Could not copy the email. You can select it manually.',
+        'footer.devNote': 'Interested in my software work?',
+        'footer.devLink': 'View my development portfolio ↗',
         'footer.backTop': 'Back to top ↑'
       },
       es: {
@@ -1358,6 +1379,8 @@
         'contact.formError': 'Algo falló. Intentá de nuevo o copiá el correo de arriba.',
         'contact.emailCopied': 'Correo copiado.',
         'contact.emailCopyError': 'No pude copiar el correo. Podés seleccionarlo manualmente.',
+        'footer.devNote': '¿Te interesa también mi trabajo en software?',
+        'footer.devLink': 'Visita mi portafolio de desarrollo ↗',
         'footer.backTop': 'Volver arriba ↑'
       }
     };
