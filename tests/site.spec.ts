@@ -111,10 +111,10 @@ for (const film of [
   });
 }
 
-test('presents the MOVA sportswear campaign as a six-image brand carousel', async ({ page }) => {
+test('presents the MOVA sportswear campaign as a five-image brand carousel', async ({ page }) => {
   const campaign = page.locator('[data-mova-sports]');
   await expect(campaign).toHaveAttribute('data-cat', 'brands');
-  await expect(campaign.locator('.sports-slide')).toHaveCount(6);
+  await expect(campaign.locator('.sports-slide')).toHaveCount(5);
   await expect(campaign.locator('.sports-slide--pink img')).toHaveCSS('object-position', '50% 32%');
   await expect(campaign.getByRole('heading')).toContainText('MOVA');
 });
