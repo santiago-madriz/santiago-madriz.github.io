@@ -57,6 +57,15 @@ test('presents the MOVA sportswear campaign as a six-image brand carousel', asyn
   await expect(campaign.getByRole('heading')).toContainText('MOVA');
 });
 
+test('uses the Miami portrait as the portrait cover and first carousel image', async ({ page }) => {
+  const portraitImages = page.locator('.portrait-track .portrait-slide img');
+  await expect(portraitImages).toHaveCount(7);
+  await expect(portraitImages.first()).toHaveAttribute('src', 'assets/portraits/miami-colorful-lifeguard-portrait.webp');
+  await page.goto('/services/professional-portraits-costa-rica/');
+  await expect(page.locator('.hero-media')).toHaveAttribute('src', '/assets/portraits/miami-colorful-lifeguard-portrait.webp');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://santiagomadriz.com/assets/portraits/miami-colorful-lifeguard-portrait.webp');
+});
+
 test('keeps the requested off-road image sequence', async ({ page }) => {
   const images = page.locator('.moto-track .moto-slide img');
   await expect(images).toHaveCount(8);

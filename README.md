@@ -10,6 +10,7 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 - Five dedicated film watch pages with accessible controls, unique metadata, stable posters, and `VideoObject` structured data
 - MOVA “Made to Move” brand film with an iPhone-compatible H.264 source and original-post link
 - Six-image MOVA sportswear campaign carousel with responsive, optimized WebP photography and art-directed portrait framing
+- Portrait collection with an optimized Miami Beach environmental portrait used across the carousel and portrait-service cover
 - English and Spanish interface with local language preference
 - Subtle bilingual footer path to the companion engineering portfolio
 - Keyboard-accessible work filters and media carousels
