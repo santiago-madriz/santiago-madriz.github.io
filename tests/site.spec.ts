@@ -11,7 +11,8 @@ test('renders the primary portfolio landmarks', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Photography and Film Production');
   await expect(page.locator('#work')).toBeVisible();
   await expect(page.locator('#about')).toBeVisible();
-  await expect(page.locator('#services')).toBeVisible();
+  await expect(page.locator('#services')).toHaveCount(0);
+  await expect(page.getByText('Photography services in Costa Rica')).toHaveCount(0);
   await expect(page.locator('#contactForm')).toBeVisible();
 });
 
@@ -45,6 +46,33 @@ test('links subtly to the development portfolio from the footer', async ({ page 
   await expect(developmentLink).toHaveAttribute('href', '/dev/');
   await expect(developmentLink).toBeVisible();
 });
+
+test('links to focused commercial service pages without adding a homepage service block', async ({ page }) => {
+  const links = page.locator('.footer-service-links a');
+  await expect(links).toHaveCount(5);
+  await expect(links.nth(0)).toHaveAttribute('href', '/services/product-photography-costa-rica/');
+  await expect(page.locator('a[href="#services"]')).toHaveCount(0);
+});
+
+for (const service of [
+  ['product-photography-costa-rica', 'Fotografía de producto'],
+  ['event-photographer-costa-rica', 'Fotógrafo para eventos'],
+  ['professional-portraits-costa-rica', 'Retratos profesionales'],
+  ['brand-video-production-costa-rica', 'Producción audiovisual para marcas'],
+  ['social-media-content-costa-rica', 'Contenido para redes sociales'],
+]) {
+  test(`publishes the ${service[0]} service page with useful SEO content`, async ({ page }) => {
+    await page.goto(`/services/${service[0]}/`);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(service[1]);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://santiagomadriz.com/services/${service[0]}/`);
+    await expect(page.locator('.gallery .shot')).toHaveCount(3);
+    await expect(page.locator('.steps .step')).toHaveCount(3);
+    await expect(page.locator('.faq-list details')).toHaveCount(3);
+    const graph = await page.locator('script[type="application/ld+json"]').evaluate((element) => JSON.parse(element.textContent || '{}')) as { '@graph': Array<Record<string, unknown>> };
+    expect(graph['@graph'].some((entry) => entry['@type'] === 'Service')).toBeTruthy();
+    expect(graph['@graph'].some((entry) => entry['@type'] === 'FAQPage')).toBeTruthy();
+  });
+}
 
 test('offers a direct WhatsApp quote action', async ({ page }) => {
   const whatsapp = page.locator('.contact-whatsapp');
@@ -99,6 +127,8 @@ test('exposes local-search metadata and structured services', async ({ page, req
   const sitemapBody = await sitemap.text();
   expect(sitemapBody).toContain('xmlns:image=');
   expect(sitemapBody).toContain('xmlns:video=');
+  expect(sitemapBody).toContain('/services/product-photography-costa-rica/');
+  expect(sitemapBody).toContain('/services/social-media-content-costa-rica/');
 });
 
 test('has no automatically detectable serious accessibility violations', async ({ page }) => {

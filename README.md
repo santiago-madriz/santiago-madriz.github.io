@@ -16,7 +16,8 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 - Bilingual quote-request flow with qualified project fields, secure delivery, a dedicated no-index Google Ads conversion page, and direct WhatsApp quotes
 - Content Security Policy and restrictive referrer policy
 - Engineering portfolio deployment at `/dev/`
-- Local-service SEO for Costa Rica with crawlable service content, ProfessionalService structured data, image/video discovery, and a stable search favicon
+- Five image-led service landing pages for product photography, events, portraits, brand video, and social content
+- Local-service SEO for Costa Rica with unique titles, Service and FAQ structured data, internal links, image/video discovery, and sitemap coverage
 
 ## Local development
 
@@ -35,6 +36,8 @@ npm test
 ```
 
 The co-located checks protect semantic landmarks, filtering, localization, and serious accessibility regressions. A separate [Playwright Quality Engineering](https://github.com/santiago-madriz/playwright-quality-engineering) project adds cross-browser, HTTP-contract, media, and performance coverage as a portfolio case study.
+
+The homepage intentionally remains portfolio-led. Search-oriented service pages live under `/services/`, stay visually concise, and use real work rather than hidden keyword text.
 
 See [Quality approach](docs/QUALITY.md) for scope and limitations.
 

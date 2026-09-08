@@ -628,50 +628,6 @@
       line-height: 1.65;
       margin-bottom: 16px;
     }
-    /* ============ SERVICES ============ */
-    .services {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: var(--bg-elev);
-    }
-    .services .section-head { margin-bottom: 54px; }
-    .services-intro {
-      max-width: 720px;
-      margin-top: 26px;
-      color: var(--text-dim);
-      font-size: clamp(17px, 2vw, 21px);
-      line-height: 1.6;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
-    }
-    .service-card {
-      min-height: 230px;
-      padding: 30px 26px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .service-number {
-      display: block;
-      margin-bottom: 54px;
-      color: var(--text-mute);
-      font-size: 11px;
-      letter-spacing: .16em;
-    }
-    .service-card h3 { margin-bottom: 12px; font-size: 20px; line-height: 1.2; }
-    .service-card p { color: var(--text-mute); font-size: 14px; line-height: 1.55; }
-    .services-coverage { margin-top: 28px; color: var(--text-dim); font-size: 14px; }
-    @media (max-width: 900px) {
-      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 560px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card { min-height: 0; }
-      .service-number { margin-bottom: 34px; }
-    }
     /* ============ CONTACT ============ */
     .contact {
       background: linear-gradient(180deg, #000 0%, #0a0a0f 100%);
@@ -861,6 +817,14 @@
       color: var(--text);
       text-decoration-color: currentColor;
     }
+    .footer-service-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      max-width: 680px;
+      color: var(--text-dim);
+    }
+    .footer-service-links a { transition: color .25s var(--ease); }
     .footer-inner a:hover { color: var(--text); }
 
     /* ============ REVEAL ============ */
@@ -1025,7 +989,6 @@
       <div class="nav-links">
         <a href="#work" data-i18n="nav.work">Work</a>
         <a href="#about" data-i18n="nav.about">About</a>
-        <a href="#services" data-i18n="nav.services">Services</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
       <div class="nav-actions">
@@ -1322,24 +1285,6 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="services">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="section-eyebrow" data-i18n="services.eyebrow">Photography services in Costa Rica</div>
-        <h2 class="section-title" data-i18n="services.title">Photo and video production for every kind of story.</h2>
-        <p class="services-intro" data-i18n="services.intro">From a single portrait to a full commercial campaign, I create photography and audiovisual content for people, businesses, artists, and events throughout Costa Rica.</p>
-      </div>
-      <div class="services-grid" role="list">
-        <article class="service-card reveal" role="listitem"><span class="service-number">01</span><h3 data-i18n="services.brandsTitle">Brands & products</h3><p data-i18n="services.brandsBody">Commercial photography, product imagery, launches, catalogs, and visual content for local businesses.</p></article>
-        <article class="service-card reveal d1" role="listitem"><span class="service-number">02</span><h3 data-i18n="services.eventsTitle">Events & people</h3><p data-i18n="services.eventsBody">Photography and video for corporate events, celebrations, artists, teams, and meaningful moments.</p></article>
-        <article class="service-card reveal d2" role="listitem"><span class="service-number">03</span><h3 data-i18n="services.campaignsTitle">Campaigns & social</h3><p data-i18n="services.campaignsBody">Creative production for advertising campaigns, reels, social media, and ongoing brand storytelling.</p></article>
-        <article class="service-card reveal d3" role="listitem"><span class="service-number">04</span><h3 data-i18n="services.portraitsTitle">Portraits & editorial</h3><p data-i18n="services.portraitsBody">Personal, professional, lifestyle, fashion, and editorial portraits on location or by arrangement.</p></article>
-      </div>
-      <p class="services-coverage reveal" data-i18n="services.coverage">Available for productions and assignments throughout Costa Rica.</p>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="container contact-inner">
@@ -1436,6 +1381,13 @@
           <span data-i18n="footer.devNote">Interested in my software work?</span>
           <a href="/dev/" data-i18n="footer.devLink">View my development portfolio ↗</a>
         </p>
+        <nav class="footer-service-links" aria-label="Photography services">
+          <a href="/services/product-photography-costa-rica/" data-i18n="footer.productService">Product photography</a>
+          <a href="/services/event-photographer-costa-rica/" data-i18n="footer.eventService">Event coverage</a>
+          <a href="/services/professional-portraits-costa-rica/" data-i18n="footer.portraitService">Professional portraits</a>
+          <a href="/services/brand-video-production-costa-rica/" data-i18n="footer.videoService">Brand video</a>
+          <a href="/services/social-media-content-costa-rica/" data-i18n="footer.socialService">Social content</a>
+        </nav>
       </div>
       <div><a href="#top" data-i18n="footer.backTop">Back to top ↑</a></div>
     </div>
@@ -1562,6 +1514,11 @@
         'contact.emailFallback': 'Prefer email?',
         'footer.devNote': 'Interested in my software work?',
         'footer.devLink': 'View my development portfolio ↗',
+        'footer.productService': 'Product photography',
+        'footer.eventService': 'Event coverage',
+        'footer.portraitService': 'Professional portraits',
+        'footer.videoService': 'Brand video',
+        'footer.socialService': 'Social content',
         'footer.backTop': 'Back to top ↑'
       },
       es: {
@@ -1677,6 +1634,11 @@
         'contact.emailFallback': '¿Preferís correo?',
         'footer.devNote': '¿Te interesa también mi trabajo en software?',
         'footer.devLink': 'Visita mi portafolio de desarrollo ↗',
+        'footer.productService': 'Fotografía de producto',
+        'footer.eventService': 'Cobertura de eventos',
+        'footer.portraitService': 'Retratos profesionales',
+        'footer.videoService': 'Video para marcas',
+        'footer.socialService': 'Contenido para redes',
         'footer.backTop': 'Volver arriba ↑'
       }
     };

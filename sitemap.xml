@@ -22,6 +22,31 @@
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
   </url>
+  <url>
+    <loc>https://santiagomadriz.com/services/product-photography-costa-rica/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <image:image><image:loc>https://santiagomadriz.com/assets/brands/techy-products/techy-product-01.jpg</image:loc><image:title>Fotografía de producto en Costa Rica</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://santiagomadriz.com/services/event-photographer-costa-rica/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <image:image><image:loc>https://santiagomadriz.com/assets/motos/kinsee-media-moto-01.webp</image:loc><image:title>Fotografía de eventos en Costa Rica</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://santiagomadriz.com/services/professional-portraits-costa-rica/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <image:image><image:loc>https://santiagomadriz.com/assets/instagram/11-b25dsabpckc-cover.jpg</image:loc><image:title>Retratos profesionales en Costa Rica</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://santiagomadriz.com/services/brand-video-production-costa-rica/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <image:image><image:loc>https://santiagomadriz.com/assets/instagram/mova-made-to-move-poster.jpg</image:loc><image:title>Producción audiovisual para marcas en Costa Rica</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://santiagomadriz.com/services/social-media-content-costa-rica/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <image:image><image:loc>https://santiagomadriz.com/assets/brands/brand-work-poster.jpg</image:loc><image:title>Contenido para redes sociales en Costa Rica</image:title></image:image>
+  </url>
   <url><loc>https://santiagomadriz.com/dev/</loc><lastmod>2026-09-08</lastmod></url>
   <url><loc>https://santiagomadriz.com/dev/projects/</loc><lastmod>2026-09-08</lastmod></url>
   <url><loc>https://santiagomadriz.com/dev/experience/</loc><lastmod>2026-09-08</lastmod></url>
