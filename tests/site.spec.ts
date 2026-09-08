@@ -43,13 +43,26 @@ test('presents five selected film posters and plays every preview on demand in o
     'assets/film/posters/pop-run-aleste.webp',
     'assets/film/posters/baby-shower.webp',
   ]);
+  expect(await showcase.locator('.film-preview').evaluateAll((previews) => previews.map((preview) => preview.getAttribute('data-film-orientation')))).toEqual([
+    'landscape',
+    'portrait',
+    'portrait',
+    'portrait',
+    'landscape',
+  ]);
 
   await showcase.locator('[data-mova-card]').click();
   const dialog = page.locator('#filmDialog');
   await expect(dialog).toHaveAttribute('open', '');
+  await expect(dialog).toHaveAttribute('data-orientation', 'portrait');
   await expect(dialog.getByRole('heading')).toContainText('MOVA');
   await expect(dialog.locator('video')).toHaveAttribute('src', /reel-mova-made-to-move\.mp4\?v=3/);
   await expect(page.locator('video')).toHaveCount(1);
+  await expect(dialog.locator('video')).toHaveCSS('object-fit', 'contain');
+  await page.waitForTimeout(350);
+  const portraitStage = await dialog.locator('.film-dialog-stage').boundingBox();
+  expect(portraitStage).not.toBeNull();
+  expect(portraitStage!.width / portraitStage!.height).toBeCloseTo(9 / 16, 2);
   await expect(page.locator('body')).toHaveClass(/film-modal-open/);
   await expect(page.locator('body')).toHaveCSS('position', 'fixed');
 
@@ -57,6 +70,14 @@ test('presents five selected film posters and plays every preview on demand in o
   await expect(dialog).not.toHaveAttribute('open', '');
   await expect(dialog.locator('video')).not.toHaveAttribute('src');
   await expect(page.locator('body')).not.toHaveClass(/film-modal-open/);
+
+  await showcase.locator('.film-preview').first().click();
+  await expect(dialog).toHaveAttribute('data-orientation', 'landscape');
+  await page.waitForTimeout(350);
+  const landscapeStage = await dialog.locator('.film-dialog-stage').boundingBox();
+  expect(landscapeStage).not.toBeNull();
+  expect(landscapeStage!.width / landscapeStage!.height).toBeCloseTo(16 / 9, 2);
+  await dialog.getByRole('button', { name: 'Close video' }).click();
 });
 
 test('filters film categories without affecting the photography collection', async ({ page }) => {
@@ -82,6 +103,7 @@ test('keeps the film showcase and player inside an iPhone-sized viewport', async
   await page.locator('.film-preview').first().click();
   const dialog = page.locator('#filmDialog');
   await expect(dialog).toHaveAttribute('open', '');
+  await expect(dialog).toHaveAttribute('data-orientation', 'landscape');
   const box = await dialog.boundingBox();
   expect(box).not.toBeNull();
   expect(box!.x).toBeGreaterThanOrEqual(0);

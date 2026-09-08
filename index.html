@@ -480,6 +480,7 @@
     }
 
     .film-dialog {
+      --film-aspect: 16 / 9;
       width: min(1120px, calc(100vw - 32px));
       max-width: none;
       max-height: calc(100dvh - 32px);
@@ -491,6 +492,10 @@
       color: var(--text);
       box-shadow: 0 32px 100px rgba(0,0,0,.72);
       overscroll-behavior: contain;
+    }
+    .film-dialog[data-orientation="portrait"] {
+      --film-aspect: 9 / 16;
+      width: min(560px, calc(100vw - 32px));
     }
     html.film-modal-open,
     body.film-modal-open { overflow: hidden; overscroll-behavior: none; }
@@ -526,9 +531,10 @@
     .film-dialog-stage {
       display: grid;
       place-items: center;
-      height: min(60dvh, 680px);
-      min-height: 280px;
-      flex-shrink: 1;
+      width: 100%;
+      height: auto;
+      aspect-ratio: var(--film-aspect);
+      flex: none;
       background: #000;
     }
     .film-dialog-video { width: 100%; height: 100%; object-fit: contain; background: #000; }
@@ -569,9 +575,14 @@
       .film-preview-grid { grid-template-columns: 1fr; gap: 28px; }
       .film-preview,
       .film-preview:nth-last-child(-n+2) { grid-column: 1; }
-      .film-dialog { width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
+      .film-dialog {
+        width: calc(100vw - 16px);
+        max-height: calc(100dvh - 16px);
+      }
+      .film-dialog[data-orientation="portrait"] {
+        width: min(560px, calc(100vw - 16px));
+      }
       .film-dialog-shell { max-height: calc(100dvh - 16px); }
-      .film-dialog-stage { height: 58dvh; min-height: 240px; }
       .film-dialog-footer { align-items: flex-start; flex-direction: column; gap: 14px; padding: 17px 18px 19px; }
     }
     .tile {
@@ -1349,27 +1360,27 @@
             </div>
 
             <div class="film-preview-grid">
-              <a class="film-preview film-open" href="/film/dias-de-lluvia-music-video/" data-film-cat="music" data-film-src="/assets/video/dias-de-lluvia-preview.mp4" data-film-poster="/assets/film/posters/dias-de-lluvia.webp" data-film-title-en="Días de Lluvia" data-film-title-es="Días de Lluvia" data-film-meta-en="Music video" data-film-meta-es="Video musical">
+              <a class="film-preview film-open" href="/film/dias-de-lluvia-music-video/" data-film-cat="music" data-film-orientation="landscape" data-film-src="/assets/video/dias-de-lluvia-preview.mp4" data-film-poster="/assets/film/posters/dias-de-lluvia.webp" data-film-title-en="Días de Lluvia" data-film-title-es="Días de Lluvia" data-film-meta-en="Music video" data-film-meta-es="Video musical">
                 <span class="film-preview-media"><img src="assets/film/posters/dias-de-lluvia.webp" width="469" height="328" alt="Días de Lluvia music video poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong>Días de Lluvia</strong><span data-i18n="tiles.diasMeta">Video · Music</span></span>
               </a>
 
-              <a class="film-preview film-open" href="/film/brand-content-production/" data-film-cat="commercial fashion" data-film-src="/assets/brands/brand-work.mp4" data-film-poster="/assets/film/posters/brand-content.webp" data-film-title-en="Brand content production" data-film-title-es="Producción de contenido para marcas" data-film-meta-en="Commercial · Social content" data-film-meta-es="Comercial · Contenido social">
+              <a class="film-preview film-open" href="/film/brand-content-production/" data-film-cat="commercial fashion" data-film-orientation="portrait" data-film-src="/assets/brands/brand-work.mp4" data-film-poster="/assets/film/posters/brand-content.webp" data-film-title-en="Brand content production" data-film-title-es="Producción de contenido para marcas" data-film-meta-en="Commercial · Social content" data-film-meta-es="Comercial · Contenido social">
                 <span class="film-preview-media"><img class="art-brand-video" src="assets/film/posters/brand-content.webp" width="508" height="354" alt="Brand and social media video production poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong data-i18n="tiles.brandVideoTitle">Brand videos &amp; social media</strong><span data-i18n="tiles.brandVideoMeta">Brands · Video</span></span>
               </a>
 
-              <a class="film-preview film-open" href="/film/mova-made-to-move/" data-film-cat="commercial fashion" data-mova-card data-film-src="/assets/instagram/reel-mova-made-to-move.mp4?v=3" data-film-poster="/assets/film/posters/mova-made-to-move.webp" data-film-title-en="MOVA · Made to Move" data-film-title-es="MOVA · Made to Move" data-film-meta-en="Fashion · Campaign" data-film-meta-es="Moda · Campaña">
+              <a class="film-preview film-open" href="/film/mova-made-to-move/" data-film-cat="commercial fashion" data-film-orientation="portrait" data-mova-card data-film-src="/assets/instagram/reel-mova-made-to-move.mp4?v=3" data-film-poster="/assets/film/posters/mova-made-to-move.webp" data-film-title-en="MOVA · Made to Move" data-film-title-es="MOVA · Made to Move" data-film-meta-en="Fashion · Campaign" data-film-meta-es="Moda · Campaña">
                 <span class="film-preview-media"><img src="assets/film/posters/mova-made-to-move.webp" width="473" height="314" alt="MOVA Made to Move sportswear campaign film poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong data-i18n="tiles.movaTitle">MOVA · Made to Move</strong><span data-i18n="tiles.movaMeta">Brands · Video</span></span>
               </a>
 
-              <a class="film-preview film-open" href="/film/pop-run-beats-aleste/" data-film-cat="events music" data-film-src="/assets/instagram/reel-pop-run-beats.mp4" data-film-poster="/assets/film/posters/pop-run-aleste.webp" data-film-title-en="Pop &amp; Run Beats at Aleste" data-film-title-es="Pop &amp; Run Beats en Aleste" data-film-meta-en="Events · Music" data-film-meta-es="Eventos · Música">
+              <a class="film-preview film-open" href="/film/pop-run-beats-aleste/" data-film-cat="events music" data-film-orientation="portrait" data-film-src="/assets/instagram/reel-pop-run-beats.mp4" data-film-poster="/assets/film/posters/pop-run-aleste.webp" data-film-title-en="Pop &amp; Run Beats at Aleste" data-film-title-es="Pop &amp; Run Beats en Aleste" data-film-meta-en="Events · Music" data-film-meta-es="Eventos · Música">
                 <span class="film-preview-media"><img class="art-1" src="assets/film/posters/pop-run-aleste.webp" width="536" height="351" alt="Pop and Run Beats event film poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong>Pop &amp; Run Beats at Aleste</strong><span data-i18n="tiles.popRunMeta">Video · Events</span></span>
               </a>
 
-              <a class="film-preview film-open" href="/film/baby-shower-highlight/" data-film-cat="events" data-film-src="/assets/events/baby-shower-highlight.mp4" data-film-poster="/assets/film/posters/baby-shower.webp" data-film-title-en="Baby shower highlight" data-film-title-es="Baby shower highlight" data-film-meta-en="Event film · Family" data-film-meta-es="Video de evento · Familia">
+              <a class="film-preview film-open" href="/film/baby-shower-highlight/" data-film-cat="events" data-film-orientation="landscape" data-film-src="/assets/events/baby-shower-highlight.mp4" data-film-poster="/assets/film/posters/baby-shower.webp" data-film-title-en="Baby shower highlight" data-film-title-es="Baby shower highlight" data-film-meta-en="Event film · Family" data-film-meta-es="Video de evento · Familia">
                 <span class="film-preview-media"><img src="assets/film/posters/baby-shower.webp" width="1502" height="843" alt="Baby shower event highlight film poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong data-i18n="tiles.babyShowerTitle">Baby shower highlight</strong><span data-i18n="tiles.babyShowerMeta">Video · Events</span></span>
               </a>
@@ -2203,6 +2214,19 @@
     let filmScrollY = 0;
     let filmBodyPaddingRight = '';
 
+    const sizeFilmDialog = () => {
+      if (!filmDialog) return;
+      const portrait = filmDialog.dataset.orientation === 'portrait';
+      const mobile = window.innerWidth <= 600;
+      const viewportMargin = mobile ? 16 : 32;
+      const footerAllowance = mobile ? 150 : 112;
+      const aspectRatio = portrait ? 9 / 16 : 16 / 9;
+      const maxWidth = portrait ? 560 : 1120;
+      const availableHeight = Math.max(240, window.innerHeight - viewportMargin - footerAllowance);
+      const width = Math.min(maxWidth, window.innerWidth - viewportMargin, availableHeight * aspectRatio);
+      filmDialog.style.width = `${Math.floor(width)}px`;
+    };
+
     const lockFilmBackground = () => {
       filmScrollY = window.scrollY;
       filmBodyPaddingRight = document.body.style.paddingRight;
@@ -2250,6 +2274,8 @@
       if (!filmDialog || !filmDialogVideo || typeof filmDialog.showModal !== 'function') return false;
       const language = document.documentElement.lang === 'es' ? 'es' : 'en';
       filmDialog.classList.remove('is-closing');
+      filmDialog.dataset.orientation = trigger.dataset.filmOrientation === 'portrait' ? 'portrait' : 'landscape';
+      sizeFilmDialog();
       filmDialogVideo.pause();
       filmDialogVideo.src = trigger.dataset.filmSrc;
       filmDialogVideo.poster = trigger.dataset.filmPoster;
@@ -2280,6 +2306,9 @@
     });
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) filmDialogVideo?.pause();
+    });
+    window.addEventListener('resize', () => {
+      if (filmDialog?.open) sizeFilmDialog();
     });
   </script>
 </body>
