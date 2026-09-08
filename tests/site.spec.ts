@@ -14,6 +14,12 @@ test('renders the primary portfolio landmarks', async ({ page }) => {
   await expect(page.locator('#contactForm')).toBeVisible();
 });
 
+test('includes the MOVA brand reel and its local preview', async ({ page }) => {
+  const card = page.locator('[data-mova-card]');
+  await expect(card).toHaveAttribute('href', 'https://www.instagram.com/p/Dcw8GgWpXtE/');
+  await expect(card.locator('source')).toHaveAttribute('src', 'assets/instagram/reel-mova-made-to-move.mp4');
+});
+
 test('filters work and translates the interface', async ({ page }) => {
   await page.getByRole('button', { name: 'Portraits' }).click();
   await expect(page.getByRole('button', { name: 'Portraits' })).toHaveAttribute('aria-pressed', 'true');
@@ -31,4 +37,3 @@ test('has no automatically detectable serious accessibility violations', async (
   const blocking = results.violations.filter(({ impact }) => impact === 'critical' || impact === 'serious');
   expect(blocking).toEqual([]);
 });
-

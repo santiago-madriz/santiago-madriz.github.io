@@ -7,6 +7,7 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 ## Product highlights
 
 - Responsive photo and video portfolio
+- MOVA “Made to Move” brand reel with a local optimized preview and source link
 - English and Spanish interface with local language preference
 - Keyboard-accessible work filters and media carousels
 - Reduced-motion behavior
