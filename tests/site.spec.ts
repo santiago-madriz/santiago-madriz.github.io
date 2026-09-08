@@ -198,17 +198,17 @@ test('keeps the social content gallery focused on MOVA work', async ({ page }) =
 });
 
 for (const service of [
-  ['product-photography-costa-rica', 'Fotografía de producto', 3],
-  ['event-photographer-costa-rica', 'Fotógrafo para eventos', 3],
-  ['professional-portraits-costa-rica', 'Retratos profesionales', 3],
-  ['brand-video-production-costa-rica', 'Producción audiovisual para marcas', 3],
-  ['social-media-content-costa-rica', 'Contenido para redes sociales', 2],
+  { slug: 'product-photography-costa-rica', heading: 'Fotografía de producto', galleryCount: 3 },
+  { slug: 'event-photographer-costa-rica', heading: 'Fotógrafo para eventos', galleryCount: 3 },
+  { slug: 'professional-portraits-costa-rica', heading: 'Retratos profesionales', galleryCount: 3 },
+  { slug: 'brand-video-production-costa-rica', heading: 'Producción audiovisual para marcas', galleryCount: 3 },
+  { slug: 'social-media-content-costa-rica', heading: 'Contenido para redes sociales', galleryCount: 2 },
 ]) {
-  test(`publishes the ${service[0]} service page with useful SEO content`, async ({ page }) => {
-    await page.goto(`/services/${service[0]}/`);
-    await expect(page.getByRole('heading', { level: 1 })).toContainText(service[1]);
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://santiagomadriz.com/services/${service[0]}/`);
-    await expect(page.locator('.gallery .shot')).toHaveCount(Number(service[2]));
+  test(`publishes the ${service.slug} service page with useful SEO content`, async ({ page }) => {
+    await page.goto(`/services/${service.slug}/`);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(service.heading);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://santiagomadriz.com/services/${service.slug}/`);
+    await expect(page.locator('.gallery .shot')).toHaveCount(service.galleryCount);
     await expect(page.locator('.steps .step')).toHaveCount(3);
     await expect(page.locator('.faq-list details')).toHaveCount(3);
     const graph = await page.locator('script[type="application/ld+json"]').evaluate((element) => JSON.parse(element.textContent || '{}')) as { '@graph': Array<Record<string, unknown>> };
