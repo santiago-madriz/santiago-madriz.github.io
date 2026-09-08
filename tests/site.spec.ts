@@ -31,6 +31,14 @@ test('presents the MOVA sportswear campaign as a six-image brand carousel', asyn
   await expect(campaign.getByRole('heading')).toContainText('MOVA');
 });
 
+test('keeps the requested off-road image sequence', async ({ page }) => {
+  const images = page.locator('.moto-track .moto-slide img');
+  await expect(images).toHaveCount(8);
+  await expect(images.nth(0)).toHaveAttribute('src', 'assets/motos/kinsee-media-moto-01.webp');
+  await expect(images.nth(1)).toHaveAttribute('src', 'assets/motos/kinsee-media-moto-04.webp');
+  await expect(images.nth(2)).toHaveAttribute('src', 'assets/motos/kinsee-media-moto-06.webp');
+});
+
 test('filters work and translates the interface', async ({ page }) => {
   await page.getByRole('button', { name: 'Portraits' }).click();
   await expect(page.getByRole('button', { name: 'Portraits' })).toHaveAttribute('aria-pressed', 'true');
