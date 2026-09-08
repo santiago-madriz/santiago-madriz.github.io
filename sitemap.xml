@@ -35,18 +35,18 @@
   <url>
     <loc>https://santiagomadriz.com/services/brand-video-production-costa-rica/</loc>
     <lastmod>2026-09-08</lastmod>
-    <image:image><image:loc>https://santiagomadriz.com/assets/instagram/mova-made-to-move-poster.jpg</image:loc><image:title>Producción audiovisual para marcas en Costa Rica</image:title></image:image>
+    <image:image><image:loc>https://santiagomadriz.com/assets/film/posters/mova-made-to-move.webp</image:loc><image:title>Producción audiovisual para marcas en Costa Rica</image:title></image:image>
   </url>
   <url>
     <loc>https://santiagomadriz.com/services/social-media-content-costa-rica/</loc>
     <lastmod>2026-09-08</lastmod>
-    <image:image><image:loc>https://santiagomadriz.com/assets/brands/brand-work-poster.jpg</image:loc><image:title>Contenido para redes sociales en Costa Rica</image:title></image:image>
+    <image:image><image:loc>https://santiagomadriz.com/assets/film/posters/brand-content.webp</image:loc><image:title>Contenido para redes sociales en Costa Rica</image:title></image:image>
   </url>
   <url>
     <loc>https://santiagomadriz.com/film/brand-content-production/</loc>
     <lastmod>2026-09-08</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://santiagomadriz.com/assets/brands/brand-work-poster.jpg</video:thumbnail_loc>
+      <video:thumbnail_loc>https://santiagomadriz.com/assets/film/posters/brand-content.webp</video:thumbnail_loc>
       <video:title>Brand Content and Social Video Production</video:title>
       <video:description>Vertical audiovisual content created for brands and social media in Costa Rica.</video:description>
       <video:content_loc>https://santiagomadriz.com/assets/brands/brand-work.mp4</video:content_loc>
@@ -57,7 +57,7 @@
     <loc>https://santiagomadriz.com/film/dias-de-lluvia-music-video/</loc>
     <lastmod>2026-09-08</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://santiagomadriz.com/assets/video/dias-de-lluvia-poster.jpg</video:thumbnail_loc>
+      <video:thumbnail_loc>https://santiagomadriz.com/assets/film/posters/dias-de-lluvia.webp</video:thumbnail_loc>
       <video:title>Días de Lluvia Music Video</video:title>
       <video:description>A selected sequence from the Días de Lluvia music video filmed in Costa Rica.</video:description>
       <video:content_loc>https://santiagomadriz.com/assets/video/dias-de-lluvia-preview.mp4</video:content_loc>
@@ -68,7 +68,7 @@
     <loc>https://santiagomadriz.com/film/pop-run-beats-aleste/</loc>
     <lastmod>2026-09-08</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://santiagomadriz.com/assets/instagram/01-dyqjl0lt-iq-cover.jpg</video:thumbnail_loc>
+      <video:thumbnail_loc>https://santiagomadriz.com/assets/film/posters/pop-run-aleste.webp</video:thumbnail_loc>
       <video:title>Pop and Run Beats at Aleste</video:title>
       <video:description>An energetic event film captured and edited at Aleste in Costa Rica.</video:description>
       <video:content_loc>https://santiagomadriz.com/assets/instagram/reel-pop-run-beats.mp4</video:content_loc>
@@ -79,7 +79,7 @@
     <loc>https://santiagomadriz.com/film/mova-made-to-move/</loc>
     <lastmod>2026-09-08</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://santiagomadriz.com/assets/instagram/mova-made-to-move-poster.jpg</video:thumbnail_loc>
+      <video:thumbnail_loc>https://santiagomadriz.com/assets/film/posters/mova-made-to-move.webp</video:thumbnail_loc>
       <video:title>MOVA Made to Move Campaign Film</video:title>
       <video:description>A sportswear campaign film produced for MOVA in Costa Rica.</video:description>
       <video:content_loc>https://santiagomadriz.com/assets/instagram/reel-mova-made-to-move.mp4</video:content_loc>
@@ -90,7 +90,7 @@
     <loc>https://santiagomadriz.com/film/baby-shower-highlight/</loc>
     <lastmod>2026-09-08</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://santiagomadriz.com/assets/events/baby-shower-highlight-poster.jpg</video:thumbnail_loc>
+      <video:thumbnail_loc>https://santiagomadriz.com/assets/film/posters/baby-shower.webp</video:thumbnail_loc>
       <video:title>Baby Shower Event Highlight Film</video:title>
       <video:description>A warm baby shower event highlight filmed and edited in Costa Rica.</video:description>
       <video:content_loc>https://santiagomadriz.com/assets/events/baby-shower-highlight.mp4</video:content_loc>

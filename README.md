@@ -6,7 +6,7 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 
 ## Product highlights
 
-- Editorial film showcase with one featured production, five static posters, category filters, and a single on-demand modal player
+- Editorial film showcase with five selected static posters, category filters, and a single on-demand modal player
 - Five dedicated film watch pages with accessible controls, unique metadata, stable posters, and `VideoObject` structured data
 - MOVA “Made to Move” brand film with an iPhone-compatible H.264 source and original-post link
 - Six-image MOVA sportswear campaign carousel with responsive, optimized WebP photography and art-directed portrait framing

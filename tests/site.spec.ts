@@ -19,16 +19,23 @@ test('renders the primary portfolio landmarks', async ({ page }) => {
 test('presents the MOVA film as a static preview that links to its watch page', async ({ page }) => {
   const card = page.locator('[data-mova-card]');
   await expect(card).toHaveAttribute('href', '/film/mova-made-to-move/');
-  await expect(card.locator('img')).toHaveAttribute('src', 'assets/instagram/mova-made-to-move-poster.jpg');
+  await expect(card.locator('img')).toHaveAttribute('src', 'assets/film/posters/mova-made-to-move.webp');
   await expect(card.locator('.film-preview-play')).toBeVisible();
   await expect(card.locator('video')).toHaveCount(0);
 });
 
-test('presents one featured film and plays every preview on demand in one modal', async ({ page }) => {
+test('presents five selected film posters and plays every preview on demand in one modal', async ({ page }) => {
   const showcase = page.locator('.film-showcase');
-  await expect(showcase.locator('.film-feature')).toHaveAttribute('href', '/film/dias-de-lluvia-music-video/');
+  await expect(showcase.locator('.film-feature')).toHaveCount(0);
   await expect(showcase.locator('.film-preview')).toHaveCount(5);
   await expect(showcase.locator('video')).toHaveCount(0);
+  expect(await showcase.locator('.film-preview img').evaluateAll((images) => images.map((image) => image.getAttribute('src')))).toEqual([
+    'assets/film/posters/dias-de-lluvia.webp',
+    'assets/film/posters/brand-content.webp',
+    'assets/film/posters/mova-made-to-move.webp',
+    'assets/film/posters/pop-run-aleste.webp',
+    'assets/film/posters/baby-shower.webp',
+  ]);
 
   await showcase.locator('[data-mova-card]').click();
   const dialog = page.locator('#filmDialog');
@@ -36,10 +43,13 @@ test('presents one featured film and plays every preview on demand in one modal'
   await expect(dialog.getByRole('heading')).toContainText('MOVA');
   await expect(dialog.locator('video')).toHaveAttribute('src', /reel-mova-made-to-move\.mp4/);
   await expect(page.locator('video')).toHaveCount(1);
+  await expect(page.locator('body')).toHaveClass(/film-modal-open/);
+  await expect(page.locator('body')).toHaveCSS('position', 'fixed');
 
   await dialog.getByRole('button', { name: 'Close video' }).click();
   await expect(dialog).not.toHaveAttribute('open', '');
   await expect(dialog.locator('video')).not.toHaveAttribute('src');
+  await expect(page.locator('body')).not.toHaveClass(/film-modal-open/);
 });
 
 test('filters film categories without affecting the photography collection', async ({ page }) => {
@@ -58,7 +68,10 @@ test('keeps the film showcase and player inside an iPhone-sized viewport', async
   await expect(page.locator('.film-showcase')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
 
-  await page.locator('.film-feature').click();
+  await expect(page.locator('.portrait-viewport')).toHaveCSS('touch-action', 'pan-y');
+  await expect(page.locator('.portrait-track')).toHaveCSS('grid-template-columns', /.+ .+/);
+
+  await page.locator('.film-preview').first().click();
   const dialog = page.locator('#filmDialog');
   await expect(dialog).toHaveAttribute('open', '');
   const box = await dialog.boundingBox();
@@ -101,10 +114,10 @@ test('presents the MOVA sportswear campaign as a six-image brand carousel', asyn
   await expect(campaign.getByRole('heading')).toContainText('MOVA');
 });
 
-test('uses the Miami portrait as the portrait cover and first carousel image', async ({ page }) => {
+test('uses the Miami portrait as the portrait cover and fourth carousel image', async ({ page }) => {
   const portraitImages = page.locator('.portrait-track .portrait-slide img');
   await expect(portraitImages).toHaveCount(7);
-  await expect(portraitImages.first()).toHaveAttribute('src', 'assets/portraits/miami-colorful-lifeguard-portrait.webp');
+  await expect(portraitImages.nth(3)).toHaveAttribute('src', 'assets/portraits/miami-colorful-lifeguard-portrait.webp');
   await page.goto('/services/professional-portraits-costa-rica/');
   await expect(page.locator('.hero-media')).toHaveAttribute('src', '/assets/portraits/miami-colorful-lifeguard-portrait.webp');
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://santiagomadriz.com/assets/portraits/miami-colorful-lifeguard-portrait.webp');

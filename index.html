@@ -52,14 +52,24 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html {
+      max-width: 100%;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
     body {
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-apple);
       font-weight: 400;
       line-height: 1.5;
+      width: 100%;
+      max-width: 100%;
       overflow-x: hidden;
+      overscroll-behavior-x: none;
       letter-spacing: 0;
     }
     img, video { max-width: 100%; display: block; }
@@ -371,48 +381,6 @@
       min-width: 0;
       padding: 0;
     }
-    .film-feature {
-      position: relative;
-      display: block;
-      min-height: clamp(430px, 62vw, 720px);
-      overflow: hidden;
-      background: var(--surface);
-      isolation: isolate;
-    }
-    .film-feature > img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 1.1s var(--ease), filter 1.1s var(--ease);
-    }
-    .film-shade {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(180deg, rgba(0,0,0,0.04) 25%, rgba(0,0,0,0.82) 100%);
-    }
-    .film-feature-copy {
-      position: absolute;
-      left: clamp(24px, 4vw, 54px);
-      right: clamp(24px, 4vw, 54px);
-      bottom: clamp(26px, 4vw, 52px);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      color: var(--text-dim);
-      font-size: 14px;
-    }
-    .film-feature-copy strong {
-      color: var(--text);
-      font-size: clamp(34px, 6vw, 76px);
-      line-height: .98;
-      letter-spacing: -.04em;
-    }
     .film-kicker {
       color: var(--text-mute);
       font-size: 11px;
@@ -420,7 +388,6 @@
       letter-spacing: .16em;
       text-transform: uppercase;
     }
-    .film-play,
     .film-preview-play {
       display: grid;
       place-items: center;
@@ -430,20 +397,7 @@
       box-shadow: 0 18px 50px rgba(0,0,0,.3);
       transition: transform .5s var(--ease), background .5s var(--ease);
     }
-    .film-play {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 2;
-      width: 78px;
-      height: 78px;
-      transform: translate(-50%, -50%);
-    }
-    .film-play svg { width: 25px; height: 25px; margin-left: 3px; }
-    .film-feature:hover > img { transform: scale(1.025); filter: brightness(.88); }
-    .film-feature:hover .film-play { transform: translate(-50%, -50%) scale(1.07); background: #fff; }
-
-    .film-browser { padding-top: 38px; }
+    .film-browser { padding-top: 0; }
     .film-browser-head {
       display: flex;
       align-items: flex-end;
@@ -541,7 +495,10 @@
       background: #080808;
       color: var(--text);
       box-shadow: 0 32px 100px rgba(0,0,0,.72);
+      overscroll-behavior: contain;
     }
+    html.film-modal-open,
+    body.film-modal-open { overflow: hidden; overscroll-behavior: none; }
     .film-dialog::backdrop {
       background: rgba(0,0,0,.82);
       backdrop-filter: blur(14px);
@@ -614,10 +571,6 @@
     @media (max-width: 600px) {
       .work-mode-nav { display: flex; width: 100%; }
       .work-mode-nav a { flex: 1; min-width: 0; }
-      .film-feature { min-height: 58svh; }
-      .film-feature-copy strong { font-size: clamp(34px, 12vw, 54px); }
-      .film-play { width: 62px; height: 62px; }
-      .film-browser { padding-top: 32px; }
       .film-preview-grid { grid-template-columns: 1fr; gap: 28px; }
       .film-preview,
       .film-preview:nth-last-child(-n+2) { grid-column: 1; }
@@ -890,10 +843,26 @@
     @media (max-width: 760px) {
       .work-group-heading { margin-bottom: 6px; }
       #photo-work { margin-top: 64px; }
+      .moto-viewport,
+      .sports-viewport,
+      .samurai-viewport,
+      .portrait-viewport,
+      .product-viewport {
+        overflow: visible;
+        scroll-snap-type: none;
+        touch-action: pan-y;
+        overscroll-behavior-x: none;
+      }
       .moto-track,
       .sports-track,
       .samurai-track,
-      .product-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
+      .portrait-track,
+      .product-track {
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
       .moto-footer,
       .sports-footer,
       .samurai-footer,
@@ -902,7 +871,6 @@
         flex-direction: column;
         align-items: flex-start;
       }
-      .portrait-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
     }
 
     /* ============ ABOUT ============ */
@@ -1389,27 +1357,12 @@
           <span data-i18n="work.film">Film</span>
         </div>
 
-        <section class="film-showcase reveal d1" aria-labelledby="film-feature-title">
-          <a class="film-feature film-open" href="/film/dias-de-lluvia-music-video/"
-             data-film-src="/assets/video/dias-de-lluvia-preview.mp4"
-             data-film-poster="/assets/video/dias-de-lluvia-poster.jpg"
-             data-film-title-en="Días de Lluvia" data-film-title-es="Días de Lluvia"
-             data-film-meta-en="Featured · Music video" data-film-meta-es="Destacado · Video musical">
-            <img src="assets/video/dias-de-lluvia-poster.jpg" width="960" height="540" alt="Días de Lluvia music video preview" loading="lazy" decoding="async" />
-            <span class="film-shade"></span>
-            <span class="film-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="film-feature-copy">
-              <span class="film-kicker" data-i18n="film.featured">Featured film</span>
-              <strong id="film-feature-title">Días de Lluvia</strong>
-              <span data-i18n="film.featureMeta">Music video · Costa Rica</span>
-            </span>
-          </a>
-
+        <section class="film-showcase reveal d1" aria-labelledby="film-collection-title">
           <div class="film-browser">
             <div class="film-browser-head">
               <div>
                 <p class="film-kicker" data-i18n="film.collectionEyebrow">Selected films</p>
-                <h3 data-i18n="film.collectionTitle">Choose a production.</h3>
+                <h3 id="film-collection-title" data-i18n="film.collectionTitle">Choose a production.</h3>
               </div>
               <div class="film-filters" aria-label="Film categories" data-i18n-aria-label="film.filtersAria">
                 <button class="film-filter active" type="button" data-film-filter="all" aria-pressed="true" data-i18n="filters.all">All</button>
@@ -1421,28 +1374,28 @@
             </div>
 
             <div class="film-preview-grid">
-              <a class="film-preview film-open" href="/film/dias-de-lluvia-music-video/" data-film-cat="music" data-film-src="/assets/video/dias-de-lluvia-preview.mp4" data-film-poster="/assets/video/dias-de-lluvia-poster.jpg" data-film-title-en="Días de Lluvia" data-film-title-es="Días de Lluvia" data-film-meta-en="Music video" data-film-meta-es="Video musical">
-                <span class="film-preview-media"><img src="assets/video/dias-de-lluvia-poster.jpg" width="960" height="540" alt="Días de Lluvia music video poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+              <a class="film-preview film-open" href="/film/dias-de-lluvia-music-video/" data-film-cat="music" data-film-src="/assets/video/dias-de-lluvia-preview.mp4" data-film-poster="/assets/film/posters/dias-de-lluvia.webp" data-film-title-en="Días de Lluvia" data-film-title-es="Días de Lluvia" data-film-meta-en="Music video" data-film-meta-es="Video musical">
+                <span class="film-preview-media"><img src="assets/film/posters/dias-de-lluvia.webp" width="469" height="328" alt="Días de Lluvia music video poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong>Días de Lluvia</strong><span data-i18n="tiles.diasMeta">Video · Music</span></span>
               </a>
 
-              <a class="film-preview film-open" href="/film/brand-content-production/" data-film-cat="commercial fashion" data-film-src="/assets/brands/brand-work.mp4" data-film-poster="/assets/brands/brand-work-poster.jpg" data-film-title-en="Brand content production" data-film-title-es="Producción de contenido para marcas" data-film-meta-en="Commercial · Social content" data-film-meta-es="Comercial · Contenido social">
-                <span class="film-preview-media"><img class="art-brand-video" src="assets/brands/brand-work-poster.jpg" width="720" height="1280" alt="Brand and social media video production poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+              <a class="film-preview film-open" href="/film/brand-content-production/" data-film-cat="commercial fashion" data-film-src="/assets/brands/brand-work.mp4" data-film-poster="/assets/film/posters/brand-content.webp" data-film-title-en="Brand content production" data-film-title-es="Producción de contenido para marcas" data-film-meta-en="Commercial · Social content" data-film-meta-es="Comercial · Contenido social">
+                <span class="film-preview-media"><img class="art-brand-video" src="assets/film/posters/brand-content.webp" width="508" height="812" alt="Brand and social media video production poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong data-i18n="tiles.brandVideoTitle">Brand videos &amp; social media</strong><span data-i18n="tiles.brandVideoMeta">Brands · Video</span></span>
               </a>
 
-              <a class="film-preview film-open" href="/film/mova-made-to-move/" data-film-cat="commercial fashion" data-mova-card data-film-src="/assets/instagram/reel-mova-made-to-move.mp4?v=2" data-film-poster="/assets/instagram/mova-made-to-move-poster.jpg" data-film-title-en="MOVA · Made to Move" data-film-title-es="MOVA · Made to Move" data-film-meta-en="Fashion · Campaign" data-film-meta-es="Moda · Campaña">
-                <span class="film-preview-media"><img src="assets/instagram/mova-made-to-move-poster.jpg" width="640" height="1136" alt="MOVA Made to Move sportswear campaign film poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+              <a class="film-preview film-open" href="/film/mova-made-to-move/" data-film-cat="commercial fashion" data-mova-card data-film-src="/assets/instagram/reel-mova-made-to-move.mp4?v=2" data-film-poster="/assets/film/posters/mova-made-to-move.webp" data-film-title-en="MOVA · Made to Move" data-film-title-es="MOVA · Made to Move" data-film-meta-en="Fashion · Campaign" data-film-meta-es="Moda · Campaña">
+                <span class="film-preview-media"><img src="assets/film/posters/mova-made-to-move.webp" width="473" height="580" alt="MOVA Made to Move sportswear campaign film poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong data-i18n="tiles.movaTitle">MOVA · Made to Move</strong><span data-i18n="tiles.movaMeta">Brands · Video</span></span>
               </a>
 
-              <a class="film-preview film-open" href="/film/pop-run-beats-aleste/" data-film-cat="events music" data-film-src="/assets/instagram/reel-pop-run-beats.mp4" data-film-poster="/assets/instagram/01-dyqjl0lt-iq-cover.jpg" data-film-title-en="Pop &amp; Run Beats at Aleste" data-film-title-es="Pop &amp; Run Beats en Aleste" data-film-meta-en="Events · Music" data-film-meta-es="Eventos · Música">
-                <span class="film-preview-media"><img class="art-1" src="assets/instagram/01-dyqjl0lt-iq-cover.jpg" width="640" height="1136" alt="Pop and Run Beats event film poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+              <a class="film-preview film-open" href="/film/pop-run-beats-aleste/" data-film-cat="events music" data-film-src="/assets/instagram/reel-pop-run-beats.mp4" data-film-poster="/assets/film/posters/pop-run-aleste.webp" data-film-title-en="Pop &amp; Run Beats at Aleste" data-film-title-es="Pop &amp; Run Beats en Aleste" data-film-meta-en="Events · Music" data-film-meta-es="Eventos · Música">
+                <span class="film-preview-media"><img class="art-1" src="assets/film/posters/pop-run-aleste.webp" width="538" height="897" alt="Pop and Run Beats event film poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong>Pop &amp; Run Beats at Aleste</strong><span data-i18n="tiles.popRunMeta">Video · Events</span></span>
               </a>
 
-              <a class="film-preview film-open" href="/film/baby-shower-highlight/" data-film-cat="events" data-film-src="/assets/events/baby-shower-highlight.mp4" data-film-poster="/assets/events/baby-shower-highlight-poster.jpg" data-film-title-en="Baby shower highlight" data-film-title-es="Baby shower highlight" data-film-meta-en="Event film · Family" data-film-meta-es="Video de evento · Familia">
-                <span class="film-preview-media"><img src="assets/events/baby-shower-highlight-poster.jpg" width="1280" height="720" alt="Baby shower event highlight film poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+              <a class="film-preview film-open" href="/film/baby-shower-highlight/" data-film-cat="events" data-film-src="/assets/events/baby-shower-highlight.mp4" data-film-poster="/assets/film/posters/baby-shower.webp" data-film-title-en="Baby shower highlight" data-film-title-es="Baby shower highlight" data-film-meta-en="Event film · Family" data-film-meta-es="Video de evento · Familia">
+                <span class="film-preview-media"><img src="assets/film/posters/baby-shower.webp" width="1502" height="843" alt="Baby shower event highlight film poster" loading="lazy" decoding="async" /><span class="film-preview-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
                 <span class="film-preview-copy"><strong data-i18n="tiles.babyShowerTitle">Baby shower highlight</strong><span data-i18n="tiles.babyShowerMeta">Video · Events</span></span>
               </a>
             </div>
@@ -1554,9 +1507,6 @@
           <div class="portrait-viewport" tabindex="0" aria-label="Portrait photography carousel" data-i18n-aria-label="portraits.carouselAria">
             <div class="portrait-track">
               <figure class="portrait-slide">
-                <img src="assets/portraits/miami-colorful-lifeguard-portrait.webp" width="1600" height="2400" alt="Colorful environmental portrait beside a Miami Beach lifeguard tower" loading="lazy" decoding="async" />
-              </figure>
-              <figure class="portrait-slide">
                 <img class="art-8" src="assets/instagram/11-b25dsabpckc-cover.jpg" alt="Portrait in sunglasses with misty mountains behind" loading="lazy" decoding="async" />
               </figure>
               <figure class="portrait-slide">
@@ -1564,6 +1514,9 @@
               </figure>
               <figure class="portrait-slide">
                 <img class="art-6" src="assets/instagram/09-cbuwkgrjxx8-cover.jpg" alt="Outdoor couple photoshoot by the coast" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="portrait-slide">
+                <img src="assets/portraits/miami-colorful-lifeguard-portrait.webp" width="1600" height="2400" alt="Colorful environmental portrait beside a Miami Beach lifeguard tower" loading="lazy" decoding="async" />
               </figure>
               <figure class="portrait-slide">
                 <img class="art-3" src="assets/instagram/04-cnbmre1joii-cover.jpg" alt="Outdoor portrait in a hidden desert in Costa Rica" loading="lazy" decoding="async" />
@@ -1804,8 +1757,6 @@
         'filters.video': 'Video',
         'filters.events': 'Events',
         'filters.automotive': 'Automotive',
-        'film.featured': 'Featured film',
-        'film.featureMeta': 'Music video · Costa Rica',
         'film.collectionEyebrow': 'Selected films',
         'film.collectionTitle': 'Choose a production.',
         'film.filtersAria': 'Film categories',
@@ -1943,8 +1894,6 @@
         'filters.video': 'Video',
         'filters.events': 'Eventos',
         'filters.automotive': 'Automotriz',
-        'film.featured': 'Film destacado',
-        'film.featureMeta': 'Video musical · Costa Rica',
         'film.collectionEyebrow': 'Films seleccionados',
         'film.collectionTitle': 'Elegí una producción.',
         'film.filtersAria': 'Categorías de film',
@@ -2284,6 +2233,30 @@
     const filmDialogProject = document.getElementById('filmDialogProject');
     const filmDialogClose = filmDialog?.querySelector('.film-dialog-close');
     let filmCloseTimer;
+    let filmScrollY = 0;
+    let filmBodyPaddingRight = '';
+
+    const lockFilmBackground = () => {
+      filmScrollY = window.scrollY;
+      filmBodyPaddingRight = document.body.style.paddingRight;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.classList.add('film-modal-open');
+      document.body.classList.add('film-modal-open');
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${filmScrollY}px`;
+      document.body.style.width = '100%';
+      if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+    };
+    const unlockFilmBackground = () => {
+      if (!document.body.classList.contains('film-modal-open')) return;
+      document.documentElement.classList.remove('film-modal-open');
+      document.body.classList.remove('film-modal-open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.paddingRight = filmBodyPaddingRight;
+      window.scrollTo(0, filmScrollY);
+    };
 
     const finishClosingFilm = () => {
       window.clearTimeout(filmCloseTimer);
@@ -2294,6 +2267,7 @@
         filmDialogVideo.removeAttribute('poster');
         filmDialogVideo.load();
       }
+      unlockFilmBackground();
     };
     const closeFilm = () => {
       if (!filmDialog?.open || filmDialog.classList.contains('is-closing')) return;
@@ -2315,7 +2289,10 @@
       filmDialogTitle.textContent = trigger.dataset[`filmTitle${language === 'es' ? 'Es' : 'En'}`] || '';
       filmDialogMeta.textContent = trigger.dataset[`filmMeta${language === 'es' ? 'Es' : 'En'}`] || '';
       filmDialogProject.href = trigger.href;
-      if (!filmDialog.open) filmDialog.showModal();
+      if (!filmDialog.open) {
+        lockFilmBackground();
+        filmDialog.showModal();
+      }
       filmDialogVideo.load();
       filmDialogVideo.play().catch(() => {});
       return true;
