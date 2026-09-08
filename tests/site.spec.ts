@@ -68,8 +68,9 @@ test('keeps the film showcase and player inside an iPhone-sized viewport', async
   await expect(page.locator('.film-showcase')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
 
-  await expect(page.locator('.portrait-viewport')).toHaveCSS('touch-action', 'pan-y');
-  await expect(page.locator('.portrait-track')).toHaveCSS('grid-template-columns', /.+ .+/);
+  await expect(page.locator('.portrait-viewport')).toHaveCSS('overflow-x', 'auto');
+  await expect(page.locator('.portrait-viewport')).toHaveCSS('scroll-snap-type', 'x mandatory');
+  await expect(page.locator('.portrait-track')).toHaveCSS('grid-auto-flow', 'column');
 
   await page.locator('.film-preview').first().click();
   const dialog = page.locator('#filmDialog');

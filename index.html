@@ -843,26 +843,10 @@
     @media (max-width: 760px) {
       .work-group-heading { margin-bottom: 6px; }
       #photo-work { margin-top: 64px; }
-      .moto-viewport,
-      .sports-viewport,
-      .samurai-viewport,
-      .portrait-viewport,
-      .product-viewport {
-        overflow: visible;
-        scroll-snap-type: none;
-        touch-action: pan-y;
-        overscroll-behavior-x: none;
-      }
       .moto-track,
       .sports-track,
       .samurai-track,
-      .portrait-track,
-      .product-track {
-        grid-auto-flow: row;
-        grid-auto-columns: auto;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
+      .product-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
       .moto-footer,
       .sports-footer,
       .samurai-footer,
@@ -871,6 +855,7 @@
         flex-direction: column;
         align-items: flex-start;
       }
+      .portrait-track { grid-auto-columns: clamp(240px, 72vw, 340px); }
     }
 
     /* ============ ABOUT ============ */
