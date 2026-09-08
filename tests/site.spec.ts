@@ -51,6 +51,10 @@ test('offers a direct WhatsApp quote action', async ({ page }) => {
   await expect(whatsapp).toHaveAttribute('href', 'https://wa.me/50684574355');
   await expect(whatsapp).toHaveAttribute('target', '_blank');
   await expect(whatsapp).toBeVisible();
+  await expect(page.locator('#copyEmailButton')).toHaveCount(0);
+  const emailFallback = page.locator('.contact-email-fallback a');
+  await expect(emailFallback).toHaveAttribute('href', 'mailto:santiagomadrizc@gmail.com');
+  await expect(emailFallback).toBeVisible();
 });
 
 test('collects qualified quote details and defines a dedicated conversion URL', async ({ page }) => {

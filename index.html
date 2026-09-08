@@ -695,7 +695,6 @@
       margin: 0 auto 48px;
       line-height: 1.55;
     }
-    .contact-email,
     .contact-whatsapp {
       display: inline-flex; align-items: center; gap: 12px;
       appearance: none;
@@ -710,7 +709,6 @@
       cursor: pointer;
       transition: all .3s var(--ease);
     }
-    .contact-email:hover,
     .contact-whatsapp:hover {
       border-color: var(--text);
       transform: translateY(-2px);
@@ -815,6 +813,25 @@
     }
     .contact-status[data-state="success"] { color: #a8f0b6; }
     .contact-status[data-state="error"] { color: #ffb4a8; }
+    .contact-status:empty { display: none; }
+    .contact .contact-email-fallback {
+      margin: 18px auto 0;
+      color: var(--text-mute);
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .contact-email-fallback a {
+      color: var(--text-dim);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.24);
+      text-underline-offset: 3px;
+      transition: color .25s var(--ease), text-decoration-color .25s var(--ease);
+    }
+    .contact-email-fallback a:hover {
+      color: var(--text);
+      text-decoration-color: var(--text);
+    }
     @media (max-width: 720px) {
       .contact-form-row { grid-template-columns: 1fr; }
       .contact-submit { width: 100%; justify-content: center; }
@@ -913,7 +930,6 @@
       .nav-cta:hover,
       .btn-primary:hover,
       .btn-ghost:hover,
-      .contact-email:hover,
       .contact-whatsapp:hover,
       .contact-submit:hover {
         transform: none;
@@ -1333,10 +1349,6 @@
         For brand work, portraits, events, artist sessions, and audiovisual production in Costa Rica, send the details by email or WhatsApp.
       </p>
       <div class="contact-pills reveal d3">
-        <button class="contact-email" type="button" id="copyEmailButton">
-          santiagomadrizc@gmail.com
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </button>
         <a class="contact-whatsapp" href="https://wa.me/50684574355" target="_blank" rel="noopener" aria-label="Request a quote on WhatsApp" data-i18n-aria-label="contact.whatsappAria">
           <span data-i18n="contact.whatsapp">Request a quote on WhatsApp</span>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9.2 8.3c.2-.4.4-.4.7-.4h.4c.1 0 .3.1.4.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.2.2-.1.4 0 .6.6 1 1.4 1.8 2.5 2.3.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.5 0 .3-.2 1.4-.8 1.9-.6.5-1.3.7-2.1.5-1-.2-2.3-.7-4-2.2-1.3-1.2-2.2-2.6-2.5-3.7-.3-.9 0-1.9.3-2.6Z"/></svg>
@@ -1406,6 +1418,10 @@
         </button>
       </form>
       <p class="contact-status" id="contactStatus" role="status" aria-live="polite"></p>
+      <p class="contact-email-fallback reveal">
+        <span data-i18n="contact.emailFallback">Prefer email?</span>
+        <a href="mailto:santiagomadrizc@gmail.com">santiagomadrizc@gmail.com</a>
+      </p>
     </div>
   </section>
 
@@ -1511,7 +1527,7 @@
         'contact.eyebrow': 'Get in touch',
         'contact.title': "Let's work",
         'contact.accent': 'together.',
-        'contact.body': 'I work on brand projects, portraits, events, artist sessions, and audiovisual production across Costa Rica. Send the details by email or WhatsApp.',
+        'contact.body': 'I work on brand projects, portraits, events, artist sessions, and audiovisual production across Costa Rica. Send the details through the form or WhatsApp.',
         'contact.whatsapp': 'Request a quote on WhatsApp',
         'contact.whatsappAria': 'Request a quote on WhatsApp',
         'contact.formNamePlaceholder': 'Your name',
@@ -1542,9 +1558,8 @@
         'contact.formSending': 'Sending...',
         'contact.formSuccess': 'Thanks. Your message was sent and I will reply by email.',
         'contact.formFallback': 'Opening the secure form to finish sending...',
-        'contact.formError': 'Something went wrong. Please try again or copy the email above.',
-        'contact.emailCopied': 'Email copied.',
-        'contact.emailCopyError': 'Could not copy the email. You can select it manually.',
+        'contact.formError': 'Something went wrong. Please try again or use the email below.',
+        'contact.emailFallback': 'Prefer email?',
         'footer.devNote': 'Interested in my software work?',
         'footer.devLink': 'View my development portfolio ↗',
         'footer.backTop': 'Back to top ↑'
@@ -1627,7 +1642,7 @@
         'contact.eyebrow': 'Contacto',
         'contact.title': 'Trabajemos',
         'contact.accent': 'juntos.',
-        'contact.body': 'Trabajo en proyectos de marca, retratos, eventos, sesiones para artistas y producción audiovisual en Costa Rica. Enviame los detalles por correo o WhatsApp.',
+        'contact.body': 'Trabajo en proyectos de marca, retratos, eventos, sesiones para artistas y producción audiovisual en Costa Rica. Enviame los detalles por el formulario o WhatsApp.',
         'contact.whatsapp': 'Cotizar por WhatsApp',
         'contact.whatsappAria': 'Cotizar por WhatsApp',
         'contact.formNamePlaceholder': 'Tu nombre',
@@ -1658,9 +1673,8 @@
         'contact.formSending': 'Enviando...',
         'contact.formSuccess': 'Gracias. Tu mensaje fue enviado y te voy a responder por correo.',
         'contact.formFallback': 'Abriendo el envío seguro para terminar...',
-        'contact.formError': 'Algo falló. Intentá de nuevo o copiá el correo de arriba.',
-        'contact.emailCopied': 'Correo copiado.',
-        'contact.emailCopyError': 'No pude copiar el correo. Podés seleccionarlo manualmente.',
+        'contact.formError': 'Algo falló. Intentá de nuevo o usá el correo de abajo.',
+        'contact.emailFallback': '¿Preferís correo?',
         'footer.devNote': '¿Te interesa también mi trabajo en software?',
         'footer.devLink': 'Visita mi portafolio de desarrollo ↗',
         'footer.backTop': 'Volver arriba ↑'
@@ -1738,10 +1752,8 @@
 
     const contactForm = document.getElementById('contactForm');
     const contactStatus = document.getElementById('contactStatus');
-    const copyEmailButton = document.getElementById('copyEmailButton');
     const contactReplyTo = document.getElementById('contactReplyTo');
     const contactSource = document.getElementById('contactSource');
-    const contactEmailAddress = 'santiagomadrizc@gmail.com';
     const getActiveDictionary = () => translations[document.documentElement.lang] || translations.en;
     const setContactStatus = (messageKey, state = '') => {
       if (!contactStatus) return;
@@ -1767,15 +1779,6 @@
       if (contactReplyTo) contactReplyTo.value = email;
       if (contactSource) contactSource.value = source;
     };
-
-    copyEmailButton?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(contactEmailAddress);
-        setContactStatus('contact.emailCopied', 'success');
-      } catch {
-        setContactStatus('contact.emailCopyError', 'error');
-      }
-    });
 
     const submitContactForm = async () => {
       const endpoint = getContactEndpoint();
