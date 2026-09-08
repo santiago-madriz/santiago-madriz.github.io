@@ -198,17 +198,17 @@ test('keeps the social content gallery focused on MOVA work', async ({ page }) =
 });
 
 for (const service of [
-  ['product-photography-costa-rica', 'Fotografía de producto'],
-  ['event-photographer-costa-rica', 'Fotógrafo para eventos'],
-  ['professional-portraits-costa-rica', 'Retratos profesionales'],
-  ['brand-video-production-costa-rica', 'Producción audiovisual para marcas'],
-  ['social-media-content-costa-rica', 'Contenido para redes sociales'],
+  ['product-photography-costa-rica', 'Fotografía de producto', 3],
+  ['event-photographer-costa-rica', 'Fotógrafo para eventos', 3],
+  ['professional-portraits-costa-rica', 'Retratos profesionales', 3],
+  ['brand-video-production-costa-rica', 'Producción audiovisual para marcas', 3],
+  ['social-media-content-costa-rica', 'Contenido para redes sociales', 2],
 ]) {
   test(`publishes the ${service[0]} service page with useful SEO content`, async ({ page }) => {
     await page.goto(`/services/${service[0]}/`);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(service[1]);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://santiagomadriz.com/services/${service[0]}/`);
-    await expect(page.locator('.gallery .shot')).toHaveCount(3);
+    await expect(page.locator('.gallery .shot')).toHaveCount(Number(service[2]));
     await expect(page.locator('.steps .step')).toHaveCount(3);
     await expect(page.locator('.faq-list details')).toHaveCount(3);
     const graph = await page.locator('script[type="application/ld+json"]').evaluate((element) => JSON.parse(element.textContent || '{}')) as { '@graph': Array<Record<string, unknown>> };
@@ -216,6 +216,24 @@ for (const service of [
     expect(graph['@graph'].some((entry) => entry['@type'] === 'FAQPage')).toBeTruthy();
   });
 }
+
+test('keeps the selected language across service and film pages', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/services/product-photography-costa-rica/');
+  await page.getByRole('button', { name: 'View in English' }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Product photography in Costa Rica.');
+  await expect(page).toHaveTitle('Product Photography in Costa Rica | Santiago Madriz');
+
+  await page.goto('/film/mova-made-to-move/');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await page.getByRole('button', { name: 'Ver en español' }).click();
+  await expect(page.getByRole('heading', { level: 2 })).toHaveText('El movimiento como lenguaje visual.');
+
+  await page.goto('/services/professional-portraits-costa-rica/');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'es');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Retratos profesionales en Costa Rica.');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+});
 
 test('offers a direct WhatsApp quote action', async ({ page }) => {
   const whatsapp = page.locator('.contact-whatsapp');

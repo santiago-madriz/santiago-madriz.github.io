@@ -50,6 +50,22 @@
       text-align: center;
       animation: enter .8s var(--ease) both;
     }
+    .lang-toggle {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      border: 0;
+      background: transparent;
+      color: var(--dim);
+      padding: 8px;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      cursor: pointer;
+    }
+    .lang-toggle:hover, .lang-toggle:focus-visible { color: var(--text); }
+    .lang-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
     .mark {
       display: grid;
       place-items: center;
@@ -120,6 +136,7 @@
 </head>
 <body>
   <main>
+    <button class="lang-toggle" id="langToggle" type="button">ES</button>
     <div class="mark" aria-hidden="true">✓</div>
     <div class="eyebrow" data-en="Quote request received" data-es="Solicitud de cotización recibida">Quote request received</div>
     <h1 data-en="Thank you for reaching out." data-es="Gracias por contactarme.">Thank you for reaching out.</h1>
@@ -136,13 +153,25 @@
       const language = savedLanguage === 'es' || savedLanguage === 'en'
         ? savedLanguage
         : ((navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en');
-      document.documentElement.lang = language;
-      document.title = language === 'es'
-        ? 'Solicitud recibida · Santiago Madriz'
-        : 'Quote request received · Santiago Madriz';
-      document.querySelectorAll('[data-en][data-es]').forEach((element) => {
-        element.textContent = element.dataset[language];
-      });
+      const toggle = document.getElementById('langToggle');
+      const applyLanguage = (nextLanguage, persist = true) => {
+        document.documentElement.lang = nextLanguage;
+        document.title = nextLanguage === 'es'
+          ? 'Solicitud recibida · Santiago Madriz'
+          : 'Quote request received · Santiago Madriz';
+        document.querySelectorAll('[data-en][data-es]').forEach((element) => {
+          element.textContent = element.dataset[nextLanguage];
+        });
+        toggle.textContent = nextLanguage === 'es' ? 'EN' : 'ES';
+        toggle.setAttribute('aria-label', nextLanguage === 'es' ? 'View in English' : 'Ver en español');
+        toggle.setAttribute('title', nextLanguage === 'es' ? 'View in English' : 'Ver en español');
+        toggle.dataset.language = nextLanguage;
+        if (persist) {
+          try { localStorage.setItem('santiagoMadrizLanguage', nextLanguage); } catch {}
+        }
+      };
+      applyLanguage(language, false);
+      toggle.addEventListener('click', () => applyLanguage(toggle.dataset.language === 'es' ? 'en' : 'es'));
     })();
   </script>
 </body>
