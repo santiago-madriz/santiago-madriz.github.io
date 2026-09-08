@@ -358,11 +358,13 @@
     .tile.full { grid-column: span 12; aspect-ratio: 21 / 9; }
     .tile.brand-feature { grid-column: span 8; aspect-ratio: 4 / 5; }
     .tile.video-card { grid-column: span 3; aspect-ratio: 4 / 5; }
+    .tile.video-card--landscape { grid-column: span 6; aspect-ratio: 8 / 5; }
     @media (max-width: 1180px) {
-      .tile.video-card { grid-column: span 6; }
+      .tile.video-card, .tile.video-card--landscape { grid-column: span 6; aspect-ratio: 4 / 5; }
+      .tile.video-card--final { grid-column: span 12; aspect-ratio: 16 / 7; }
     }
     @media (max-width: 900px) {
-      .tile, .tile.wide, .tile.tall, .tile.full, .tile.brand-feature, .tile.video-card { grid-column: span 12; aspect-ratio: 4 / 5; }
+      .tile, .tile.wide, .tile.tall, .tile.full, .tile.brand-feature, .tile.video-card, .tile.video-card--landscape, .tile.video-card--final { grid-column: span 12; aspect-ratio: 4 / 5; }
     }
 
     .tile-art {
@@ -376,6 +378,26 @@
     .tile:hover .tile-art { transform: scale(1.04); }
     .tile-video {
       background: #000;
+    }
+    .video-card .play-badge {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      z-index: 3;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #000;
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.3);
+      transform: translate(-50%, -50%);
+      transition: transform .45s var(--ease), background .45s var(--ease);
+    }
+    .video-card .play-badge svg { width: 20px; height: 20px; margin-left: 2px; }
+    .video-card:hover .play-badge {
+      background: #fff;
+      transform: translate(-50%, -50%) scale(1.06);
     }
 
     .art-1 { object-position: 50% 42%; }
@@ -1065,11 +1087,10 @@
           <span data-i18n="work.film">Film</span>
         </div>
 
-        <a class="tile video-card reveal" href="#contact" data-cat="brands video" data-group="film">
-          <video class="tile-art tile-video art-brand-video" autoplay muted loop playsinline preload="metadata" poster="assets/brands/brand-work-poster.jpg" aria-label="Brand video work" data-i18n-aria-label="tiles.brandVideoAria">
-            <source src="assets/brands/brand-work.mp4" type="video/mp4" />
-          </video>
+        <a class="tile video-card reveal" href="/film/brand-content-production/" data-cat="brands video" data-group="film">
+          <img class="tile-art art-brand-video" src="assets/brands/brand-work-poster.jpg" width="720" height="1280" alt="Brand and social media video production in Costa Rica" loading="lazy" decoding="async" />
           <div class="tile-overlay"></div>
+          <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           <div class="tile-content">
             <div>
               <div class="tile-meta" data-i18n="tiles.brandVideoMeta">Brands · Video</div>
@@ -1079,11 +1100,10 @@
           </div>
         </a>
 
-        <a class="tile video-card reveal d1" href="https://www.youtube.com/watch?v=kF7NgZH4uwc" target="_blank" rel="noopener" data-cat="video" data-group="film">
-          <video class="tile-art tile-video" autoplay muted loop playsinline preload="metadata" poster="assets/video/dias-de-lluvia-poster.jpg" aria-label="Días de Lluvia music video preview" data-i18n-aria-label="tiles.diasAria">
-            <source src="assets/video/dias-de-lluvia-preview.mp4" type="video/mp4" />
-          </video>
+        <a class="tile video-card video-card--landscape reveal d1" href="/film/dias-de-lluvia-music-video/" data-cat="video" data-group="film">
+          <img class="tile-art" src="assets/video/dias-de-lluvia-poster.jpg" width="960" height="540" alt="Días de Lluvia music video preview" loading="lazy" decoding="async" />
           <div class="tile-overlay"></div>
+          <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           <div class="tile-content">
             <div>
               <div class="tile-meta" data-i18n="tiles.diasMeta">Video · Music</div>
@@ -1093,11 +1113,10 @@
           </div>
         </a>
 
-        <a class="tile video-card reveal" href="https://www.instagram.com/p/DYQJl0lT-IQ/" target="_blank" rel="noopener" data-cat="video events" data-group="film">
-          <video class="tile-art tile-video art-1" autoplay muted loop playsinline preload="metadata" poster="assets/instagram/01-dyqjl0lt-iq-cover.jpg" aria-label="DJ event video from Pop & Run Beats at Aleste" data-i18n-aria-label="tiles.popRunAria">
-            <source src="assets/instagram/reel-pop-run-beats.mp4" type="video/mp4" />
-          </video>
+        <a class="tile video-card reveal" href="/film/pop-run-beats-aleste/" data-cat="video events" data-group="film">
+          <img class="tile-art art-1" src="assets/instagram/01-dyqjl0lt-iq-cover.jpg" width="640" height="1136" alt="Pop and Run Beats event video at Aleste" loading="lazy" decoding="async" />
           <div class="tile-overlay"></div>
+          <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           <div class="tile-content">
             <div>
               <div class="tile-meta" data-i18n="tiles.popRunMeta">Video · Events</div>
@@ -1107,11 +1126,10 @@
           </div>
         </a>
 
-        <a class="tile video-card reveal d1" href="https://www.instagram.com/p/Dcw8GgWpXtE/" target="_blank" rel="noopener" data-cat="brands video" data-group="film" data-mova-card>
-          <video class="tile-art tile-video" autoplay muted loop playsinline preload="metadata" poster="assets/instagram/mova-made-to-move-poster.jpg" aria-label="MOVA Made to Move brand reel preview" data-i18n-aria-label="tiles.movaAria">
-            <source src="assets/instagram/reel-mova-made-to-move.mp4?v=2" type="video/mp4" />
-          </video>
+        <a class="tile video-card video-card--landscape reveal d1" href="/film/mova-made-to-move/" data-cat="brands video" data-group="film" data-mova-card>
+          <img class="tile-art" src="assets/instagram/mova-made-to-move-poster.jpg" width="640" height="1136" alt="MOVA Made to Move sportswear campaign film" loading="lazy" decoding="async" />
           <div class="tile-overlay"></div>
+          <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           <div class="tile-content">
             <div>
               <div class="tile-meta" data-i18n="tiles.movaMeta">Brands · Video</div>
@@ -1121,11 +1139,10 @@
           </div>
         </a>
 
-        <a class="tile video-card reveal d1" href="assets/events/baby-shower-highlight.mp4" target="_blank" rel="noopener" data-cat="video events" data-group="film">
-          <video class="tile-art tile-video" autoplay muted loop playsinline preload="metadata" poster="assets/events/baby-shower-highlight-poster.jpg" aria-label="Baby shower highlight video" data-i18n-aria-label="tiles.babyShowerAria">
-            <source src="assets/events/baby-shower-preview.mp4" type="video/mp4" />
-          </video>
+        <a class="tile video-card video-card--landscape video-card--final reveal d1" href="/film/baby-shower-highlight/" data-cat="video events" data-group="film">
+          <img class="tile-art" src="assets/events/baby-shower-highlight-poster.jpg" width="1280" height="720" alt="Baby shower event highlight film" loading="lazy" decoding="async" />
           <div class="tile-overlay"></div>
+          <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           <div class="tile-content">
             <div>
               <div class="tile-meta" data-i18n="tiles.babyShowerMeta">Video · Events</div>
@@ -1808,73 +1825,6 @@
         }, 420);
       }, 5200);
     }
-
-    // Keep mobile Safari from decoding every reel while the user scrolls.
-    const autoplayVideos = Array.from(document.querySelectorAll('video[autoplay]'));
-    const getPreviewVisibility = (video) => {
-      const card = video.closest('.tile') || video;
-      const rect = card.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      if (!rect.height || rect.bottom <= 0 || rect.top >= viewportHeight) return 0;
-      const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-      return Math.max(0, visibleHeight) / rect.height;
-    };
-    const playPreviewVideo = (video) => {
-      if (!motionOK || video.closest('.is-hidden')) return;
-      video.play().catch(() => {});
-    };
-    const pausePreviewVideo = (video) => {
-      video.pause();
-    };
-    const setPreviewVideoState = (video) => {
-      const isVisibleEnough = getPreviewVisibility(video) >= 0.28 && !video.closest('.is-hidden');
-      video.dataset.videoVisible = String(isVisibleEnough);
-      if (isVisibleEnough) playPreviewVideo(video);
-      else pausePreviewVideo(video);
-    };
-    let previewVideoFrame = 0;
-    const syncPreviewVideos = () => {
-      if (document.hidden) {
-        autoplayVideos.forEach(pausePreviewVideo);
-        return;
-      }
-      autoplayVideos.forEach(setPreviewVideoState);
-    };
-    const requestPreviewVideoSync = () => {
-      if (previewVideoFrame) return;
-      previewVideoFrame = window.requestAnimationFrame(() => {
-        previewVideoFrame = 0;
-        syncPreviewVideos();
-      });
-    };
-    autoplayVideos.forEach((video) => {
-      video.muted = true;
-      video.playsInline = true;
-      video.setAttribute('playsinline', '');
-      video.setAttribute('webkit-playsinline', '');
-      if (!motionOK) {
-        pausePreviewVideo(video);
-        video.removeAttribute('autoplay');
-      }
-    });
-    if (motionOK && 'IntersectionObserver' in window) {
-      const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          setPreviewVideoState(entry.target);
-        });
-      }, { threshold: 0.28, rootMargin: '0px 0px' });
-      autoplayVideos.forEach((video) => videoObserver.observe(video));
-    } else if (motionOK) {
-      autoplayVideos.forEach(setPreviewVideoState);
-    }
-    window.addEventListener('scroll', requestPreviewVideoSync, { passive: true });
-    window.addEventListener('resize', requestPreviewVideoSync);
-    window.setInterval(syncPreviewVideos, 700);
-    requestPreviewVideoSync();
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) autoplayVideos.forEach(pausePreviewVideo);
-      else requestPreviewVideoSync();
-    });
 
     // reveal-on-scroll
     const io = new IntersectionObserver((entries) => {

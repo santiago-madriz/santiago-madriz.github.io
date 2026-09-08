@@ -16,12 +16,38 @@ test('renders the primary portfolio landmarks', async ({ page }) => {
   await expect(page.locator('#contactForm')).toBeVisible();
 });
 
-test('includes the MOVA brand reel and its local preview', async ({ page }) => {
+test('presents the MOVA film as a static preview that links to its watch page', async ({ page }) => {
   const card = page.locator('[data-mova-card]');
-  await expect(card).toHaveAttribute('href', 'https://www.instagram.com/p/Dcw8GgWpXtE/');
-  await expect(card.locator('source')).toHaveAttribute('src', 'assets/instagram/reel-mova-made-to-move.mp4?v=2');
-  expect(await card.locator('video').evaluate((element) => (element as HTMLVideoElement).canPlayType('video/mp4; codecs="avc1.4D401F"'))).not.toBe('');
+  await expect(card).toHaveAttribute('href', '/film/mova-made-to-move/');
+  await expect(card.locator('img')).toHaveAttribute('src', 'assets/instagram/mova-made-to-move-poster.jpg');
+  await expect(card.locator('.play-badge')).toBeVisible();
+  await expect(card.locator('video')).toHaveCount(0);
 });
+
+for (const film of [
+  ['brand-content-production', 'Brand content'],
+  ['dias-de-lluvia-music-video', 'Días de Lluvia'],
+  ['pop-run-beats-aleste', 'Pop & Run Beats'],
+  ['mova-made-to-move', 'Made to Move'],
+  ['baby-shower-highlight', 'Baby shower'],
+]) {
+  test(`publishes the ${film[0]} video on a dedicated watch page`, async ({ page }) => {
+    await page.goto(`/film/${film[0]}/`);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(film[1]);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://santiagomadriz.com/film/${film[0]}/`);
+    await expect(page.locator('.player video')).toHaveAttribute('controls', '');
+    await expect(page.locator('.player video')).not.toHaveAttribute('autoplay', '');
+    const video = await page.locator('script[type="application/ld+json"]').evaluate((element) => JSON.parse(element.textContent || '{}')) as Record<string, unknown>;
+    expect(video['@type']).toBe('VideoObject');
+    expect(video.thumbnailUrl).toBeTruthy();
+    expect(video.contentUrl).toBeTruthy();
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+    const blocking = results.violations.filter(({ impact }) => impact === 'critical' || impact === 'serious');
+    expect(blocking).toEqual([]);
+  });
+}
 
 test('presents the MOVA sportswear campaign as a six-image brand carousel', async ({ page }) => {
   const campaign = page.locator('[data-mova-sports]');
@@ -137,6 +163,8 @@ test('exposes local-search metadata and structured services', async ({ page, req
   expect(sitemapBody).toContain('xmlns:video=');
   expect(sitemapBody).toContain('/services/product-photography-costa-rica/');
   expect(sitemapBody).toContain('/services/social-media-content-costa-rica/');
+  expect(sitemapBody).toContain('/film/mova-made-to-move/');
+  expect((sitemapBody.match(/<video:video>/g) || []).length).toBe(5);
 });
 
 test('has no automatically detectable serious accessibility violations', async ({ page }) => {

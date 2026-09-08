@@ -6,8 +6,9 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 
 ## Product highlights
 
-- Responsive photo and video portfolio
-- MOVA “Made to Move” brand reel with an iPhone-compatible H.264 preview and source link
+- Responsive photo and video portfolio with calm, static film previews instead of simultaneous autoplay
+- Five dedicated film watch pages with accessible controls, unique metadata, stable posters, and `VideoObject` structured data
+- MOVA “Made to Move” brand film with an iPhone-compatible H.264 source and original-post link
 - Six-image MOVA sportswear campaign carousel with responsive, optimized WebP photography and art-directed portrait framing
 - English and Spanish interface with local language preference
 - Subtle bilingual footer path to the companion engineering portfolio
@@ -17,7 +18,7 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 - Content Security Policy and restrictive referrer policy
 - Engineering portfolio deployment at `/dev/`
 - Five image-led service landing pages for product photography, events, portraits, brand video, and social content
-- Local-service SEO for Costa Rica with unique titles, Service and FAQ structured data, internal links, image/video discovery, and sitemap coverage
+- Local-service SEO for Costa Rica with unique titles, Service, FAQ, ProfessionalService, and VideoObject structured data, crawlable internal links, descriptive media, canonical URLs, and image/video sitemap coverage
 
 ## Local development
 
