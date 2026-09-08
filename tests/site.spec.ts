@@ -45,7 +45,7 @@ test('presents five selected film posters and plays every preview on demand in o
   const dialog = page.locator('#filmDialog');
   await expect(dialog).toHaveAttribute('open', '');
   await expect(dialog.getByRole('heading')).toContainText('MOVA');
-  await expect(dialog.locator('video')).toHaveAttribute('src', /reel-mova-made-to-move\.mp4/);
+  await expect(dialog.locator('video')).toHaveAttribute('src', /reel-mova-made-to-move\.mp4\?v=3/);
   await expect(page.locator('video')).toHaveCount(1);
   await expect(page.locator('body')).toHaveClass(/film-modal-open/);
   await expect(page.locator('body')).toHaveCSS('position', 'fixed');
@@ -138,10 +138,11 @@ test('keeps the requested off-road image sequence', async ({ page }) => {
   }))).toEqual(['off-road', 'mova', 'samurai', 'portraits']);
 
   const images = page.locator('.moto-track .moto-slide img');
-  await expect(images).toHaveCount(8);
+  await expect(images).toHaveCount(7);
   await expect(images.nth(0)).toHaveAttribute('src', 'assets/motos/kinsee-media-moto-01.webp');
   await expect(images.nth(1)).toHaveAttribute('src', 'assets/motos/kinsee-media-moto-04.webp');
   await expect(images.nth(2)).toHaveAttribute('src', 'assets/motos/kinsee-media-moto-06.webp');
+  await expect(images.nth(3)).toHaveAttribute('src', 'assets/motos/kinsee-media-moto-03.webp');
 });
 
 test('presents the Suzuki Samurai series as a five-image automotive carousel', async ({ page }) => {
