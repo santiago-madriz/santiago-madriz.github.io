@@ -10,6 +10,10 @@ test('renders the primary portfolio landmarks', async ({ page }) => {
   await expect(page.locator('main')).toBeVisible();
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Photography and Film Production');
   await expect(page.locator('#work')).toBeVisible();
+  await expect(page.locator('#work').getByRole('heading', { level: 2 })).toHaveText('Work.');
+  await expect(page.getByText('Selected work', { exact: true })).toHaveCount(0);
+  await expect(page.getByText('Selected films', { exact: true })).toHaveCount(0);
+  await expect(page.getByText('Choose a production.', { exact: true })).toHaveCount(0);
   await expect(page.locator('#about')).toBeVisible();
   await expect(page.locator('#services')).toHaveCount(0);
   await expect(page.getByText('Photography services in Costa Rica')).toHaveCount(0);

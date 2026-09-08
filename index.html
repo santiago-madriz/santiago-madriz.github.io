@@ -306,6 +306,7 @@
 
     /* ============ WORK GRID ============ */
     #work { border-bottom: 1px solid var(--line); }
+    #work .section-head { margin-bottom: 32px; }
 
     .filters {
       display: flex; gap: 8px; flex-wrap: wrap;
@@ -401,15 +402,9 @@
     .film-browser-head {
       display: flex;
       align-items: flex-end;
-      justify-content: space-between;
+      justify-content: flex-end;
       gap: 24px;
-      margin-bottom: 24px;
-    }
-    .film-browser-head h3 {
-      margin-top: 7px;
-      font-size: clamp(24px, 3vw, 38px);
-      line-height: 1.05;
-      letter-spacing: -.025em;
+      margin-bottom: 18px;
     }
     .film-filters { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
     .film-filter {
@@ -1328,8 +1323,7 @@
   <section id="work">
     <div class="container">
       <div class="section-head reveal">
-        <div class="section-eyebrow" data-i18n="work.eyebrow">Selected Work</div>
-        <h2 class="section-title"><span data-i18n="work.title">Selected work.</span></h2>
+        <h2 class="section-title"><span data-i18n="work.title">Work.</span></h2>
       </div>
 
       <nav class="work-mode-nav reveal d1" aria-label="Portfolio sections" data-i18n-aria-label="work.modeAria">
@@ -1342,13 +1336,9 @@
           <span data-i18n="work.film">Film</span>
         </div>
 
-        <section class="film-showcase reveal d1" aria-labelledby="film-collection-title">
+        <section class="film-showcase reveal d1" aria-label="Film portfolio" data-i18n-aria-label="film.showcaseAria">
           <div class="film-browser">
             <div class="film-browser-head">
-              <div>
-                <p class="film-kicker" data-i18n="film.collectionEyebrow">Selected films</p>
-                <h3 id="film-collection-title" data-i18n="film.collectionTitle">Choose a production.</h3>
-              </div>
               <div class="film-filters" aria-label="Film categories" data-i18n-aria-label="film.filtersAria">
                 <button class="film-filter active" type="button" data-film-filter="all" aria-pressed="true" data-i18n="filters.all">All</button>
                 <button class="film-filter" type="button" data-film-filter="commercial" aria-pressed="false" data-i18n="film.filterCommercial">Commercial</button>
@@ -1728,8 +1718,7 @@
         'hero.secondaryCta': 'Get in touch',
         'hero.scroll': 'Scroll',
         'strip.items': 'Portraits <span class="sep">·</span> Video <span class="sep">·</span> Events <span class="sep">·</span> Artists <span class="sep">·</span> Weddings <span class="sep">·</span> Documentary <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span>',
-        'work.eyebrow': 'Selected Work',
-        'work.title': 'Selected work.',
+        'work.title': 'Work.',
         'work.film': 'Film',
         'work.photo': 'Photo',
         'work.modeAria': 'Portfolio sections',
@@ -1742,8 +1731,7 @@
         'filters.video': 'Video',
         'filters.events': 'Events',
         'filters.automotive': 'Automotive',
-        'film.collectionEyebrow': 'Selected films',
-        'film.collectionTitle': 'Choose a production.',
+        'film.showcaseAria': 'Film portfolio',
         'film.filtersAria': 'Film categories',
         'film.filterCommercial': 'Commercial',
         'film.filterFashion': 'Fashion',
@@ -1865,8 +1853,7 @@
         'hero.secondaryCta': 'Contacto',
         'hero.scroll': 'Desliza',
         'strip.items': 'Retratos <span class="sep">·</span> Video <span class="sep">·</span> Eventos <span class="sep">·</span> Artistas <span class="sep">·</span> Bodas <span class="sep">·</span> Documental <span class="sep">·</span> 35mm <span class="sep">·</span> 50mm <span class="sep">·</span> 16mm <span class="sep">·</span> Costa Rica <span class="sep">·</span>',
-        'work.eyebrow': 'Trabajo seleccionado',
-        'work.title': 'Trabajo seleccionado.',
+        'work.title': 'Trabajo.',
         'work.film': 'Film',
         'work.photo': 'Photo',
         'work.modeAria': 'Secciones del portafolio',
@@ -1879,8 +1866,7 @@
         'filters.video': 'Video',
         'filters.events': 'Eventos',
         'filters.automotive': 'Automotriz',
-        'film.collectionEyebrow': 'Films seleccionados',
-        'film.collectionTitle': 'Elegí una producción.',
+        'film.showcaseAria': 'Portafolio de film',
         'film.filtersAria': 'Categorías de film',
         'film.filterCommercial': 'Comercial',
         'film.filterFashion': 'Moda',
