@@ -53,6 +53,38 @@ test('offers a direct WhatsApp quote action', async ({ page }) => {
   await expect(whatsapp).toBeVisible();
 });
 
+test('collects qualified quote details and defines a dedicated conversion URL', async ({ page }) => {
+  const form = page.locator('#contactForm');
+  await expect(form.locator('[name="_next"]')).toHaveValue('https://santiagomadriz.com/quote-requested/');
+  await expect(form.locator('[name="name"]')).toHaveAttribute('required', '');
+  await expect(form.locator('[name="email"]')).toHaveAttribute('type', 'email');
+  await expect(form.locator('[name="phone"]')).toHaveAttribute('required', '');
+  await expect(form.locator('[name="service"]')).toHaveAttribute('required', '');
+  await expect(form.locator('[name="category"]')).toHaveAttribute('required', '');
+});
+
+test('redirects a successful quote request to the conversion page', async ({ page }) => {
+  await page.route('https://formsubmit.co/ajax/**', async (route) => {
+    await route.fulfill({ status: 200, contentType: 'application/json', body: '{"success":true}' });
+  });
+  const form = page.locator('#contactForm');
+  await form.locator('[name="name"]').fill('Test Lead');
+  await form.locator('[name="email"]').fill('lead@example.com');
+  await form.locator('[name="phone"]').fill('+506 8000 0000');
+  await form.locator('[name="service"]').selectOption('Photography');
+  await form.locator('[name="category"]').selectOption('Brand / Product');
+  await form.locator('[name="message"]').fill('Commercial product session.');
+  await form.getByRole('button', { name: /Request a quote|Solicitar cotización/ }).click();
+  await expect(page).toHaveURL(/\/quote-requested\/$/);
+});
+
+test('keeps the quote confirmation page out of search results', async ({ page }) => {
+  await page.goto('/quote-requested/');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  await expect(page.getByRole('link', { name: /portfolio|portafolio/i })).toHaveAttribute('href', '/');
+});
+
 test('exposes local-search metadata and structured services', async ({ page, request }) => {
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /max-image-preview:large/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://santiagomadriz.com/');

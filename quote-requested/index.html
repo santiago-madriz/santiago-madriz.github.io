@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#000000" />
+  <title>Quote request received · Santiago Madriz</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #000;
+      --panel: #0b0b0b;
+      --text: #f2f2f2;
+      --dim: #a7a7a7;
+      --line: rgba(255,255,255,.16);
+      --ease: cubic-bezier(.22,1,.36,1);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(255,255,255,.08), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -100%;
+      pointer-events: none;
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      animation: grain .35s steps(2) infinite;
+    }
+    main {
+      position: relative;
+      width: min(760px, calc(100% - 32px));
+      margin: 48px auto;
+      padding: clamp(36px, 7vw, 72px);
+      border: 1px solid var(--line);
+      background: rgba(11,11,11,.86);
+      backdrop-filter: blur(18px);
+      text-align: center;
+      animation: enter .8s var(--ease) both;
+    }
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 28px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font-size: 25px;
+    }
+    .eyebrow {
+      margin-bottom: 18px;
+      color: var(--dim);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 8vw, 76px);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+    p {
+      max-width: 540px;
+      margin: 26px auto 0;
+      color: var(--dim);
+      font-size: clamp(17px, 2.4vw, 20px);
+      line-height: 1.55;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 650;
+      transition: transform .35s var(--ease), border-color .35s var(--ease), background .35s var(--ease);
+    }
+    a:first-child { background: var(--text); color: #080808; }
+    a:hover { transform: translateY(-2px); border-color: var(--text); }
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes grain {
+      0% { transform: translate(0,0); }
+      25% { transform: translate(2%, -1%); }
+      50% { transform: translate(-1%, 2%); }
+      75% { transform: translate(1%, 1%); }
+      100% { transform: translate(0,0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before { animation: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark" aria-hidden="true">✓</div>
+    <div class="eyebrow" data-en="Quote request received" data-es="Solicitud de cotización recibida">Quote request received</div>
+    <h1 data-en="Thank you for reaching out." data-es="Gracias por contactarme.">Thank you for reaching out.</h1>
+    <p data-en="I received your project details and will review them before replying through the contact information you provided." data-es="Recibí los detalles de tu proyecto. Los revisaré y te responderé por medio de la información de contacto que indicaste.">I received your project details and will review them before replying through the contact information you provided.</p>
+    <div class="actions">
+      <a href="/" data-en="Return to portfolio" data-es="Volver al portafolio">Return to portfolio</a>
+      <a href="https://wa.me/50684574355" target="_blank" rel="noopener" data-en="Continue on WhatsApp" data-es="Continuar por WhatsApp">Continue on WhatsApp</a>
+    </div>
+  </main>
+  <script>
+    (() => {
+      let savedLanguage = null;
+      try { savedLanguage = localStorage.getItem('santiagoMadrizLanguage'); } catch {}
+      const language = savedLanguage === 'es' || savedLanguage === 'en'
+        ? savedLanguage
+        : ((navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en');
+      document.documentElement.lang = language;
+      document.title = language === 'es'
+        ? 'Solicitud recibida · Santiago Madriz'
+        : 'Quote request received · Santiago Madriz';
+      document.querySelectorAll('[data-en][data-es]').forEach((element) => {
+        element.textContent = element.dataset[language];
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -13,7 +13,7 @@ Source for [santiagomadriz.com](https://santiagomadriz.com), my bilingual photog
 - Subtle bilingual footer path to the companion engineering portfolio
 - Keyboard-accessible work filters and media carousels
 - Reduced-motion behavior
-- Secure contact flow with client-side validation, a honeypot field, and direct WhatsApp quotes
+- Bilingual quote-request flow with qualified project fields, secure delivery, a dedicated no-index Google Ads conversion page, and direct WhatsApp quotes
 - Content Security Policy and restrictive referrer policy
 - Engineering portfolio deployment at `/dev/`
 - Local-service SEO for Costa Rica with crawlable service content, ProfessionalService structured data, image/video discovery, and a stable search favicon

@@ -731,6 +731,14 @@
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
+    .contact-field-group { display: grid; gap: 8px; }
+    .contact-field-label {
+      color: var(--text-dim);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
     .contact-field {
       width: 100%;
       min-width: 0;
@@ -749,6 +757,19 @@
       background: rgba(255,255,255,0.07);
     }
     .contact-field::placeholder { color: var(--text-mute); }
+    select.contact-field {
+      appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--text-dim) 50%),
+        linear-gradient(135deg, var(--text-dim) 50%, transparent 50%);
+      background-position:
+        calc(100% - 19px) calc(50% - 2px),
+        calc(100% - 14px) calc(50% - 2px);
+      background-repeat: no-repeat;
+      background-size: 5px 5px, 5px 5px;
+      padding-right: 42px;
+    }
+    select.contact-field option { background: #111; color: var(--text); }
     .contact-honey { display: none; }
     textarea.contact-field {
       min-height: 132px;
@@ -1322,20 +1343,65 @@
         </a>
       </div>
       <form class="contact-form reveal d4" id="contactForm" action="https://formsubmit.co/santiagomadrizc@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New portfolio inquiry - Santiago Madriz" data-i18n-value="contact.formSubject" />
+        <input type="hidden" name="_subject" value="New quote request - Santiago Madriz" data-i18n-value="contact.formSubject" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://santiagomadriz.com/quote-requested/" />
         <input type="hidden" name="_replyto" id="contactReplyTo" />
         <input type="hidden" name="source" id="contactSource" />
         <input class="contact-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="contact-form-row">
-          <input class="contact-field" name="name" type="text" autocomplete="name" required placeholder="Name" aria-label="Name" data-i18n-placeholder="contact.formNamePlaceholder" data-i18n-aria-label="contact.formNameLabel" />
-          <input class="contact-field" name="email" type="email" autocomplete="email" required placeholder="Email" aria-label="Email" data-i18n-placeholder="contact.formEmailPlaceholder" data-i18n-aria-label="contact.formEmailLabel" />
+          <label class="contact-field-group">
+            <span class="contact-field-label" data-i18n="contact.formNameLabel">Name</span>
+            <input class="contact-field" name="name" type="text" autocomplete="name" required placeholder="Your name" data-i18n-placeholder="contact.formNamePlaceholder" />
+          </label>
+          <label class="contact-field-group">
+            <span class="contact-field-label" data-i18n="contact.formEmailLabel">Email</span>
+            <input class="contact-field" name="email" type="email" autocomplete="email" required placeholder="you@email.com" data-i18n-placeholder="contact.formEmailPlaceholder" />
+          </label>
         </div>
-        <input class="contact-field" name="project" type="text" placeholder="Project / date" aria-label="Project or date" data-i18n-placeholder="contact.formProjectPlaceholder" data-i18n-aria-label="contact.formProjectLabel" />
-        <textarea class="contact-field" name="message" required placeholder="Tell me what you have in mind" aria-label="Tell me what you have in mind" data-i18n-placeholder="contact.formMessagePlaceholder" data-i18n-aria-label="contact.formMessageLabel"></textarea>
+        <div class="contact-form-row">
+          <label class="contact-field-group">
+            <span class="contact-field-label" data-i18n="contact.formPhoneLabel">WhatsApp / phone</span>
+            <input class="contact-field" name="phone" type="tel" autocomplete="tel" required placeholder="+506 0000 0000" data-i18n-placeholder="contact.formPhonePlaceholder" />
+          </label>
+          <label class="contact-field-group">
+            <span class="contact-field-label" data-i18n="contact.formServiceLabel">Service</span>
+            <select class="contact-field" name="service" required>
+              <option value="" selected disabled data-i18n="contact.formServicePlaceholder">Select one</option>
+              <option value="Photography" data-i18n="contact.formServicePhoto">Photography</option>
+              <option value="Film / Video" data-i18n="contact.formServiceFilm">Film / video</option>
+              <option value="Photo + Film" data-i18n="contact.formServiceBoth">Photo + film</option>
+            </select>
+          </label>
+        </div>
+        <div class="contact-form-row">
+          <label class="contact-field-group">
+            <span class="contact-field-label" data-i18n="contact.formCategoryLabel">Project type</span>
+            <select class="contact-field" name="category" required>
+              <option value="" selected disabled data-i18n="contact.formCategoryPlaceholder">Select one</option>
+              <option value="Brand / Product" data-i18n="contact.formCategoryBrand">Brand / product</option>
+              <option value="Event" data-i18n="contact.formCategoryEvent">Event</option>
+              <option value="Portrait / Editorial" data-i18n="contact.formCategoryPortrait">Portrait / editorial</option>
+              <option value="Artist / Music" data-i18n="contact.formCategoryArtist">Artist / music</option>
+              <option value="Other" data-i18n="contact.formCategoryOther">Other</option>
+            </select>
+          </label>
+          <label class="contact-field-group">
+            <span class="contact-field-label" data-i18n="contact.formDateLabel">Preferred date</span>
+            <input class="contact-field" name="preferred_date" type="date" />
+          </label>
+        </div>
+        <label class="contact-field-group">
+          <span class="contact-field-label" data-i18n="contact.formLocationLabel">Location</span>
+          <input class="contact-field" name="location" type="text" autocomplete="address-level2" placeholder="City or venue" data-i18n-placeholder="contact.formLocationPlaceholder" />
+        </label>
+        <label class="contact-field-group">
+          <span class="contact-field-label" data-i18n="contact.formMessageLabel">Project details</span>
+          <textarea class="contact-field" name="message" required placeholder="Tell me what you need, the intended use, and any helpful context" data-i18n-placeholder="contact.formMessagePlaceholder"></textarea>
+        </label>
         <button class="contact-submit" type="submit">
-          <span data-i18n="contact.formSubmit">Send project details</span>
+          <span data-i18n="contact.formSubmit">Request a quote</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
       </form>
@@ -1448,16 +1514,31 @@
         'contact.body': 'I work on brand projects, portraits, events, artist sessions, and audiovisual production across Costa Rica. Send the details by email or WhatsApp.',
         'contact.whatsapp': 'Request a quote on WhatsApp',
         'contact.whatsappAria': 'Request a quote on WhatsApp',
-        'contact.formNamePlaceholder': 'Name',
+        'contact.formNamePlaceholder': 'Your name',
         'contact.formNameLabel': 'Name',
-        'contact.formEmailPlaceholder': 'Email',
+        'contact.formEmailPlaceholder': 'you@email.com',
         'contact.formEmailLabel': 'Email',
-        'contact.formProjectPlaceholder': 'Project / date',
-        'contact.formProjectLabel': 'Project or date',
-        'contact.formMessagePlaceholder': 'Tell me what you have in mind',
-        'contact.formMessageLabel': 'Tell me what you have in mind',
-        'contact.formSubject': 'New portfolio inquiry - Santiago Madriz',
-        'contact.formSubmit': 'Send project details',
+        'contact.formPhoneLabel': 'WhatsApp / phone',
+        'contact.formPhonePlaceholder': '+506 0000 0000',
+        'contact.formServiceLabel': 'Service',
+        'contact.formServicePlaceholder': 'Select one',
+        'contact.formServicePhoto': 'Photography',
+        'contact.formServiceFilm': 'Film / video',
+        'contact.formServiceBoth': 'Photo + film',
+        'contact.formCategoryLabel': 'Project type',
+        'contact.formCategoryPlaceholder': 'Select one',
+        'contact.formCategoryBrand': 'Brand / product',
+        'contact.formCategoryEvent': 'Event',
+        'contact.formCategoryPortrait': 'Portrait / editorial',
+        'contact.formCategoryArtist': 'Artist / music',
+        'contact.formCategoryOther': 'Other',
+        'contact.formDateLabel': 'Preferred date',
+        'contact.formLocationLabel': 'Location',
+        'contact.formLocationPlaceholder': 'City or venue',
+        'contact.formMessagePlaceholder': 'Tell me what you need, the intended use, and any helpful context',
+        'contact.formMessageLabel': 'Project details',
+        'contact.formSubject': 'New quote request - Santiago Madriz',
+        'contact.formSubmit': 'Request a quote',
         'contact.formSending': 'Sending...',
         'contact.formSuccess': 'Thanks. Your message was sent and I will reply by email.',
         'contact.formFallback': 'Opening the secure form to finish sending...',
@@ -1549,16 +1630,31 @@
         'contact.body': 'Trabajo en proyectos de marca, retratos, eventos, sesiones para artistas y producción audiovisual en Costa Rica. Enviame los detalles por correo o WhatsApp.',
         'contact.whatsapp': 'Cotizar por WhatsApp',
         'contact.whatsappAria': 'Cotizar por WhatsApp',
-        'contact.formNamePlaceholder': 'Nombre',
+        'contact.formNamePlaceholder': 'Tu nombre',
         'contact.formNameLabel': 'Nombre',
-        'contact.formEmailPlaceholder': 'Correo electrónico',
+        'contact.formEmailPlaceholder': 'tu@correo.com',
         'contact.formEmailLabel': 'Correo electrónico',
-        'contact.formProjectPlaceholder': 'Proyecto / fecha',
-        'contact.formProjectLabel': 'Proyecto o fecha',
-        'contact.formMessagePlaceholder': 'Contame qué tenés en mente',
-        'contact.formMessageLabel': 'Contame qué tenés en mente',
-        'contact.formSubject': 'Nueva solicitud desde el portafolio - Santiago Madriz',
-        'contact.formSubmit': 'Enviar detalles',
+        'contact.formPhoneLabel': 'WhatsApp / teléfono',
+        'contact.formPhonePlaceholder': '+506 0000 0000',
+        'contact.formServiceLabel': 'Servicio',
+        'contact.formServicePlaceholder': 'Seleccioná una opción',
+        'contact.formServicePhoto': 'Fotografía',
+        'contact.formServiceFilm': 'Film / video',
+        'contact.formServiceBoth': 'Fotografía + video',
+        'contact.formCategoryLabel': 'Tipo de proyecto',
+        'contact.formCategoryPlaceholder': 'Seleccioná una opción',
+        'contact.formCategoryBrand': 'Marca / producto',
+        'contact.formCategoryEvent': 'Evento',
+        'contact.formCategoryPortrait': 'Retrato / editorial',
+        'contact.formCategoryArtist': 'Artista / música',
+        'contact.formCategoryOther': 'Otro',
+        'contact.formDateLabel': 'Fecha preferida',
+        'contact.formLocationLabel': 'Ubicación',
+        'contact.formLocationPlaceholder': 'Ciudad o lugar',
+        'contact.formMessagePlaceholder': 'Contame qué necesitás, cómo se usaría el contenido y cualquier detalle útil',
+        'contact.formMessageLabel': 'Detalles del proyecto',
+        'contact.formSubject': 'Nueva solicitud de cotización - Santiago Madriz',
+        'contact.formSubmit': 'Solicitar cotización',
         'contact.formSending': 'Enviando...',
         'contact.formSuccess': 'Gracias. Tu mensaje fue enviado y te voy a responder por correo.',
         'contact.formFallback': 'Abriendo el envío seguro para terminar...',
@@ -1697,7 +1793,8 @@
         });
         if (!response.ok) throw new Error(`Form request failed with ${response.status}`);
         contactForm.reset();
-        setContactStatus('contact.formSuccess', 'success');
+        window.location.assign('/quote-requested/');
+        return;
       } catch (error) {
         console.error('Contact form submission failed', error);
         setContactStatus('contact.formFallback', 'success');
