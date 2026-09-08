@@ -20,8 +20,52 @@ test('presents the MOVA film as a static preview that links to its watch page', 
   const card = page.locator('[data-mova-card]');
   await expect(card).toHaveAttribute('href', '/film/mova-made-to-move/');
   await expect(card.locator('img')).toHaveAttribute('src', 'assets/instagram/mova-made-to-move-poster.jpg');
-  await expect(card.locator('.play-badge')).toBeVisible();
+  await expect(card.locator('.film-preview-play')).toBeVisible();
   await expect(card.locator('video')).toHaveCount(0);
+});
+
+test('presents one featured film and plays every preview on demand in one modal', async ({ page }) => {
+  const showcase = page.locator('.film-showcase');
+  await expect(showcase.locator('.film-feature')).toHaveAttribute('href', '/film/dias-de-lluvia-music-video/');
+  await expect(showcase.locator('.film-preview')).toHaveCount(5);
+  await expect(showcase.locator('video')).toHaveCount(0);
+
+  await showcase.locator('[data-mova-card]').click();
+  const dialog = page.locator('#filmDialog');
+  await expect(dialog).toHaveAttribute('open', '');
+  await expect(dialog.getByRole('heading')).toContainText('MOVA');
+  await expect(dialog.locator('video')).toHaveAttribute('src', /reel-mova-made-to-move\.mp4/);
+  await expect(page.locator('video')).toHaveCount(1);
+
+  await dialog.getByRole('button', { name: 'Close video' }).click();
+  await expect(dialog).not.toHaveAttribute('open', '');
+  await expect(dialog.locator('video')).not.toHaveAttribute('src');
+});
+
+test('filters film categories without affecting the photography collection', async ({ page }) => {
+  await page.getByRole('button', { name: 'Events', exact: true }).first().click();
+  await expect(page.locator('.film-preview:not(.is-hidden)')).toHaveCount(2);
+  await expect(page.locator('.film-preview:not(.is-hidden)')).toContainText(['Pop & Run Beats at Aleste', 'Baby shower highlight']);
+  await expect(page.locator('[data-mova-sports]')).toBeVisible();
+  await expect(page.locator('.work-mode-nav a')).toHaveCount(2);
+  await expect(page.locator('.work-mode-nav a').nth(0)).toHaveAttribute('href', '#film-work');
+  await expect(page.locator('.work-mode-nav a').nth(1)).toHaveAttribute('href', '#photo-work');
+});
+
+test('keeps the film showcase and player inside an iPhone-sized viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload();
+  await expect(page.locator('.film-showcase')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
+
+  await page.locator('.film-feature').click();
+  const dialog = page.locator('#filmDialog');
+  await expect(dialog).toHaveAttribute('open', '');
+  const box = await dialog.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.x).toBeGreaterThanOrEqual(0);
+  expect(box!.x + box!.width).toBeLessThanOrEqual(390);
+  expect(box!.y + box!.height).toBeLessThanOrEqual(844);
 });
 
 for (const film of [
@@ -95,7 +139,8 @@ test('presents the Suzuki Samurai series as a five-image automotive carousel', a
 test('filters work and translates the interface', async ({ page }) => {
   await page.getByRole('button', { name: 'Portraits' }).click();
   await expect(page.getByRole('button', { name: 'Portraits' })).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('#work [data-cat]:not(.is-hidden)')).toHaveCount(1);
+  await expect(page.locator('#work [data-group="photo"][data-cat]:not(.is-hidden)')).toHaveCount(1);
+  await expect(page.locator('.film-showcase')).toBeVisible();
 
   await page.getByRole('button', { name: 'Ver en español' }).click();
   await expect(page.locator('html')).toHaveAttribute('lang', 'es');
