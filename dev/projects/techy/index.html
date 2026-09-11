@@ -1,1 +1,193 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="theme-color" content="#050505"><meta name="description" content="A public-safe engineering case study for Techy, a real commerce product in Costa Rica."><link rel="canonical" href="https://santiagomadriz.com/dev/projects/techy/"><link rel="icon" href="/dev/favicon.svg" type="image/svg+xml"><meta property="og:type" content="website"><meta property="og:title" content="Techy Case Study · Santiago Madriz"><meta property="og:description" content="A public-safe engineering case study for Techy, a real commerce product in Costa Rica."><meta property="og:url" content="https://santiagomadriz.com/dev/projects/techy/"><meta name="twitter:card" content="summary"><title>Techy Case Study · Santiago Madriz</title><link rel="stylesheet" href="/dev/_astro/BaseLayout.Bx4226hy.css"></head><body><a class="skip-link" href="#main">Skip to content</a><div class="ambient-motion" aria-hidden="true"><i class="ambient-orb ambient-orb--one"></i><i class="ambient-orb ambient-orb--two"></i><i class="ambient-orb ambient-orb--three"></i></div><div class="page-shell"><header class="site-header"><a class="brand" href="/dev/" aria-label="Santiago Madriz, home"><span class="brand-mark">SM</span><span>Santiago Madriz</span></a><nav aria-label="Primary navigation"><a href="/dev/">Home</a><a href="/dev/projects" aria-current="page">Work</a><a href="/dev/experience">Experience</a><a href="/dev/credentials">Credentials</a></nav><a class="header-cta" href="mailto:santiagomadrizc@gmail.com">Let's talk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></header><main id="main"><header class="page-intro" data-reveal><div class="eyebrow">Case study · Production commerce</div><h1>Techy: engineering a real commerce experience.</h1><p>A live bilingual storefront with a private product repository and a deliberately public-safe technical story.</p></header><nav class="case-links" aria-label="Project links" data-reveal><a class="case-link case-link--primary" href="https://techy-cr.com/" target="_blank" rel="noopener"><span>Visit live storefront</span><span aria-hidden="true">↗</span></a></nav><article class="prose" data-reveal><h2>Context</h2><p>Techy presents Apple products for customers in Costa Rica and supports direct purchase conversations. Unlike a portfolio demo, it has real brand, content, catalog, legal, and operational constraints.</p><h2>Current architecture</h2><p>The inherited application uses Next.js 16, React 19, TypeScript, and Sanity. Its App Router structure includes catalog, product detail, open-box, contact, purchasing guidance, legal pages, robots metadata, and a generated sitemap.</p><blockquote>The objective is not to expose a private business repository. It is to demonstrate how a real product is understood, protected, tested, and improved.</blockquote><h2>Delivered modernization</h2><h3>Ownership and deployment</h3><p>The private repository preserves its history under new ownership, documents its environment contract, and deploys through Vercel on a dedicated production domain.</p><h3>Product experience</h3><p>The storefront now supports persistent Spanish and English navigation, updated catalog imagery and pricing, responsive product discovery, and direct WhatsApp handoff.</p><h3>Production readiness</h3><p>Canonical metadata, generated sitemap and robots rules, legal pages, validated contact channels, and repeatable build checks support the public release.</p><h2>Constraints and tradeoffs</h2><p>The repository remains private because business configuration and future operational logic should not be exposed for portfolio value. Public documentation will describe decisions and outcomes without reproducing commercially sensitive implementation details.</p><h2>Next measured outcome</h2><p>Performance and conversion improvements will follow observed production behavior, with additional automated critical-path coverage added around catalog discovery and contact handoff.</p></article></main><footer><p>© 2026 Santiago Madriz</p></footer></div><script type="module">var e=`.site-header .brand,.site-header nav a,.header-cta,main h1,main h2,main h3,main p,main .eyebrow,main .section-kicker,main .button,main .text-link,main .hero-proof li,main .laptop-scene,main .system-card,main .system-card > *,main .connector,main .connector-dot,main .project-card,main .project-card > *,main .project-card li,main .project-preview img,main .experience-item,main .experience-item > *,main .career-role,main .career-role > *,main .impact-card,main .impact-card > *,main .case-link,main .teaching-grid article,main .teaching-grid article > *,main .credential-card,main .credential-card > *,main .credential-preview img,main .page-actions > *,main .cta-band > *,footer > *`.split(`,`).join(`,`),t=[...document.querySelectorAll(e)];document.documentElement.classList.add(`motion-enabled`),t.forEach((e,t)=>{e.dataset.enter=``,e.style.setProperty(`--enter-delay`,`${t%7*48}ms`)});var n=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add(`entered`),n.unobserve(e.target))})},{threshold:.08,rootMargin:`0px 0px -3% 0px`});t.forEach(e=>n.observe(e));</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="A public-safe engineering case study for Techy, a live bilingual commerce product in Costa Rica.">
+    <link rel="canonical" href="https://santiagomadriz.com/dev/projects/techy/">
+    <link rel="icon" href="/dev/favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Techy Case Study · Santiago Madriz">
+    <meta property="og:description" content="A public-safe engineering case study for Techy, a live bilingual commerce product in Costa Rica.">
+    <meta property="og:url" content="https://santiagomadriz.com/dev/projects/techy/">
+    <meta property="og:image" content="https://santiagomadriz.com/dev/previews/techy-live-desktop.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Techy Case Study · Santiago Madriz</title>
+    <link rel="stylesheet" href="/dev/_astro/BaseLayout.Bx4226hy.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient-motion" aria-hidden="true">
+      <i class="ambient-orb ambient-orb--one"></i>
+      <i class="ambient-orb ambient-orb--two"></i>
+      <i class="ambient-orb ambient-orb--three"></i>
+    </div>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="/dev/" aria-label="Santiago Madriz, home">
+          <span class="brand-mark">SM</span>
+          <span>Santiago Madriz</span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <a href="/dev/">Home</a>
+          <a href="/dev/projects" aria-current="page">Work</a>
+          <a href="/dev/experience">Experience</a>
+          <a href="/dev/credentials">Credentials</a>
+        </nav>
+        <a class="header-cta" href="mailto:santiagomadrizc@gmail.com">
+          Let's talk
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </header>
+
+      <main id="main" class="case-study-modern techy-case">
+        <header class="case-hero" data-reveal>
+          <div>
+            <span class="eyebrow">Case study / Production commerce</span>
+            <h1>Techy: a real storefront, engineered for launch.</h1>
+            <p>Techy is a live bilingual commerce experience for Apple products in Costa Rica. The work blends product UX, private-repository stewardship, content structure, production release details, and a quality mindset around the paths customers actually use.</p>
+          </div>
+          <aside class="case-summary" aria-label="Project summary">
+            <dl>
+              <dt>Role</dt>
+              <dd>Software engineering, release readiness, technical documentation</dd>
+              <dt>Stack</dt>
+              <dd>Next.js, React, TypeScript, Sanity, Vercel</dd>
+              <dt>Surface</dt>
+              <dd>Catalog, product details, language routing, contact handoff</dd>
+              <dt>Status</dt>
+              <dd>Live production storefront</dd>
+            </dl>
+          </aside>
+        </header>
+
+        <section class="case-hero-media" aria-label="Techy storefront shown on desktop and mobile" data-reveal>
+          <div class="device-stage">
+            <div class="device-macbook">
+              <div class="device-browser-bar" aria-hidden="true">
+                <i></i><i></i><i></i><span>techy-cr.com</span>
+              </div>
+              <img src="/dev/previews/techy-live-desktop.jpg" alt="Techy CR homepage shown in a desktop browser" loading="eager">
+            </div>
+            <div class="device-phone">
+              <img src="/dev/previews/techy-live-mobile.jpg" alt="Techy CR homepage shown on a mobile viewport" loading="eager">
+            </div>
+          </div>
+        </section>
+
+        <section class="case-metrics" aria-label="Techy project highlights" data-reveal>
+          <article>
+            <strong>Live</strong>
+            <span>Production domain and release flow</span>
+          </article>
+          <article>
+            <strong>2 lang</strong>
+            <span>Spanish and English storefront paths</span>
+          </article>
+          <article>
+            <strong>Private</strong>
+            <span>Repository protected for business logic</span>
+          </article>
+          <article>
+            <strong>Public</strong>
+            <span>Case study written without exposing internals</span>
+          </article>
+        </section>
+
+        <section class="case-story-grid" data-reveal>
+          <div>
+            <span class="eyebrow">Opportunity</span>
+            <h2>Make the storefront feel trustworthy before a customer ever writes.</h2>
+          </div>
+          <div>
+            <p>Techy needed to present a premium product catalog with enough clarity for customers to understand availability, condition, language, purchase guidance, and direct contact options.</p>
+            <p>The challenge was not only visual polish. It was shaping a product experience that can evolve, stay maintainable, and communicate confidence while protecting the private parts of the business.</p>
+          </div>
+        </section>
+
+        <section class="case-gallery-strip" aria-label="Techy storefront screenshots" data-reveal>
+          <figure>
+            <img src="/dev/previews/techy-live-desktop.jpg" alt="Techy desktop storefront hero and category section" loading="lazy">
+            <figcaption>Desktop storefront: product-first hero, language controls, navigation, quote path, and category entry points.</figcaption>
+          </figure>
+          <figure>
+            <img src="/dev/previews/techy-live-mobile.jpg" alt="Techy mobile storefront hero" loading="lazy">
+            <figcaption>Mobile storefront: simplified navigation and stacked conversion paths for smaller screens.</figcaption>
+          </figure>
+        </section>
+
+        <section class="case-story-grid" data-reveal>
+          <div>
+            <span class="eyebrow">Build</span>
+            <h2>Structured for a real business, not just a portfolio screenshot.</h2>
+          </div>
+          <div>
+            <ul>
+              <li>Preserved the private repository and release history while preparing a public-safe case study.</li>
+              <li>Organized the storefront around catalog discovery, product detail pages, open-box inventory, purchase guidance, contact, legal pages, metadata, and sitemap coverage.</li>
+              <li>Kept the experience responsive across desktop and mobile so the site feels intentional in the two places customers are most likely to browse.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="case-story-grid" data-reveal>
+          <div>
+            <span class="eyebrow">Quality strategy</span>
+            <h2>Protect the paths where trust can break.</h2>
+          </div>
+          <div>
+            <p>The quality focus is around production-critical behavior: language switching, catalog entry points, product detail navigation, contact handoff, page metadata, and deploy readiness.</p>
+            <p>That makes the project useful as an engineering portfolio piece because it shows how product thinking and quality engineering meet in the same system.</p>
+            <div class="case-note">
+              The repository remains private because business configuration and future operational logic should stay protected. The case study documents decisions, constraints, and outcomes without exposing sensitive implementation details.
+            </div>
+          </div>
+        </section>
+
+        <section class="case-story-grid" data-reveal>
+          <div>
+            <span class="eyebrow">Next</span>
+            <h2>Measure, refine, then automate the highest-risk flows.</h2>
+          </div>
+          <div>
+            <p>The next improvement is to use production behavior to prioritize performance work, conversion improvements, and automated coverage around catalog discovery and customer contact.</p>
+          </div>
+        </section>
+
+        <nav class="case-final-links" aria-label="Project actions" data-reveal>
+          <a class="case-link case-link--primary" href="https://techy-cr.com/" target="_blank" rel="noopener">
+            <span>Visit live storefront</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="case-link" href="/dev/projects">
+            <span>Back to selected work</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </nav>
+      </main>
+
+      <footer><p>© 2026 Santiago Madriz</p></footer>
+    </div>
+    <script type="module">
+      const selector = `.site-header .brand,.site-header nav a,.header-cta,main h1,main h2,main h3,main p,main .eyebrow,main .button,main .text-link,main .case-hero,main .case-hero > *,main .case-summary,main .case-hero-media,main .device-macbook,main .device-phone,main .case-metrics article,main .case-story-grid,main .case-story-grid > *,main .case-gallery-strip figure,main .case-link,footer > *`;
+      const items = [...document.querySelectorAll(selector)];
+      document.documentElement.classList.add(`motion-enabled`);
+      items.forEach((item, index) => {
+        item.dataset.enter = ``;
+        item.style.setProperty(`--enter-delay`, `${index % 7 * 48}ms`);
+      });
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(`entered`);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .08, rootMargin: `0px 0px -3% 0px` });
+      items.forEach(item => observer.observe(item));
+    </script>
+  </body>
+</html>
