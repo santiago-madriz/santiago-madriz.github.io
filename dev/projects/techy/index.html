@@ -108,17 +108,6 @@
           </div>
         </section>
 
-        <section class="case-gallery-strip" aria-label="Techy storefront screenshots" data-reveal>
-          <figure>
-            <img src="/dev/previews/techy-live-desktop.jpg" alt="Techy desktop storefront hero and category section" loading="lazy">
-            <figcaption>Desktop storefront: product-first hero, language controls, navigation, quote path, and category entry points.</figcaption>
-          </figure>
-          <figure>
-            <img src="/dev/previews/techy-live-mobile.jpg" alt="Techy mobile storefront hero" loading="lazy">
-            <figcaption>Mobile storefront: simplified navigation and stacked conversion paths for smaller screens.</figcaption>
-          </figure>
-        </section>
-
         <section class="case-story-grid" data-reveal>
           <div>
             <span class="eyebrow">Build</span>
@@ -172,7 +161,7 @@
       <footer><p>© 2026 Santiago Madriz</p></footer>
     </div>
     <script type="module">
-      const selector = `.site-header .brand,.site-header nav a,.header-cta,main h1,main h2,main h3,main p,main .eyebrow,main .button,main .text-link,main .case-hero,main .case-hero > *,main .case-summary,main .case-hero-media,main .device-macbook,main .device-phone,main .case-metrics article,main .case-story-grid,main .case-story-grid > *,main .case-gallery-strip figure,main .case-link,footer > *`;
+      const selector = `.site-header .brand,.site-header nav a,.header-cta,main h1,main h2,main h3,main p,main .eyebrow,main .button,main .text-link,main .case-hero,main .case-hero > *,main .case-summary,main .case-hero-media,main .device-macbook,main .device-phone,main .case-metrics article,main .case-story-grid,main .case-story-grid > *,main .case-link,footer > *`;
       const items = [...document.querySelectorAll(selector)];
       document.documentElement.classList.add(`motion-enabled`);
       items.forEach((item, index) => {
