@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="Public-safe WestJet Rewards quality engineering case study by Santiago Madriz.">
+    <link rel="canonical" href="https://santiagomadriz.com/dev/projects/westjet-rewards-quality-engineering/">
+    <link rel="icon" href="/dev/favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="WestJet Rewards Quality Engineering · Santiago Madriz">
+    <meta property="og:description" content="Quality engineering engagement focused on rewards account scenarios, stakeholder validation, automation, and CI/CD confidence.">
+    <meta property="og:url" content="https://santiagomadriz.com/dev/projects/westjet-rewards-quality-engineering/">
+    <meta name="twitter:card" content="summary">
+    <title>WestJet Rewards Quality Engineering · Santiago Madriz</title>
+    <link rel="stylesheet" href="/dev/_astro/BaseLayout.Bx4226hy.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient-motion" aria-hidden="true">
+      <i class="ambient-orb ambient-orb--one"></i>
+      <i class="ambient-orb ambient-orb--two"></i>
+      <i class="ambient-orb ambient-orb--three"></i>
+    </div>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="/dev/" aria-label="Santiago Madriz, home"><span class="brand-mark">SM</span><span>Santiago Madriz</span></a>
+        <nav aria-label="Primary navigation">
+          <a href="/dev/">Home</a>
+          <a href="/dev/projects" aria-current="page">Work</a>
+          <a href="/dev/experience">Experience</a>
+          <a href="/dev/credentials">Credentials</a>
+        </nav>
+        <a class="header-cta" href="mailto:santiagomadrizc@gmail.com">Let's talk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </header>
+      <main id="main">
+        <header class="page-intro" data-reveal>
+          <div class="eyebrow">Case study · Client quality engineering</div>
+          <h1>WestJet Rewards validation for complex customer scenarios.</h1>
+          <p>A public-safe summary of quality engineering work delivered through a Konrad consulting engagement, focused on rewards account behavior, business-rule validation, and release confidence.</p>
+        </header>
+        <nav class="case-links" aria-label="Project links" data-reveal>
+          <a class="case-link case-link--primary" href="/dev/experience"><span>View related experience</span><span aria-hidden="true">→</span></a>
+        </nav>
+        <article class="prose" data-reveal>
+          <h2>Context</h2>
+          <p>WestJet Rewards includes account, points, tier, offer, and card-linked scenarios where small rule mismatches can affect what customers earn or see. My role was to help validate that these behaviors matched the expected business requirements before release.</p>
+          <blockquote>This case study uses a sanitized screenshot and intentionally omits private account data, internal implementation details, pipeline configuration, and confidential client material.</blockquote>
+          <h2>Stakeholder validation</h2>
+          <p>I worked with stakeholders to clarify rewards scenarios and acceptance criteria across customer account flows. That included validating expected outcomes for points, tier qualification, flight-purchase behavior, and benefits connected to specific cards.</p>
+          <h2>Quality strategy</h2>
+          <p>The work required careful manual validation, detailed scenario coverage, and automation where repeatability mattered. I used Robot Framework and Playwright to support regression confidence around high-value journeys and edge cases.</p>
+          <h2>Delivery integration</h2>
+          <p>Automation was integrated into GitLab CI/CD workflows and supported by DevOps practices so validation could become part of delivery rather than a late manual checkpoint.</p>
+          <h2>Engineering value</h2>
+          <p>This engagement strengthened my ability to translate business rules into testable scenarios, communicate clearly with stakeholders, and protect production-facing user behavior through disciplined quality engineering.</p>
+          <h3>Technologies</h3>
+          <p>Robot Framework, Playwright, GitLab CI/CD, DevOps workflows, manual testing, regression strategy, and stakeholder scenario validation.</p>
+        </article>
+      </main>
+      <footer><p>© 2026 Santiago Madriz</p></footer>
+    </div>
+    <script type="module">
+      var e = `.site-header .brand,.site-header nav a,.header-cta,main h1,main h2,main h3,main p,main .eyebrow,main .section-kicker,main .button,main .text-link,main .hero-proof li,main .laptop-scene,main .system-card,main .system-card > *,main .connector,main .connector-dot,main .project-card,main .project-card > *,main .project-card li,main .project-preview img,main .experience-item,main .experience-item > *,main .career-role,main .career-role > *,main .impact-card,main .impact-card > *,main .case-link,main .teaching-grid article,main .teaching-grid article > *,main .credential-card,main .credential-card > *,main .credential-preview img,main .page-actions > *,main .cta-band > *,footer > *`.split(`,`).join(`,`), t = [...document.querySelectorAll(e)];
+      document.documentElement.classList.add(`motion-enabled`);
+      t.forEach((e, t) => {
+        e.dataset.enter = ``;
+        e.style.setProperty(`--enter-delay`, `${t % 7 * 48}ms`);
+      });
+      var n = new IntersectionObserver(e => {
+        e.forEach(e => {
+          e.isIntersecting && (e.target.classList.add(`entered`), n.unobserve(e.target));
+        });
+      }, { threshold: .08, rootMargin: `0px 0px -3% 0px` });
+      t.forEach(e => n.observe(e));
+    </script>
+  </body>
+</html>
