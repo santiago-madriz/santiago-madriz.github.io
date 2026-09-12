@@ -45,3 +45,12 @@
 
 /* Stronger phone separation inside the selected systems carousel */
 .systems-carousel .system-device-phone{box-shadow:0 44px 120px #000000f2,0 22px 52px #000000e0,0 0 0 6px #050506c2,0 0 0 1px #000,inset 0 0 0 1px #ffffff28,inset 0 0 22px #ffffff0a!important}
+
+
+/* Smoother selected systems carousel transitions */
+.systems-carousel .systems-track{transform:none!important;translate:calc(var(--carousel-offset,0) * -100%) 0;transition:translate .98s cubic-bezier(.22,1,.36,1);will-change:translate}
+.systems-carousel .system-slide{opacity:.38;filter:saturate(.92) brightness(.82);scale:.985;transition:opacity .82s cubic-bezier(.22,1,.36,1),filter .82s cubic-bezier(.22,1,.36,1),scale .98s cubic-bezier(.22,1,.36,1);will-change:opacity,filter,scale}
+.systems-carousel .system-slide.is-current{opacity:1;filter:none;scale:1}
+.systems-carousel .system-slide .system-device-stage{transform:translateY(16px) scale(.988);transition:transform .98s cubic-bezier(.22,1,.36,1)}
+.systems-carousel .system-slide.is-current .system-device-stage,.systems-carousel .system-slide:hover .system-device-stage,.systems-carousel .system-slide:focus-visible .system-device-stage{transform:translateY(0) scale(1)}
+@media (prefers-reduced-motion:reduce){.systems-carousel .systems-track,.systems-carousel .system-slide,.systems-carousel .system-slide .system-device-stage{transition:none}}
